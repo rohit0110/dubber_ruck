@@ -1,0 +1,545 @@
+{
+ "note": "Simulated speech-to-text transcripts. Labels: covered | missing | contradicted. Variants: A full, B partial, C one point contradicted, D clueless, E paraphrase-heavy, F speech-to-text noisy, G rambling, H hedged.",
+ "cases": [
+  {
+   "id": "q1-A",
+   "question_id": "q1",
+   "variant": "A",
+   "transcript": "So on one server you just keep the key-value pairs in a hash table in memory. But memory's limited, so you can compress the data, or keep only the frequently used stuff in memory and push the rest to disk. Still it hits its capacity quickly, so you need a distributed key-value store, which is basically a distributed hash table.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q1-B",
+   "question_id": "q1",
+   "variant": "B",
+   "transcript": "Um, a hash table in memory. That's all I remember, sorry.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q1-C",
+   "question_id": "q1",
+   "variant": "C",
+   "transcript": "So on a single server it's a hash table in memory. You can compress the data and keep only hot data in memory with the rest on disk. And with those tricks one server can really scale to any size, so you never need a distributed store.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q1-D",
+   "question_id": "q1",
+   "variant": "D",
+   "transcript": "Single server key value... I think you'd use, like, an Excel file? Or a text file? Not sure.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q1-E",
+   "question_id": "q1",
+   "variant": "E",
+   "transcript": "On one machine it's basically a dictionary held in RAM. To squeeze more in you shrink the data, or only keep the popular entries in RAM and park the rest on disk. Even then one box fills up fast, so the answer is spreading it over many machines, a distributed hash table.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q2-A",
+   "question_id": "q2",
+   "variant": "A",
+   "transcript": "Okay so CAP, you can't have more than two of consistency, availability and partition tolerance. Consistency is everyone sees the same data at the same time, availability is any request gets a response even if some nodes are down, and partition tolerance is the system keeps working despite breaks in the network. And since network failures are unavoidable you always need partition tolerance, so a CA system basically can't exist in real life.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q2-B",
+   "question_id": "q2",
+   "variant": "B",
+   "transcript": "Um, so CAP says you can only pick two out of consistency, availability and partition tolerance.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q2-C",
+   "question_id": "q2",
+   "variant": "C",
+   "transcript": "So CAP says you can only have two of the three. Consistency means same data for everyone, availability means every request gets a response, partition tolerance means it works despite network breaks. And, uh, CA systems are actually the most common in real life because networks are reliable.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q2-D",
+   "question_id": "q2",
+   "variant": "D",
+   "transcript": "CAP... is that a type of, uh, hat? Or a database thing? I'm sorry, I really don't recall.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q2-H",
+   "question_id": "q2",
+   "variant": "H",
+   "transcript": "I think CAP says you can't have all three, only two, of consistency, availability, partition tolerance? And, uh, consistency is everybody sees the same data, availability is you always get a response, and partition tolerance is working through network breaks, I believe. And partitions can't be avoided so CA isn't really a thing, I think.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q3-A",
+   "question_id": "q3",
+   "variant": "A",
+   "transcript": "So when there's a partition you have to choose. A CP system keeps things consistent by blocking writes to the affected nodes, so it gives up availability, banks work like that because the balance has to be right. An AP system stays available, keeps accepting reads and writes even though it might return stale data, and syncs up when the partition heals.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q3-B",
+   "question_id": "q3",
+   "variant": "B",
+   "transcript": "Um, CP blocks the writes to stay consistent. Like for banks. And, uh, I don't remember the other one.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q3-C",
+   "question_id": "q3",
+   "variant": "C",
+   "transcript": "CP systems keep accepting writes on every node and fix it up later, that's what banks use. AP systems stay available and might return stale data and sync afterwards.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q3-D",
+   "question_id": "q3",
+   "variant": "D",
+   "transcript": "CP and AP... is that, like, Control Panel and Access Point? Sorry, I'm not sure.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q3-E",
+   "question_id": "q3",
+   "variant": "E",
+   "transcript": "If the network splits, one kind of system stops taking updates on the nodes it can't coordinate with, so everyone sees correct values, which is what a bank wants, even though it's then effectively down. The other kind keeps answering and taking updates, risking old values, and then catches the isolated machine up once the link is back.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q4-A",
+   "question_id": "q4",
+   "variant": "A",
+   "transcript": "Partitioning uses consistent hashing, so servers can be added and removed automatically, and higher capacity servers get more virtual nodes. For replication you copy the data to N servers, you walk clockwise from the key's position on the ring and pick the first N unique servers, because virtual nodes might belong to the same physical one. And you put the replicas in different data centers so one outage doesn't kill everything.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q4-B",
+   "question_id": "q4",
+   "variant": "B",
+   "transcript": "Um, you use consistent hashing to partition the data, and bigger servers get more virtual nodes. And, uh, that's what I recall.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q4-C",
+   "question_id": "q4",
+   "variant": "C",
+   "transcript": "Partitioning's consistent hashing, with more virtual nodes for bigger servers. Replication goes to the first N unique servers clockwise. And you keep all the replicas in the same data center so the latency stays low.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q4-D",
+   "question_id": "q4",
+   "variant": "D",
+   "transcript": "Replication... you just make backups at night, right? Like a cron job? I don't know much more.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q4-G",
+   "question_id": "q4",
+   "variant": "G",
+   "transcript": "Okay so, partitioning, uh, my last company used this and the on-call was brutal, anyway. Consistent hashing so it scales automatically and bigger servers get more virtual nodes. Replication: N copies, walk clockwise and take the first N unique servers, unique because of virtual nodes. And different data centers, so an outage doesn't take everything. Brutal on-call, honestly.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-A",
+   "question_id": "q5",
+   "variant": "A",
+   "transcript": "So N's the number of replicas, W is how many replicas must acknowledge a write, R is how many have to respond to a read. If W plus R is greater than N you get strong consistency because there's always an overlapping node with the latest data. And it's a tradeoff, small W or R is fast but less consistent, bigger is more consistent but slower. Like R equals one and W equals N is fast reads.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-B",
+   "question_id": "q5",
+   "variant": "B",
+   "transcript": "Um, N is the number of replicas, W is the write quorum, R is the read quorum. And I, I forget the rest.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q5-C",
+   "question_id": "q5",
+   "variant": "C",
+   "transcript": "N replicas, W acks for a write, R responses for a read. And, uh, strong consistency is guaranteed when W plus R is less than or equal to N. And it's a tradeoff, smaller values are faster but less consistent.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-D",
+   "question_id": "q5",
+   "variant": "D",
+   "transcript": "Quorum... isn't that, like, the minimum number of people for a meeting? I don't know about the letters.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q5-F",
+   "question_id": "q5",
+   "variant": "F",
+   "transcript": "so n is the number of replicas w is the number of acknowledgements for a right and r is how many responses for a read. if w plus r is greater than n you get strong consistency cuz theres an over lapping note with the latest data. smaller w or r is faster but less consistent its a trade off",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q6-A",
+   "question_id": "q6",
+   "variant": "A",
+   "transcript": "So strong consistency is every read returns the latest write, the client never sees stale data, but you get it by blocking new operations until all replicas agree, which hurts availability. Weak is subsequent reads might not see the latest value. Eventual is a kind of weak where given enough time all the updates propagate and the replicas end up consistent. Dynamo and Cassandra use that one.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q6-B",
+   "question_id": "q6",
+   "variant": "B",
+   "transcript": "Um, strong consistency means you always get the latest value. And weak means you might not.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q6-C",
+   "question_id": "q6",
+   "variant": "C",
+   "transcript": "Strong is you always read the latest write. Weak is you may not see it. Eventual means every read sees the latest write immediately, like, with no delay.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q6-D",
+   "question_id": "q6",
+   "variant": "D",
+   "transcript": "Consistency models... is it about how consistent your code style is? I'm sorry, I'm lost.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q6-E",
+   "question_id": "q6",
+   "variant": "E",
+   "transcript": "If every read has to reflect the newest write you've got the strict flavor, and getting there means freezing operations until all copies concur, which hurts uptime. The loose flavor just says a later read might be behind. A particular loose flavor promises that, left alone for a while, every copy catches up; that's what Dynamo and Cassandra go for.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q7-A",
+   "question_id": "q7",
+   "variant": "A",
+   "transcript": "A vector clock is a bunch of server and version pairs attached to a data item, and you can use it to tell whether one version came before another or whether they conflict. X is an ancestor of Y if all the counters in Y are greater than or equal to X's, and if any counter in Y is lower, it's a conflict. The downsides are it makes the client complex since the client resolves conflicts, and the pairs can grow, so you cap the length and prune the oldest.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q7-B",
+   "question_id": "q7",
+   "variant": "B",
+   "transcript": "Um, it's server and version pairs on a data item, to detect conflicts between versions. That's about it.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q7-C",
+   "question_id": "q7",
+   "variant": "C",
+   "transcript": "It's server and version pairs attached to a data item to detect conflicts. If every counter in Y is at least as big as X's, X is an ancestor, otherwise conflict. And there's really no downside, the server resolves conflicts automatically so the client needs no extra logic.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q7-D",
+   "question_id": "q7",
+   "variant": "D",
+   "transcript": "Vector clock... is that the, uh, graphics clock on a GPU? I don't know. Sorry.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q7-H",
+   "question_id": "q7",
+   "variant": "H",
+   "transcript": "I think a vector clock is, uh, pairs of server and version attached to a data item, to see if versions conflict or one comes before the other? And X is an ancestor of Y if all the counters in Y are greater or equal, otherwise it's a conflict, I believe. Downsides, the client gets more complex, and the pairs can grow, so you drop the oldest, if I remember right.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q8-A",
+   "question_id": "q8",
+   "variant": "A",
+   "transcript": "So you need at least two independent sources to say a server's down, one server saying so isn't enough. All to all multicast works but it's inefficient with lots of servers, so you use gossip protocol. Each node has a membership list with heartbeat counters, bumps its own, and sends heartbeats to random nodes. If a member's heartbeat hasn't gone up for a set period, it's marked offline.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q8-B",
+   "question_id": "q8",
+   "variant": "B",
+   "transcript": "Um, gossip protocol, where nodes send heartbeats to random other nodes. And each keeps a list.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q8-C",
+   "question_id": "q8",
+   "variant": "C",
+   "transcript": "You need two independent sources to mark a server down, and all to all multicast is inefficient. So for gossip a central master pings all the nodes and keeps the one membership list. If a node's heartbeat hasn't gone up for a while, it's offline.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q8-D",
+   "question_id": "q8",
+   "variant": "D",
+   "transcript": "Failure detection... you'd just ping it and see if it answers? Hmm, I'm not sure what else.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q8-F",
+   "question_id": "q8",
+   "variant": "F",
+   "transcript": "so you need at least two in dependent sources to say a server is down all to all multi casting is inefficient so you use the gossip protocol each node has a membership list with heart beat counters it increments its own and sends them to random nodes and if a heartbeat hasnt increased for a set period its marked offline",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q9-A",
+   "question_id": "q9",
+   "variant": "A",
+   "transcript": "So for temporary failures you use a sloppy quorum, you pick the first W healthy servers for writes and first R healthy for reads on the ring and ignore the offline ones. Another server handles the requests for a while and when the original's back it hands the data back, that's hinted handoff. For permanent failures there's anti-entropy, using Merkle trees, you compare root hashes and walk down to find only the buckets that are out of sync.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q9-B",
+   "question_id": "q9",
+   "variant": "B",
+   "transcript": "Um, hinted handoff, where another server temporarily takes over. And, uh, Merkle trees for permanent failures, I think.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q9-C",
+   "question_id": "q9",
+   "variant": "C",
+   "transcript": "For temporary failures you enforce a strict quorum, and requests just block until the server's back. Hinted handoff is when another server temporarily takes over and hands the data back later. Permanent failures, Merkle trees, compare hashes to sync only the buckets that differ.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q9-D",
+   "question_id": "q9",
+   "variant": "D",
+   "transcript": "Failures... you'd, uh, restart the server? And restore from a backup? That's all I've got.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q9-G",
+   "question_id": "q9",
+   "variant": "G",
+   "transcript": "So, uh, I got paged at three a.m. over this once, long story. Anyway! Temporary failures, sloppy quorum, first W healthy servers for writes and R for reads, skipping the offline ones. Another server covers and hands the data back when it's up, hinted handoff. Permanent failures, anti-entropy with Merkle trees, compare hashes down the tree, only sync the buckets that differ. Three a.m., never again.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q10-A",
+   "question_id": "q10",
+   "variant": "A",
+   "transcript": "Okay so a write goes to the commit log first so it's persisted, then it's saved in the memory cache, and when the cache is full or hits a threshold it gets flushed to an SSTable on disk. A read checks the memory cache first, if it's not there it uses a bloom filter to figure out which SSTables might have the key, gets the data from those and returns it.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q10-B",
+   "question_id": "q10",
+   "variant": "B",
+   "transcript": "Um, writes go to a commit log and then the memory cache, and then they get flushed to an SSTable. Reads, uh, I don't remember.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q10-C",
+   "question_id": "q10",
+   "variant": "C",
+   "transcript": "Writes go to the commit log, then the memory cache, then flushed to an SSTable. For reads, it checks memory first and if it's not there it just scans every SSTable on disk, there's no bloom filter involved.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   }
+  },
+  {
+   "id": "q10-D",
+   "question_id": "q10",
+   "variant": "D",
+   "transcript": "Write path, read path... isn't that about file paths? Like where files are stored? Sorry.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q10-F",
+   "question_id": "q10",
+   "variant": "F",
+   "transcript": "so a right goes in the commit log first then the memory cash and when the cash is full its flushed to an S S table on disk. a read checks the memory cash first and if its not there it uses a bloom filter to see which S S tables might have the key and returns the data",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  }
+ ]
+}

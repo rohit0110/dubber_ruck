@@ -1,0 +1,433 @@
+{
+ "topic": "System design: Design a key-value store",
+ "source_note": "Alex Xu, System Design Interview, chapter 6 (pages 87-108). Questions, answers, key points and transcripts are written in our own words.",
+ "questions": [
+  {
+   "id": "q1",
+   "question": "Why is a single-server key-value store not enough, and what can be done before going distributed?",
+   "answer": "On a single server you can keep key-value pairs in an in-memory hash table, but memory runs out. Two optimizations are compressing the data and keeping only frequently used data in memory with the rest on disk. Even so a single server reaches capacity quickly, so a distributed key-value store, also called a distributed hash table, is needed.",
+   "source_page": "89-90",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A single-server store keeps the pairs in an in-memory hash table.",
+     "keywords": [
+      "hash table",
+      "memory"
+     ],
+     "wrong_claims": [
+      "A single-server store keeps everything on disk in a B-tree only."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Optimizations: compress the data, and keep only frequently used data in memory with the rest on disk.",
+     "keywords": [
+      "compress",
+      "disk",
+      "frequently"
+     ],
+     "wrong_claims": [
+      "Store everything uncompressed in memory for speed."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "A single server still hits capacity quickly, so a distributed key-value store (distributed hash table) is needed.",
+     "keywords": [
+      "distributed",
+      "capacity"
+     ],
+     "wrong_claims": [
+      "A single server can scale to any size, so distribution is never needed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q2",
+   "question": "Explain the CAP theorem.",
+   "answer": "The CAP theorem says a distributed system cannot simultaneously provide more than two of consistency, availability and partition tolerance. Consistency means all clients see the same data at the same time, availability means any request gets a response even if some nodes are down, and partition tolerance means the system keeps working despite network breaks between nodes. Since network failures are unavoidable, a real system must tolerate partitions, so a CA system cannot exist in the real world.",
+   "source_page": "90-91",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A distributed system cannot guarantee more than two of consistency, availability and partition tolerance at once.",
+     "keywords": [
+      "two of",
+      "cap",
+      "can't have all three",
+      "cannot have all three"
+     ],
+     "wrong_claims": [
+      "A distributed system can have all three guarantees at once if designed carefully."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Consistency: all clients see the same data at once. Availability: every request gets a response even if nodes are down. Partition tolerance: it keeps working despite network breaks.",
+     "keywords": [
+      "same data",
+      "response",
+      "network"
+     ],
+     "wrong_claims": [
+      "Availability means all clients see the same data at the same time."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Network partitions are unavoidable, so real systems must tolerate them and a CA system cannot exist in practice.",
+     "keywords": [
+      "unavoidable",
+      "ca"
+     ],
+     "wrong_claims": [
+      "CA systems are the most common in the real world because networks are reliable."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q3",
+   "question": "What is the difference between a CP system and an AP system during a network partition?",
+   "answer": "When a partition happens you must choose. A CP system keeps consistency by blocking writes to the affected nodes, sacrificing availability, which suits banks where the balance must be up to date. An AP system stays available and keeps accepting reads and writes even though it might return stale data, and it syncs once the partition is resolved.",
+   "source_page": "91-92",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A CP system keeps consistency by blocking writes or returning errors during a partition, sacrificing availability; banks are an example.",
+     "keywords": [
+      "cp",
+      "block",
+      "bank",
+      "error"
+     ],
+     "wrong_claims": [
+      "CP systems keep accepting writes on every node and reconcile later."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "An AP system stays available and keeps accepting reads and writes, possibly returning stale data, and syncs when the partition is resolved.",
+     "keywords": [
+      "ap",
+      "stale",
+      "accept",
+      "sync"
+     ],
+     "wrong_claims": [
+      "AP systems refuse requests to avoid returning stale data."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q4",
+   "question": "How is data partitioned and replicated in the key-value store?",
+   "answer": "Data is partitioned with consistent hashing, which gives automatic scaling and heterogeneity, where servers with higher capacity get more virtual nodes. For replication, data is copied asynchronously to N servers: walk clockwise from the key's position and pick the first N unique servers. Replicas should be placed in distinct data centers for reliability.",
+   "source_page": "93-94",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Partition with consistent hashing, which scales automatically and gives more virtual nodes to higher-capacity servers.",
+     "keywords": [
+      "consistent hashing",
+      "virtual nodes",
+      "capacity"
+     ],
+     "wrong_claims": [
+      "Data is partitioned by range using a central lookup table with fixed server assignments."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Replicate to N servers by walking clockwise from the key and choosing the first N unique servers.",
+     "keywords": [
+      "n servers",
+      "clockwise",
+      "unique"
+     ],
+     "wrong_claims": [
+      "Replication picks N servers at random regardless of the ring."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Place replicas in distinct data centers for reliability.",
+     "keywords": [
+      "data center",
+      "distinct",
+      "different"
+     ],
+     "wrong_claims": [
+      "All replicas should be in the same data center to minimize latency."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q5",
+   "question": "Explain quorum consensus with N, W and R.",
+   "answer": "N is the number of replicas, W is the write quorum, and R is the read quorum. A write succeeds once W replicas acknowledge it, and a read waits for at least R responses. If W plus R is greater than N, strong consistency is guaranteed, because at least one overlapping node has the latest data. A smaller W or R is faster but less consistent; R equal to 1 with W equal to N is optimized for fast reads, and W equal to 1 with R equal to N for fast writes.",
+   "source_page": "95-96",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "N is the number of replicas, W the number of acknowledgements needed for a write, and R the number of responses needed for a read.",
+     "keywords": [
+      "replicas",
+      "write quorum",
+      "read quorum",
+      "acknowledge"
+     ],
+     "wrong_claims": [
+      "W is the number of write threads and R the number of retries."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "If W plus R is greater than N, strong consistency is guaranteed because an overlapping node has the latest data.",
+     "keywords": [
+      "w + r",
+      "greater than n",
+      "overlap",
+      "strong consistency"
+     ],
+     "wrong_claims": [
+      "If W plus R is less than or equal to N then strong consistency is guaranteed."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It is a tradeoff: small W or R is fast but less consistent, larger is more consistent but slower.",
+     "keywords": [
+      "tradeoff",
+      "trade-off",
+      "latency",
+      "fast read",
+      "fast write"
+     ],
+     "wrong_claims": [
+      "Larger W and R make the system faster as well as more consistent."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q6",
+   "question": "Describe strong, weak and eventual consistency.",
+   "answer": "Strong consistency means any read returns the most recent write, so a client never sees stale data; it is achieved by blocking new reads and writes until all replicas agree, which hurts availability. Weak consistency means subsequent reads may not see the latest value. Eventual consistency is a form of weak consistency where, given enough time, all updates propagate and replicas converge. Dynamo and Cassandra use eventual consistency, which the chapter recommends.",
+   "source_page": "96",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Strong consistency: reads always return the latest write; achieved by blocking operations until all replicas agree, which hurts availability.",
+     "keywords": [
+      "strong",
+      "latest",
+      "block",
+      "agree"
+     ],
+     "wrong_claims": [
+      "Strong consistency lets replicas accept writes freely and fix conflicts later."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Weak consistency: subsequent reads may not see the latest value.",
+     "keywords": [
+      "weak",
+      "may not"
+     ],
+     "wrong_claims": [
+      "Weak consistency guarantees every read sees the latest value."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Eventual consistency: given enough time all replicas converge; used by Dynamo and Cassandra and recommended.",
+     "keywords": [
+      "eventual",
+      "converge",
+      "dynamo",
+      "cassandra"
+     ],
+     "wrong_claims": [
+      "Eventual consistency guarantees every read sees the latest write immediately."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q7",
+   "question": "What is a vector clock and what are its downsides?",
+   "answer": "A vector clock is a set of server and version pairs attached to a data item, used to check whether one version precedes, succeeds or conflicts with another. Version X is an ancestor of Y if every counter in Y is greater than or equal to X's; otherwise they conflict. The downsides are that it adds complexity to the client, which must resolve conflicts, and the pairs can grow rapidly, so a threshold removes the oldest pairs.",
+   "source_page": "97-99",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A vector clock is a set of server and version pairs attached to a data item, used to detect whether versions precede, succeed or conflict.",
+     "keywords": [
+      "server",
+      "version",
+      "pair",
+      "conflict"
+     ],
+     "wrong_claims": [
+      "A vector clock is a single wall-clock timestamp synchronized across servers."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "X is an ancestor of Y if all counters in Y are greater than or equal to X's; if any counter is lower there is a conflict.",
+     "keywords": [
+      "ancestor",
+      "counters",
+      "greater",
+      "sibling"
+     ],
+     "wrong_claims": [
+      "If any counter in Y is smaller than in X, Y is simply a newer version with no conflict."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Downsides: more complexity for the client to resolve conflicts, and the pairs can grow so the oldest are pruned.",
+     "keywords": [
+      "complexity",
+      "grow",
+      "oldest",
+      "threshold"
+     ],
+     "wrong_claims": [
+      "Vector clocks need no client logic; the server always resolves conflicts automatically."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q8",
+   "question": "How are failures detected in the key-value store?",
+   "answer": "A server is not marked down because one other server says so; at least two independent sources are required. All-to-all multicasting works but is inefficient with many servers, so a decentralized gossip protocol is used. Each node keeps a membership list with heartbeat counters, increments its own, and periodically sends heartbeats to random nodes. If a member's heartbeat has not increased for a predefined period, it is considered offline.",
+   "source_page": "99-101",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "At least two independent sources are needed to mark a server down; all-to-all multicasting is inefficient at scale.",
+     "keywords": [
+      "two independent",
+      "multicast",
+      "inefficient"
+     ],
+     "wrong_claims": [
+      "One report from a single server is enough to mark a node down."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Gossip protocol: each node keeps a membership list with heartbeat counters, increments its own and sends heartbeats to random nodes.",
+     "keywords": [
+      "gossip",
+      "heartbeat",
+      "membership list",
+      "random"
+     ],
+     "wrong_claims": [
+      "In gossip, a central master pings every node and keeps the only membership list."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "A member whose heartbeat has not increased for a predefined period is considered offline.",
+     "keywords": [
+      "not increased",
+      "period",
+      "offline"
+     ],
+     "wrong_claims": [
+      "A node is marked down as soon as one heartbeat is delayed by a millisecond."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q9",
+   "question": "How does the system handle temporary and permanent failures?",
+   "answer": "For temporary failures, a sloppy quorum uses the first W healthy servers for writes and the first R healthy servers for reads on the ring, ignoring offline ones. Another server handles requests meanwhile and hands the data back when the original recovers, which is called hinted handoff. For permanent failures an anti-entropy protocol keeps replicas in sync using Merkle trees, which compare root hashes and walk down to find only the out-of-sync buckets, so the data transferred is proportional to the differences.",
+   "source_page": "101-103",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "For temporary failures a sloppy quorum uses the first W or R healthy servers on the ring and ignores offline ones.",
+     "keywords": [
+      "sloppy quorum",
+      "healthy"
+     ],
+     "wrong_claims": [
+      "A strict quorum is always enforced and requests block until the failed server returns."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Hinted handoff: another server handles requests temporarily and hands the data back when the original recovers.",
+     "keywords": [
+      "hinted handoff",
+      "hand back",
+      "temporarily"
+     ],
+     "wrong_claims": [
+      "A temporary replacement server keeps the data permanently and the original is discarded."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "For permanent failures, anti-entropy with Merkle trees compares hashes top-down so only the differing buckets are synchronized.",
+     "keywords": [
+      "anti-entropy",
+      "merkle",
+      "hash tree",
+      "buckets"
+     ],
+     "wrong_claims": [
+      "Anti-entropy copies the entire data set between replicas every time."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q10",
+   "question": "Describe the write path and the read path of the key-value store.",
+   "answer": "On a write, the request is first persisted in a commit log, the data is saved in the memory cache, and when the cache is full or reaches a threshold the data is flushed to an SSTable on disk. On a read, the node first checks the memory cache and returns the data if found. If not, it uses a bloom filter to work out which SSTables might contain the key, retrieves the data from them and returns it.",
+   "source_page": "105-107",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Write path: persist in a commit log, save to the memory cache, and flush to an SSTable on disk when the cache is full.",
+     "keywords": [
+      "commit log",
+      "memory cache",
+      "sstable",
+      "flush"
+     ],
+     "wrong_claims": [
+      "Writes go straight to SSTables on disk; the commit log is only used for reads."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Read path: check the memory cache first; if missing, use a bloom filter to find which SSTables may hold the key, then return the data from them.",
+     "keywords": [
+      "bloom filter",
+      "sstable",
+      "memory first",
+      "cache first"
+     ],
+     "wrong_claims": [
+      "Reads always scan every SSTable on disk, with no bloom filter."
+     ]
+    }
+   ]
+  }
+ ]
+}

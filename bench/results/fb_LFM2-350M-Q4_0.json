@@ -1,0 +1,100 @@
+[
+ {
+  "name": "feedback LFM2-350M-Q4_0.gguf",
+  "cases": [
+   {
+    "case": "q1-B",
+    "s": 28.0,
+    "gen_tokens": 68,
+    "truth_needs_feedback_on": [
+     "It keeps resource usage and cost under control.",
+     "Requests over the limit are rejected with HTTP 429 Too Many Requests."
+    ],
+    "feedback": "Answer: The student missed the point about protecting the service from abuse and traffic floods, and the key points about capping requests and rejecting too many requests with HTTP 429 are crucial. A rate limiter ensures that the API does not get overwhelmed by a large number of requests from a single client, thus maintaining performance and reliability."
+   },
+   {
+    "case": "q1-C",
+    "s": 28.7,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Requests over the limit are rejected with HTTP 429 Too Many Requests."
+    ],
+    "feedback": "Key points missed or incorrect in the student's answer:\n- The student only mentioned the caps on requests, not the specific mechanisms or the cost implications.\n- The statement about saving money on servers is not directly supported by the given information.\n- The mention of five hundred internal server errors is not supported by the context provided.\n\nThe answer missed or incorrect"
+   },
+   {
+    "case": "q2-B",
+    "s": 26.7,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Tokens are added at a constant refill rate.",
+     "It allows bursts of traffic up to the bucket size."
+    ],
+    "feedback": "The student's answer misses the key points about the token bucket algorithm:\n\n1. It doesn't explain the bucket's capacity, which is crucial for understanding how many tokens it can hold.\n2. It doesn't mention the refill rate, which is the constant rate at which new tokens are added to the bucket.\n3. The concept of"
+   },
+   {
+    "case": "q2-C",
+    "s": 27.5,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "It allows bursts of traffic up to the bucket size."
+    ],
+    "feedback": "The student missed the key points of the token bucket algorithm: it doesn't enforce a strict rate limit, it allows bursts, and it doesn't guarantee a smooth output rate. The answer, while explaining the concept, does not address these critical aspects. Here's why:\n\n1. **No strict rate limit**: The algorithm doesn't enforce a"
+   },
+   {
+    "case": "q3-B",
+    "s": 27.7,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "A burst around the boundary of two windows can let through up to double the allowed rate."
+    ],
+    "feedback": "The answer missed the key point that the fixed window counter can cause a bursting phenomenon around the boundary of two windows, potentially allowing up to double the allowed rate of counting. This can lead to inaccuracies in the results. The answer also incorrectly states that it's simple and memory efficient, which is not accurate. The main weakness is the potential for"
+   },
+   {
+    "case": "q3-C",
+    "s": 27.1,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "A burst around the boundary of two windows can let through up to double the allowed rate."
+    ],
+    "feedback": "The answer missed or got wrong the key points:\n\n1. It counts requests in fixed time windows and resets the counter at each window boundary.\n2. A burst around the boundary of two windows can let through up to double the allowed rate.\n3. It's simple and memory efficient.\n\nThe student's response indicates a flaw in the algorithm"
+   },
+   {
+    "case": "q4-B",
+    "s": 26.4,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Use atomic operations (INCR with expiry, or Lua scripts) to avoid race conditions."
+    ],
+    "feedback": "Key points missed or incorrect:\n\n1. The answer missed storing the counts in a centralized, shared store like a database, which would be inefficient and prone to inconsistency.\n2. The answer incorrectly stated using an \"Uhm\" and a \"lua script\" to update the counters, which is not recommended for distributed systems due to potential incons"
+   },
+   {
+    "case": "q4-C",
+    "s": 28.2,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Use a fast in-memory store such as Redis, not a disk-based database."
+    ],
+    "feedback": "The student's answer misses the key points of using a fast in-memory store like Redis for storing counters, which is crucial for a distributed system. Here's why:\n\n1. **Durability and Consistency**: Using Redis ensures that the counts are stored in a fast, in-memory store, which is durable and consistent"
+   },
+   {
+    "case": "q5-B",
+    "s": 24.7,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Include headers showing the limit and remaining quota (X-RateLimit-*).",
+     "Include a Retry-After header telling the client when it can try again."
+    ],
+    "feedback": "The server should send back a response indicating the HTTP status code 429 Too Many Requests and include the headers showing the limit and remaining quota. For example:\n\n\"HTTP/1.1 429 Too Many Requests\\r\\n\"\n\nThis response informs the client that the server has been rate limited and provides the HTTP status code and headers"
+   },
+   {
+    "case": "q5-C",
+    "s": 25.9,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Return HTTP status 429 Too Many Requests."
+    ],
+    "feedback": "The server should send back a 429 Too Many Requests status code and a response containing the following headers:\n\n- **Return HTTP status 429 Too Many Requests**: Indicating the client has exceeded the allowed request rate.\n- **X-RateLimit-***: This header specifies the rate limit exceeded, including the number of requests"
+   }
+  ]
+ }
+]

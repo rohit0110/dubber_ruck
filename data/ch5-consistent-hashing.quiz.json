@@ -1,0 +1,257 @@
+{
+ "topic": "System design: Consistent hashing",
+ "source_note": "Alex Xu, System Design Interview, chapter 5 (pages 71-85). Questions, answers, key points and transcripts are written in our own words.",
+ "questions": [
+  {
+   "id": "q1",
+   "question": "What is the rehashing problem with hash(key) mod N?",
+   "answer": "A simple way to balance load is to pick the server with the hash of the key modulo N, where N is the number of servers. That works while the pool is fixed. When a server is added or removed, N changes, so most keys map to different servers, not just those on the affected server. Clients then go to the wrong servers, causing a storm of cache misses.",
+   "source_page": "72-74",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A simple approach picks the server as the hash of the key modulo N, where N is the size of the server pool.",
+     "keywords": [
+      "modulo",
+      "mod",
+      "hash",
+      "n servers"
+     ],
+     "wrong_claims": [
+      "Keys are assigned to servers round-robin as they arrive."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "When servers are added or removed, N changes and most keys are remapped, not just those on the affected server.",
+     "keywords": [
+      "most keys",
+      "redistributed",
+      "remapped",
+      "changes"
+     ],
+     "wrong_claims": [
+      "Only the keys on the removed server move; everything else stays."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Clients then contact the wrong servers, causing a storm of cache misses.",
+     "keywords": [
+      "cache miss",
+      "wrong server",
+      "storm"
+     ],
+     "wrong_claims": [
+      "It causes a storm of cache hits that overloads the network."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q2",
+   "question": "How does the hash ring work and how is a key's server found?",
+   "answer": "Servers and keys are hashed with the same hash function, such as SHA-1, onto a ring formed by joining the two ends of the hash space, and no modulo is used. To find a key's server, go clockwise from the key's position on the ring until you reach a server.",
+   "source_page": "75-77",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The hash space is joined into a ring, and servers and keys are hashed onto it with the same hash function, with no modulo operation.",
+     "keywords": [
+      "ring",
+      "sha-1",
+      "hash space",
+      "no modulo"
+     ],
+     "wrong_claims": [
+      "Servers sit on the ring but keys are assigned by hash modulo the server count."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "To find a key's server, go clockwise from the key's position to the first server.",
+     "keywords": [
+      "clockwise",
+      "first server"
+     ],
+     "wrong_claims": [
+      "Go counter-clockwise from the key to the first server."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q3",
+   "question": "What happens to the keys when a server is added to or removed from the ring?",
+   "answer": "When a server is added, only a fraction of the keys must move: the keys between the new server and the previous server, going anticlockwise, are redistributed to the new server. When a server is removed, only its keys move, to the next server clockwise. The rest are unaffected.",
+   "source_page": "77-78, 82-83",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Adding a server moves only a fraction of the keys: those between the new server and the previous server going anticlockwise.",
+     "keywords": [
+      "fraction",
+      "only",
+      "between",
+      "anticlockwise",
+      "affected"
+     ],
+     "wrong_claims": [
+      "Adding a server forces every key to be rehashed."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Removing a server remaps only its keys, to the next server clockwise.",
+     "keywords": [
+      "removed",
+      "next server",
+      "only its keys"
+     ],
+     "wrong_claims": [
+      "Removing a server remaps all the keys on the ring."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q4",
+   "question": "What two issues does the basic consistent hashing approach have?",
+   "answer": "First, it is impossible to keep the partitions the same size when servers are added or removed; one server's partition can become twice as large as the others. Second, the key distribution on the ring can be non-uniform, so one server may hold most of the keys while others hold none.",
+   "source_page": "79-80",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Partition sizes cannot be kept equal when servers are added or removed, so one partition can become much larger.",
+     "keywords": [
+      "partition",
+      "same size",
+      "equal",
+      "uneven",
+      "twice"
+     ],
+     "wrong_claims": [
+      "Partition sizes always stay equal because the hash function is uniform."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Key distribution on the ring can be non-uniform, so some servers get most keys and others none.",
+     "keywords": [
+      "non-uniform",
+      "uneven",
+      "most of the keys",
+      "none"
+     ],
+     "wrong_claims": [
+      "The distribution is always perfectly even with a good hash function."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q5",
+   "question": "What are virtual nodes and what tradeoff do they involve?",
+   "answer": "Virtual nodes solve the two problems. Each real server is represented by multiple virtual nodes on the ring, so it owns multiple partitions, and a key goes clockwise to the first virtual node, which refers to a real server. With more virtual nodes the distribution is more balanced because the standard deviation gets smaller, but more space is needed to store virtual node data, so it is a tradeoff.",
+   "source_page": "80-82",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Each server is represented by multiple virtual nodes on the ring, owning multiple partitions; a key goes clockwise to the first virtual node.",
+     "keywords": [
+      "virtual node",
+      "replicas",
+      "multiple partitions"
+     ],
+     "wrong_claims": [
+      "Virtual nodes are extra servers you must pay for."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "More virtual nodes give a more balanced distribution, since the standard deviation gets smaller.",
+     "keywords": [
+      "balanced",
+      "standard deviation",
+      "more virtual nodes"
+     ],
+     "wrong_claims": [
+      "More virtual nodes make the distribution less balanced."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "The tradeoff is that more virtual nodes need more space to store.",
+     "keywords": [
+      "tradeoff",
+      "trade-off",
+      "space",
+      "memory"
+     ],
+     "wrong_claims": [
+      "Virtual nodes cost nothing, so use as many as possible."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q6",
+   "question": "What are the benefits of consistent hashing, and where is it used?",
+   "answer": "It minimizes the keys redistributed when servers are added or removed, makes horizontal scaling easy because data is spread more evenly, and mitigates the hotspot key problem, such as celebrity data landing on the same shard. It is used in Amazon's Dynamo, Apache Cassandra, Discord, the Akamai CDN and the Maglev load balancer.",
+   "source_page": "85",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It minimizes the number of keys redistributed when servers are added or removed.",
+     "keywords": [
+      "minimize",
+      "fewer keys",
+      "redistributed",
+      "moved"
+     ],
+     "wrong_claims": [
+      "It redistributes all keys evenly each time to stay balanced."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "It makes horizontal scaling easy because data is more evenly distributed.",
+     "keywords": [
+      "horizontal",
+      "scale",
+      "evenly"
+     ],
+     "wrong_claims": [
+      "It makes horizontal scaling harder because of the ring."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It mitigates hotspot keys by spreading popular data across shards.",
+     "keywords": [
+      "hotspot",
+      "celebrity",
+      "shard"
+     ],
+     "wrong_claims": [
+      "It concentrates popular keys on one shard for faster access."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "It is used in real systems such as Dynamo, Cassandra, Discord, Akamai and Maglev.",
+     "keywords": [
+      "dynamo",
+      "cassandra",
+      "discord",
+      "akamai",
+      "maglev"
+     ],
+     "wrong_claims": [
+      "It is only a theoretical idea; no production system uses it."
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,100 @@
+[
+ {
+  "name": "feedback qwen2.5-0.5b-q4.gguf",
+  "cases": [
+   {
+    "case": "q1-B",
+    "s": 44.5,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "It keeps resource usage and cost under control.",
+     "Requests over the limit are rejected with HTTP 429 Too Many Requests."
+    ],
+    "feedback": "The student's answer is mostly correct, but it could be improved for clarity and completeness. Here are the key points the student missed or got wrong:\n\n1. **Rate Limiter Cap**: The student correctly identified that a rate limiter caps the number of requests a client can send within a time window. This is a key point because it explains the"
+   },
+   {
+    "case": "q1-C",
+    "s": 27.6,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Requests over the limit are rejected with HTTP 429 Too Many Requests."
+    ],
+    "feedback": "The student's answer is correct in that it provides a comprehensive overview of a rate limiter. However, it could be improved for clarity and conciseness. Here's a revised version:\n\nKey points:\n- A rate limiter is a mechanism that caps the number of requests a client can send within a time window.\n- It protects the service from"
+   },
+   {
+    "case": "q2-B",
+    "s": 35.0,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Tokens are added at a constant refill rate.",
+     "It allows bursts of traffic up to the bucket size."
+    ],
+    "feedback": "The student correctly identified the key points of the token bucket algorithm:\n\n1. **Bucket with a Fixed Capacity**: The algorithm uses a fixed capacity bucket, which holds tokens. This is a crucial feature because it ensures that the bucket's capacity is fixed, which is essential for the algorithm to work correctly.\n\n2. **Tokens are Added at a Constant Ref"
+   },
+   {
+    "case": "q2-C",
+    "s": 28.7,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "It allows bursts of traffic up to the bucket size."
+    ],
+    "feedback": "The student's answer is correct and well-structured. The token bucket algorithm indeed allows for a perfectly smooth output rate, which is a key feature of this algorithm. The student's explanation covers the key points of the algorithm:\n\n1. **Bucket with a Fixed Capacity**: The algorithm starts with a fixed capacity, which is the maximum number of tokens the"
+   },
+   {
+    "case": "q3-B",
+    "s": 36.6,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "A burst around the boundary of two windows can let through up to double the allowed rate."
+    ],
+    "feedback": "The student's answer is correct, but it is incomplete. The fixed window counter algorithm is indeed simple and memory efficient, but it has a key weakness that is not fully addressed in the student's answer. The main weakness of the fixed window counter algorithm is that it does not account for the possibility of bursts around the boundary of two windows. This means"
+   },
+   {
+    "case": "q3-C",
+    "s": 27.6,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "A burst around the boundary of two windows can let through up to double the allowed rate."
+    ],
+    "feedback": "The student's answer is correct in identifying the main weakness of the fixed window counter algorithm. The key points are:\n\n1. **Counting per Fixed Window**: The algorithm counts requests in fixed time windows and resets the counter at each window boundary. This means that the counter resets after each window, and the number of requests counted is proportional to the number"
+   },
+   {
+    "case": "q4-B",
+    "s": 36.1,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Use atomic operations (INCR with expiry, or Lua scripts) to avoid race conditions."
+    ],
+    "feedback": "The student's answer is correct in that they have mentioned the key points about using a fast in-memory store like Redis and using atomic operations (INCR with expiry) to avoid race conditions. However, the student also made a minor error in their answer by mentioning that a shared central store keeps counts consistent across multiple limiter servers. This is correct,"
+   },
+   {
+    "case": "q4-C",
+    "s": 26.6,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Use a fast in-memory store such as Redis, not a disk-based database."
+    ],
+    "feedback": "The student's answer is correct in terms of the key points they mentioned:\n\n1. **Use a fast in-memory store such as Redis, not a disk-based database.**\n   - This is a good point. Redis is designed for fast, in-memory storage, which is ideal for distributed systems where data needs to be accessed frequently and in real-time"
+   },
+   {
+    "case": "q5-B",
+    "s": 32.8,
+    "gen_tokens": 69,
+    "truth_needs_feedback_on": [
+     "Include headers showing the limit and remaining quota (X-RateLimit-*).",
+     "Include a Retry-After header telling the client when it can try again."
+    ],
+    "feedback": "The student's answer is correct. When a client is rate limited, the server should return a status code of 429 Too Many Requests. The student also correctly included headers showing the limit and remaining quota (X-RateLimit-*). Finally, the student included a Retry-After header to indicate when the client can try again."
+   },
+   {
+    "case": "q5-C",
+    "s": 25.6,
+    "gen_tokens": 70,
+    "truth_needs_feedback_on": [
+     "Return HTTP status 429 Too Many Requests."
+    ],
+    "feedback": "The student's answer is correct and covers the key points for a server to send back when a client is rate limited. Here's a breakdown of the key points:\n\n1. **HTTP Status 429 Too Many Requests**: This status code indicates that the client has exceeded the number of requests allowed by the server.\n\n2. **Include headers showing"
+   }
+  ]
+ }
+]

@@ -1,0 +1,390 @@
+{
+ "note": "Simulated speech-to-text transcripts. Labels: covered | missing | contradicted. Variants: A full, B partial, C one point contradicted, D clueless, E paraphrase-heavy, F speech-to-text noisy, G rambling, H hedged.",
+ "cases": [
+  {
+   "id": "q1-A",
+   "question_id": "q1",
+   "variant": "A",
+   "transcript": "So, um, 100 million a day divided by 86,400 seconds is around 1160 writes per second. Reads are ten times that, so about 11,600 per second. Over ten years that's 365 billion records and at 100 bytes each, 365 terabytes.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q1-B",
+   "question_id": "q1",
+   "variant": "B",
+   "transcript": "Um, so about 1160 writes per second. Uh, yeah. I didn't do the rest.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q1-C",
+   "question_id": "q1",
+   "variant": "C",
+   "transcript": "1160 writes a second, 11,600 reads, and then over ten years, three sixty five billion records at a hundred bytes each is, uh, about 36 gigabytes.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q1-D",
+   "question_id": "q1",
+   "variant": "D",
+   "transcript": "Estimation... I'd say it's a lot of traffic? Maybe millions? I can't do the numbers, sorry.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q1-F",
+   "question_id": "q1",
+   "variant": "F",
+   "transcript": "a hundred million a day over eighty six thousand four hundred is about eleven sixty rights a second reads are ten times so eleven thousand six hundred ten years is three sixty five billion records at a hundred bytes is three sixty five tera bytes",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q2-A",
+   "question_id": "q2",
+   "variant": "A",
+   "transcript": "So two endpoints, a POST to shorten that takes the long URL and gives back the short one, and a GET that returns the long URL so it can redirect. A 301 is a permanent redirect so the browser caches it and later requests skip the shortener, less load on the server. A 302 is temporary so every request goes through the shortener, which is better for analytics.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q2-B",
+   "question_id": "q2",
+   "variant": "B",
+   "transcript": "Um, POST to shorten and GET to redirect.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q2-C",
+   "question_id": "q2",
+   "variant": "C",
+   "transcript": "Two endpoints, a POST to shorten, a GET to redirect. A 301 is a temporary redirect, so every click hits the shortener. And 302 is also temporary, so you can track analytics.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q2-D",
+   "question_id": "q2",
+   "variant": "D",
+   "transcript": "Endpoints... I'd say you just need one, uh, something with a slash. And redirects, hmm, I don't know the numbers.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q2-H",
+   "question_id": "q2",
+   "variant": "H",
+   "transcript": "I think it's a POST to shorten and a GET to redirect, if I remember? And 301 is permanent, the browser caches it, so less load, I believe. And 302 is temporary, goes through the service every time, so better for analytics, I think.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q3-A",
+   "question_id": "q3",
+   "variant": "A",
+   "transcript": "Okay so the hash value uses zero to nine, a to z and capital A to Z, that's sixty two characters. You find the smallest n where sixty two to the n is at least three sixty five billion. And with n equal seven it's about three and a half trillion, which is plenty, so the length is seven.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q3-B",
+   "question_id": "q3",
+   "variant": "B",
+   "transcript": "Um, there's sixty two characters, digits, lowercase and uppercase letters. And, uh, it's like, seven? I forget why.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q3-C",
+   "question_id": "q3",
+   "variant": "C",
+   "transcript": "Sixty two characters, and you find the smallest n so that sixty two to the n covers three sixty five billion. And I think that works out to five characters, which is, uh, enough.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q3-D",
+   "question_id": "q3",
+   "variant": "D",
+   "transcript": "Hash length... I think it's, like, as short as possible? Maybe ten or so? I really don't know how to work it out.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q3-E",
+   "question_id": "q3",
+   "variant": "E",
+   "transcript": "You've got digits plus lower and upper case letters to draw from, so the alphabet has just over sixty symbols. Then you ask what's the minimum number of positions so that the alphabet raised to that many positions can number every one of the roughly three hundred sixty five billion links. Seven positions gives several trillion combinations, so seven it is.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q4-A",
+   "question_id": "q4",
+   "variant": "A",
+   "transcript": "So with hash plus collision resolution you take a hash like CRC32, MD5 or SHA-1 and keep the first seven characters, but those can collide, so you append a predefined string and rehash until there's no collision. Checking the database every time is expensive, so a bloom filter helps. Base 62 conversion is different, you take a unique ID and convert it to base 62, and there are no collisions to handle.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q4-B",
+   "question_id": "q4",
+   "variant": "B",
+   "transcript": "Um, base 62 conversion, where you convert an ID to base 62. Yeah.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q4-C",
+   "question_id": "q4",
+   "variant": "C",
+   "transcript": "So there's hashing, where you use MD5 or SHA-1 and use the full hash value as the short URL since it's short enough. A bloom filter can reduce the database checks. And base 62 converts a unique ID to a base 62 string.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q4-D",
+   "question_id": "q4",
+   "variant": "D",
+   "transcript": "Hmm. Hashing, I think it's, uh, a way of encrypting the URL? And base something. I'm sorry, I can't compare them.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q4-F",
+   "question_id": "q4",
+   "variant": "F",
+   "transcript": "so with hash plus collision resolution you use crc thirty two or m d five or sha one and keep the first seven characters and on a collision you append a string and try again. checking the data base every time is expensive so a bloom filter helps. base sixty two converts a unique id into a base sixty two string with no collisions",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-A",
+   "question_id": "q5",
+   "variant": "A",
+   "transcript": "So the input's the long URL. First you check if it's already in the database, and if it is you return the short URL you stored. If it's new, the unique ID generator makes a new ID, you convert that to the short URL with base 62, and save a new row with the ID, the short URL and the long URL.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-B",
+   "question_id": "q5",
+   "variant": "B",
+   "transcript": "Um, first you check if the long URL is already in the database, and return the short one if it is.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q5-C",
+   "question_id": "q5",
+   "variant": "C",
+   "transcript": "So you always generate a fresh short URL every time, even if you've seen the long URL before. The unique ID generator makes an ID, base 62 converts it, and you save the row.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-D",
+   "question_id": "q5",
+   "variant": "D",
+   "transcript": "The flow... user types a URL, something happens, and a short one comes out? I'm, I'm not sure about the steps.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q5-H",
+   "question_id": "q5",
+   "variant": "H",
+   "transcript": "I think you check the database for the long URL first, and if it's there return the short one, if I remember right. Otherwise the unique ID generator gives you an ID, you base 62 it into the short URL, and save the row, I believe.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q6-A",
+   "question_id": "q6",
+   "variant": "A",
+   "transcript": "So a user clicks a short link, the load balancer sends the request to the web servers. They check the cache first, and if the short URL's in there they return the long URL right away. If not they go to the database, and if it isn't in the database either the short URL is probably invalid. And we cache it because there are way more reads than writes.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q6-B",
+   "question_id": "q6",
+   "variant": "B",
+   "transcript": "Um, check the cache first, and if it's not there, go to the database.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q6-C",
+   "question_id": "q6",
+   "variant": "C",
+   "transcript": "The load balancer sends it to web servers, which always query the database first, because the cache is only for analytics. If it's not in the database it's probably invalid, and caching helps as reads are more than writes.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q6-D",
+   "question_id": "q6",
+   "variant": "D",
+   "transcript": "Redirecting... the browser just, uh, goes to the new page? I don't know the server side of it.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q6-F",
+   "question_id": "q6",
+   "variant": "F",
+   "transcript": "so the user clicks the short url the load balancer sends it to the web servers they check the cash first and return the long url if its there if not they fetch it from the data base and if its not there either its probably an invalid url. we cash because reads out number rights",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q7-A",
+   "question_id": "q7",
+   "variant": "A",
+   "transcript": "So a few things. A rate limiter, because bad actors could flood you with shortening requests, so you filter by IP or other rules. Scaling, the web tier is stateless so you just add servers, and the database you replicate and shard. And analytics, like how many people click a link and when.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q7-B",
+   "question_id": "q7",
+   "variant": "B",
+   "transcript": "Um, a rate limiter to filter by IP, and, uh, that's all.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q7-C",
+   "question_id": "q7",
+   "variant": "C",
+   "transcript": "A rate limiter isn't really needed here because nobody can abuse a URL shortener. You scale the stateless web tier by adding servers and the database with replication and sharding. And analytics, like clicks.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q7-D",
+   "question_id": "q7",
+   "variant": "D",
+   "transcript": "Extra talking points... maybe the, uh, design of the logo? Or the domain name? I don't know.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q7-E",
+   "question_id": "q7",
+   "variant": "E",
+   "transcript": "You could throttle abusive clients by their address so nobody can spam the service with creation calls. The front tier keeps no session state so you can just add more machines, while the data store gets copies and splits. And you could track how often and when each link gets opened.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  }
+ ]
+}

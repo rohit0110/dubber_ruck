@@ -1,0 +1,325 @@
+{
+ "note": "Simulated speech-to-text transcripts. Labels: covered | missing | contradicted. Variants: A full, B partial, C one point contradicted, D clueless, E paraphrase-heavy, F speech-to-text noisy, G rambling, H hedged.",
+ "cases": [
+  {
+   "id": "q1-A",
+   "question_id": "q1",
+   "variant": "A",
+   "transcript": "Okay so auto increment on a single database doesn't work for distributed, because one database server isn't big enough, and it's hard to generate unique IDs across multiple databases without delay. And the requirements are, uh, IDs must be unique, numbers only, fit in 64 bits, ordered by date, and you need over ten thousand a second.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q1-B",
+   "question_id": "q1",
+   "variant": "B",
+   "transcript": "Um, auto increment doesn't work because one database isn't big enough for the whole distributed system. And, uh, yeah.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q1-C",
+   "question_id": "q1",
+   "variant": "C",
+   "transcript": "Auto increment fails since one database isn't big enough and syncing across databases is slow. And the requirements, uh, are IDs have to be 128 bit so they're globally unique, and they don't need to be sortable.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   }
+  },
+  {
+   "id": "q1-D",
+   "question_id": "q1",
+   "variant": "D",
+   "transcript": "Unique IDs... uh, why doesn't it work... I think because of, like, encryption? I don't really know.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q1-F",
+   "question_id": "q1",
+   "variant": "F",
+   "transcript": "so auto in cree ment doesnt work in a distributed system cuz one data base server isnt large enough and making unique ids across many data bases with low delay is hard. the requirements are unique numerical sixty four bit ordered by date and over ten thousand per second",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q2-A",
+   "question_id": "q2",
+   "variant": "A",
+   "transcript": "So multi-master replication uses the auto increment feature of each database but instead of going up by one it goes up by k, where k is the number of database servers. The problems are it's hard to scale across multiple data centers, the IDs don't go up with time across servers, and it doesn't handle servers being added or removed well.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q2-B",
+   "question_id": "q2",
+   "variant": "B",
+   "transcript": "Um, you increase the ID by the number of servers instead of one. That's, that's the idea.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q2-C",
+   "question_id": "q2",
+   "variant": "C",
+   "transcript": "It increases the ID by the number of database servers instead of one. And the nice thing is the IDs always go up with time across all the servers, which is the main advantage.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   }
+  },
+  {
+   "id": "q2-D",
+   "question_id": "q2",
+   "variant": "D",
+   "transcript": "Multi-master... is that where lots of people edit one document? I'm not sure how it makes IDs.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q2-H",
+   "question_id": "q2",
+   "variant": "H",
+   "transcript": "I think each database auto increments, but by k, the number of servers, instead of one? And the downsides are, uh, hard across data centers, the IDs don't follow time across servers, and adding or removing servers is awkward, I believe.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q3-A",
+   "question_id": "q3",
+   "variant": "A",
+   "transcript": "Okay so a UUID is a 128 bit number and every server can make them on its own with no coordination, so it's easy to scale. The odds of a collision are super tiny, like you'd have to generate a billion a second for a hundred years to get a fifty percent chance of one duplicate. The downsides are it's 128 bits and we want 64, they don't go up with time, and they might not be numeric.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q3-B",
+   "question_id": "q3",
+   "variant": "B",
+   "transcript": "Um, UUIDs are 128 bit and servers can generate them independently with no coordination.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q3-C",
+   "question_id": "q3",
+   "variant": "C",
+   "transcript": "UUIDs are 128 bits and each server makes them independently, and a collision is really unlikely. Honestly it's perfect for this, uh, they're 64 bit, numeric, and they go up with time.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q3-D",
+   "question_id": "q3",
+   "variant": "D",
+   "transcript": "UUID... universal user ID? It's the thing on your phone, I think. I don't know the pros and cons.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q3-E",
+   "question_id": "q3",
+   "variant": "E",
+   "transcript": "It's a big random-looking number that any machine can mint by itself without asking anyone, so scaling out is trivial, and the chance of two being identical is astronomically small. The catch is that it's twice as wide as the sixty-four bits we're allowed, it doesn't grow as time passes, and it can contain letters.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q4-A",
+   "question_id": "q4",
+   "variant": "A",
+   "transcript": "So a ticket server is basically one centralized database using auto increment, Flickr did this. You get numeric IDs, and it's easy to build and fine for small to medium apps. The big problem is it's a single point of failure, and if you add more ticket servers you have to sync the data between them.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q4-B",
+   "question_id": "q4",
+   "variant": "B",
+   "transcript": "Um, it's one central database that hands out auto incremented IDs, like Flickr did. And, uh, that's what I know.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q4-C",
+   "question_id": "q4",
+   "variant": "C",
+   "transcript": "It's a centralized auto increment database, numeric IDs, easy to implement. And it's highly available, uh, since one ticket server can't ever fail, so there's no single point of failure.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   }
+  },
+  {
+   "id": "q4-D",
+   "question_id": "q4",
+   "variant": "D",
+   "transcript": "Ticket server... like for concerts? Selling tickets? I don't know how that makes IDs.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q4-F",
+   "question_id": "q4",
+   "variant": "F",
+   "transcript": "so a ticket server is one central data base with auto in cree ment like flicker did you get numeric ids and its easy for small to medium apps. the problem is its a single point of fail your and more ticket servers means you have to sync the data",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q5-A",
+   "question_id": "q5",
+   "variant": "A",
+   "transcript": "Okay so it's 64 bits. One sign bit that's always zero, then forty one bits of timestamp in milliseconds since a custom epoch. Then five bits of datacenter ID, so thirty two datacenters, five bits for the machine ID, thirty two machines each. And a twelve bit sequence number that goes up for each ID on that machine and resets every millisecond.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-B",
+   "question_id": "q5",
+   "variant": "B",
+   "transcript": "Um, there's a sign bit, and then a 41 bit timestamp. That's what I remember.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q5-C",
+   "question_id": "q5",
+   "variant": "C",
+   "transcript": "Sixty four bits, one sign bit, a forty one bit timestamp in milliseconds, five bits datacenter, five bits machine, and a twelve bit sequence number that, uh, resets to zero every second.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q5-D",
+   "question_id": "q5",
+   "variant": "D",
+   "transcript": "Snowflake... is that a Twitter thing? Or the database company? I don't remember the layout at all.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q5-F",
+   "question_id": "q5",
+   "variant": "F",
+   "transcript": "so sixty four bits one sign bit always zero forty one bits of time stamp in milli seconds then five bits for data center and five for machine so thirty two each and a twelve bit sequence number that goes up per id and resets every milli second",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q6-A",
+   "question_id": "q6",
+   "variant": "A",
+   "transcript": "So the forty one bit timestamp lasts about sixty nine years, and you can pick a custom epoch close to today to push the overflow back. The twelve bit sequence gives you four thousand ninety six IDs per millisecond per machine. Datacenter and machine IDs are picked at startup and mostly fixed, if you change one by accident you can get conflicts. And clock synchronization is a concern, NTP is the usual fix.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q6-B",
+   "question_id": "q6",
+   "variant": "B",
+   "transcript": "Um, the timestamp lasts about sixty nine years, and a custom epoch pushes that out. And, uh, the sequence number gives you four thousand ninety six IDs per millisecond.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q6-C",
+   "question_id": "q6",
+   "variant": "C",
+   "transcript": "Timestamp lasts about sixty nine years with a custom epoch, the sequence gives you 4096 per millisecond per machine, and the datacenter and machine IDs are fixed at startup. And NTP isn't needed, uh, clocks are always identical so synchronization is a non-issue.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   }
+  },
+  {
+   "id": "q6-D",
+   "question_id": "q6",
+   "variant": "D",
+   "transcript": "Hmm, deep dive... I think the timestamp is... fine? And the clocks? I'm sorry, I don't remember any of it.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q6-G",
+   "question_id": "q6",
+   "variant": "G",
+   "transcript": "Okay so, uh, I once fixed a clock bug at a bank, a really nasty one, anyway. The timestamp is forty one bits so it lasts around sixty nine years, and a custom epoch delays the overflow. The sequence's twelve bits so four thousand ninety six per millisecond. Datacenter and machine IDs are fixed at startup and changing them by accident gives conflicts. And clock synchronization, that's the bank bug, NTP is the usual answer. Never again.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+  "topic": "System design: Design a rate limiter",
+  "source_note": "Written from general system-design knowledge in our own words. The intended source PDF (bytes.usc.edu/~saty/courses/docs/data/SystemDesignInterview.pdf) returned 404 on 2026-10-28.",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What is a rate limiter, and why would you use one?",
+      "answer": "A rate limiter caps how many requests a client can send to a service within a time window. It protects the service from abuse and denial-of-service floods, keeps resource use and cost under control, and when a client goes over the limit the request is rejected with an HTTP 429 Too Many Requests.",
+      "key_points": [
+        {"id": "k1", "text": "It caps the number of requests a client can send within a time window.", "keywords": ["limit", "requests", "time window", "per minute", "cap"]},
+        {"id": "k2", "text": "It protects the service from abuse, denial-of-service attacks and traffic floods.", "keywords": ["abuse", "dos", "ddos", "flood", "attack"]},
+        {"id": "k3", "text": "It keeps resource usage and cost under control.", "keywords": ["cost", "resources", "servers"]},
+        {"id": "k4", "text": "Requests over the limit are rejected with HTTP 429 Too Many Requests.", "keywords": ["429", "too many requests", "reject"]}
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Explain the token bucket algorithm.",
+      "answer": "A token bucket has a fixed capacity and is refilled with tokens at a constant rate. Each incoming request takes one token, and if the bucket is empty the request is dropped. Because tokens can accumulate up to the capacity, it allows short bursts of traffic.",
+      "key_points": [
+        {"id": "k1", "text": "A bucket with a fixed capacity holds tokens.", "keywords": ["bucket", "capacity", "tokens", "size"]},
+        {"id": "k2", "text": "Tokens are added at a constant refill rate.", "keywords": ["refill", "steady rate", "added", "per second"]},
+        {"id": "k3", "text": "Each request consumes one token, and the request is dropped when the bucket is empty.", "keywords": ["consume", "takes a token", "empty", "dropped", "reject"]},
+        {"id": "k4", "text": "It allows bursts of traffic up to the bucket size.", "keywords": ["burst", "accumulate", "fills up"]}
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "What is the main weakness of the fixed window counter algorithm?",
+      "answer": "The fixed window counter counts requests in fixed time windows and resets the count at each boundary. Its weakness is that a burst of traffic around the boundary of two windows can let through up to twice the allowed rate. On the plus side it is simple and uses little memory.",
+      "key_points": [
+        {"id": "k1", "text": "It counts requests in fixed time windows and resets the counter at each window boundary.", "keywords": ["counter", "window", "reset", "per minute"]},
+        {"id": "k2", "text": "A burst around the boundary of two windows can let through up to double the allowed rate.", "keywords": ["boundary", "edge", "double", "twice"]},
+        {"id": "k3", "text": "It is simple and memory efficient.", "keywords": ["simple", "memory", "light"]}
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "In a distributed rate limiter, where should the counters be stored, and why?",
+      "answer": "Store them in a fast in-memory store such as Redis rather than a disk-based database, because a lookup is needed on every request. Use atomic operations like INCR with an expiry, or Lua scripts, to avoid race conditions between concurrent requests. A shared central store keeps the counts consistent across multiple limiter servers.",
+      "key_points": [
+        {"id": "k1", "text": "Use a fast in-memory store such as Redis, not a disk-based database.", "keywords": ["redis", "in-memory", "memory", "fast"]},
+        {"id": "k2", "text": "Use atomic operations (INCR with expiry, or Lua scripts) to avoid race conditions.", "keywords": ["atomic", "race", "incr", "lua", "expiry"]},
+        {"id": "k3", "text": "A shared central store keeps counts consistent across multiple limiter servers.", "keywords": ["shared", "central", "consistent", "all servers"]}
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "What should the server send back when a client is rate limited?",
+      "answer": "It should return HTTP status 429 Too Many Requests. It should also include headers such as X-RateLimit-Limit, X-RateLimit-Remaining and Retry-After so the client knows its quota and when it may try again.",
+      "key_points": [
+        {"id": "k1", "text": "Return HTTP status 429 Too Many Requests.", "keywords": ["429", "too many requests"]},
+        {"id": "k2", "text": "Include headers showing the limit and remaining quota (X-RateLimit-*).", "keywords": ["x-ratelimit", "rate limit headers", "remaining", "quota"]},
+        {"id": "k3", "text": "Include a Retry-After header telling the client when it can try again.", "keywords": ["retry-after", "retry after", "when to try again"]}
+      ]
+    }
+  ]
+}

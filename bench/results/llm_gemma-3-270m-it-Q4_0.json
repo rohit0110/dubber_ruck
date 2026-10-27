@@ -1,0 +1,420 @@
+[
+ {
+  "name": "llm gemma-3-270m-it-Q4_0.gguf",
+  "points": 68,
+  "exact_3class": 0.382,
+  "flag_precision": 0.448,
+  "flag_recall": 1.0,
+  "flag_f1": 0.619,
+  "contradicted_flagged": 1.0,
+  "contradicted_named": 0.2,
+  "load_s": 6.2,
+  "rss_mb": 340,
+  "parse_failures": 0,
+  "s_per_case": 12.7,
+  "prompt_tokens_per_case": 206.2,
+  "prompt_processed_per_case": 205.3,
+  "gen_tokens_per_case": 30.8
+ },
+ {
+  "name": "raw",
+  "cases": [
+   {
+    "case": "q1-A",
+    "s": 16.1,
+    "prompt_tokens": 277,
+    "prompt_processed": 277,
+    "cached": 0,
+    "gen_tokens": 33,
+    "gen_tps": 5.6,
+    "preds": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ]
+   },
+   {
+    "case": "q1-B",
+    "s": 13.9,
+    "prompt_tokens": 228,
+    "prompt_processed": 227,
+    "cached": 1,
+    "gen_tokens": 37,
+    "gen_tps": 5.9,
+    "preds": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "missing",
+     "missing"
+    ]
+   },
+   {
+    "case": "q1-C",
+    "s": 12.5,
+    "prompt_tokens": 221,
+    "prompt_processed": 220,
+    "cached": 1,
+    "gen_tokens": 33,
+    "gen_tps": 6.5,
+    "preds": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "contradicted"
+    ]
+   },
+   {
+    "case": "q1-D",
+    "s": 12.6,
+    "prompt_tokens": 204,
+    "prompt_processed": 203,
+    "cached": 1,
+    "gen_tokens": 33,
+    "gen_tps": 5.9,
+    "preds": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ]
+   },
+   {
+    "case": "q2-A",
+    "s": 13.7,
+    "prompt_tokens": 242,
+    "prompt_processed": 241,
+    "cached": 1,
+    "gen_tokens": 33,
+    "gen_tps": 5.8,
+    "preds": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ]
+   },
+   {
+    "case": "q2-B",
+    "s": 12.2,
+    "prompt_tokens": 191,
+    "prompt_processed": 190,
+    "cached": 1,
+    "gen_tokens": 33,
+    "gen_tps": 5.9,
+    "preds": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "covered",
+     "missing"
+    ]
+   },
+   {
+    "case": "q2-C",
+    "s": 15.6,
+    "prompt_tokens": 205,
+    "prompt_processed": 204,
+    "cached": 1,
+    "gen_tokens": 39,
+    "gen_tps": 4.5,
+    "preds": [
+     "contradicted",
+     "contradicted",
+     "contradicted",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "contradicted"
+    ]
+   },
+   {
+    "case": "q2-D",
+    "s": 11.0,
+    "prompt_tokens": 176,
+    "prompt_processed": 175,
+    "cached": 1,
+    "gen_tokens": 31,
+    "gen_tps": 5.2,
+    "preds": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ]
+   },
+   {
+    "case": "q3-A",
+    "s": 13.0,
+    "prompt_tokens": 240,
+    "prompt_processed": 239,
+    "cached": 1,
+    "gen_tokens": 27,
+    "gen_tps": 5.3,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ]
+   },
+   {
+    "case": "q3-B",
+    "s": 11.4,
+    "prompt_tokens": 202,
+    "prompt_processed": 201,
+    "cached": 1,
+    "gen_tokens": 27,
+    "gen_tps": 6.0,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "covered"
+    ]
+   },
+   {
+    "case": "q3-C",
+    "s": 11.5,
+    "prompt_tokens": 197,
+    "prompt_processed": 196,
+    "cached": 1,
+    "gen_tokens": 26,
+    "gen_tps": 5.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered"
+    ]
+   },
+   {
+    "case": "q3-D",
+    "s": 10.5,
+    "prompt_tokens": 170,
+    "prompt_processed": 169,
+    "cached": 1,
+    "gen_tokens": 27,
+    "gen_tps": 6.0,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ]
+   },
+   {
+    "case": "q4-A",
+    "s": 14.4,
+    "prompt_tokens": 248,
+    "prompt_processed": 247,
+    "cached": 1,
+    "gen_tokens": 30,
+    "gen_tps": 4.9,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ]
+   },
+   {
+    "case": "q4-B",
+    "s": 13.1,
+    "prompt_tokens": 192,
+    "prompt_processed": 191,
+    "cached": 1,
+    "gen_tokens": 30,
+    "gen_tps": 4.6,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "covered"
+    ]
+   },
+   {
+    "case": "q4-C",
+    "s": 12.9,
+    "prompt_tokens": 202,
+    "prompt_processed": 201,
+    "cached": 1,
+    "gen_tokens": 30,
+    "gen_tps": 5.1,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "contradicted",
+     "covered",
+     "covered"
+    ]
+   },
+   {
+    "case": "q4-D",
+    "s": 12.5,
+    "prompt_tokens": 186,
+    "prompt_processed": 185,
+    "cached": 1,
+    "gen_tokens": 30,
+    "gen_tps": 5.0,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ]
+   },
+   {
+    "case": "q5-A",
+    "s": 12.7,
+    "prompt_tokens": 208,
+    "prompt_processed": 207,
+    "cached": 1,
+    "gen_tokens": 30,
+    "gen_tps": 5.4,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ]
+   },
+   {
+    "case": "q5-B",
+    "s": 11.7,
+    "prompt_tokens": 174,
+    "prompt_processed": 173,
+    "cached": 1,
+    "gen_tokens": 30,
+    "gen_tps": 5.5,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ]
+   },
+   {
+    "case": "q5-C",
+    "s": 13.0,
+    "prompt_tokens": 185,
+    "prompt_processed": 184,
+    "cached": 1,
+    "gen_tokens": 30,
+    "gen_tps": 4.6,
+    "preds": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "labels": [
+     "contradicted",
+     "covered",
+     "covered"
+    ]
+   },
+   {
+    "case": "q5-D",
+    "s": 10.6,
+    "prompt_tokens": 177,
+    "prompt_processed": 176,
+    "cached": 1,
+    "gen_tokens": 27,
+    "gen_tps": 5.0,
+    "preds": [
+     "missing",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ]
+   }
+  ]
+ }
+]

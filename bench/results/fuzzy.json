@@ -1,0 +1,26 @@
+[
+ {
+  "name": "fuzzy keywords (>= 1 hit)",
+  "points": 68,
+  "exact_3class": 0.853,
+  "flag_precision": 0.929,
+  "flag_recall": 0.867,
+  "flag_f1": 0.897,
+  "contradicted_flagged": 0.8,
+  "contradicted_named": 0.0,
+  "ms_per_case": 0.05,
+  "tokens": 0
+ },
+ {
+  "name": "fuzzy keywords (>= 2 hit)",
+  "points": 68,
+  "exact_3class": 0.706,
+  "flag_precision": 0.674,
+  "flag_recall": 0.967,
+  "flag_f1": 0.795,
+  "contradicted_flagged": 1.0,
+  "contradicted_named": 0.0,
+  "ms_per_case": 0.05,
+  "tokens": 0
+ }
+]

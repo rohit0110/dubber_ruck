@@ -1,0 +1,580 @@
+{
+ "note": "Simulated speech-to-text transcripts. Labels: covered | missing | contradicted. Variants: A full, B partial, C one point contradicted, D clueless, E paraphrase-heavy, F speech-to-text noisy, G rambling, H hedged.",
+ "cases": [
+  {
+   "id": "q1-A",
+   "question_id": "q1",
+   "variant": "A",
+   "transcript": "Okay so, um, there's like three big ones I think. First it stops denial of service attacks, you know, whether somebody's doing it on purpose or by accident, because the extra calls get blocked. Second it saves cost, like if you pay per call for some third party API, you don't wanna burn money. And third, uh, it keeps your servers from getting overloaded by bots or users who are just, like, misbehaving.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q1-B",
+   "question_id": "q1",
+   "variant": "B",
+   "transcript": "Uh, so, one is, um, defending against DoS attacks, I'm pretty sure. And, uh, yeah... the other ones I can't, I can't think of right now.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q1-C",
+   "question_id": "q1",
+   "variant": "C",
+   "transcript": "Yeah so it blocks DoS attacks, you know, intentional or not. And it stops bots and bad users from overloading the servers. Um, cost though, no, it doesn't really change your costs, it's purely a security thing.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q1-D",
+   "question_id": "q1",
+   "variant": "D",
+   "transcript": "Rate limiter... is that the thing that makes the, uh, internet speed slower for kids? Like parental controls? I really don't know.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q1-E",
+   "question_id": "q1",
+   "variant": "E",
+   "transcript": "Basically it's a bouncer for your API. It turns away floods of junk traffic so nobody can knock the service over, it means you aren't paying for a pile of pointless third party lookups, and it keeps your machines from being swamped by scripts or people hammering them.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q2-A",
+   "question_id": "q2",
+   "variant": "A",
+   "transcript": "Right, so you can put it on the server side, or you can make it a separate middleware that sits in front of your APIs. And, uh, with microservices it's usually inside the API gateway. Putting it on the client is a bad idea because, um, the requests can just be forged by bad actors and you don't control the client code anyway.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q2-B",
+   "question_id": "q2",
+   "variant": "B",
+   "transcript": "Um, you wouldn't put it on the client because, uh, people can fake the requests, so it's unreliable. That's, yeah, that's the main thing.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q2-C",
+   "question_id": "q2",
+   "variant": "C",
+   "transcript": "Well it's best on the client side honestly, because it saves server resources and users can't bypass it. And, uh, you can also do server side as middleware, and in microservices it's in the API gateway.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q2-D",
+   "question_id": "q2",
+   "variant": "D",
+   "transcript": "Hmm, placement... I think you put it near the router in your house? Like on the wifi? Not sure.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q2-F",
+   "question_id": "q2",
+   "variant": "F",
+   "transcript": "so you can run it on the sever side or as mid-ware in front of the A P eyes and in micro services its usually in the A P I gate way. client side is bad cuz requests can be four jed by mal issues actors and you dont control the client",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q3-A",
+   "question_id": "q3",
+   "variant": "A",
+   "transcript": "Okay so, um, picture a bucket with a set capacity. Tokens drop in at a preset rate, and when it's full the extra ones just overflow. Each request takes one token, and, uh, if there's none left the request's dropped. So there's two parameters, the bucket size and the refill rate. And the nice thing is you can handle a short burst of traffic as long as there are tokens left.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q3-B",
+   "question_id": "q3",
+   "variant": "B",
+   "transcript": "Right, so, um, each request takes one token and if there's no tokens left it just gets dropped. And you can get bursts, since if it's been quiet there's tokens saved up. That's, uh, yeah.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "missing",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q3-C",
+   "question_id": "q3",
+   "variant": "C",
+   "transcript": "So there's a bucket with a capacity, tokens refill at a set rate and extra ones overflow. Each request uses a token, drop it if it's empty. And it only has one parameter, uh, just the requests per second. Bursts are fine while tokens remain.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q3-D",
+   "question_id": "q3",
+   "variant": "D",
+   "transcript": "Token bucket... I think it's, uh, the, like, the pail you use to carry water? No wait. Sorry, no idea.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q3-G",
+   "question_id": "q3",
+   "variant": "G",
+   "transcript": "So, um, I was reading about this the other day, and it's kind of like, you know, how a coffee shop works? Anyway, so there's a bucket, with a certain capacity, and tokens get added at a preset rate, and if it's full they overflow. And then each request takes a token, and no tokens means dropped. And, oh, it has bucket size and refill rate as parameters. And you can get bursts, uh, if tokens are saved up. Yeah. Coffee, anyway.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q4-A",
+   "question_id": "q4",
+   "variant": "A",
+   "transcript": "So, um, leaking bucket's like the token bucket but requests are handled at a fixed rate, usually with a FIFO queue. When a request comes in, if the queue isn't full it goes in, otherwise it's dropped. Uh, the parameters are the bucket size, which is just the queue size, and the outflow rate. The downside is a burst can fill the queue with old requests, and then the newer ones get rate limited.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q4-B",
+   "question_id": "q4",
+   "variant": "B",
+   "transcript": "Uh, I think it uses a queue and processes requests at a fixed rate, so it's smooth. Um, and if the queue's full you drop the request.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q4-C",
+   "question_id": "q4",
+   "variant": "C",
+   "transcript": "Okay so it's a queue, first in first out, processed at a fixed rate, and parameters are the queue size and the outflow rate. If the queue's full it, uh, deletes the oldest request to make room for the new one. And a burst of traffic, um, fills the queue with old requests.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q4-D",
+   "question_id": "q4",
+   "variant": "D",
+   "transcript": "I, uh, I don't remember that one at all. Is it the one with the water? Sorry.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q4-H",
+   "question_id": "q4",
+   "variant": "H",
+   "transcript": "Um, I think it's... a queue? First in first out, maybe? Processed at a fixed rate, I believe. And if the queue's full the request gets dropped, I'm fairly sure. Parameters are, uh, queue size and, I think, outflow rate? And a burst could fill it with old requests, so new ones get limited, if I remember right.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q5-A",
+   "question_id": "q5",
+   "variant": "A",
+   "transcript": "Okay, so you cut time into fixed windows, like one minute each, and each window has a counter. Every request bumps the counter and when it hits the threshold you drop stuff until the next window starts. The problem is at the edges, uh, if somebody sends a bunch right at the end of one window and a bunch right at the start of the next, you can let through, like, double the quota. But it's simple and doesn't use much memory.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-B",
+   "question_id": "q5",
+   "variant": "B",
+   "transcript": "It divides time into windows with a counter each, and each request increments the counter, and once you hit the threshold you drop requests until the next window. Um, and it's memory efficient and easy to understand. I can't remember what's wrong with it.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-C",
+   "question_id": "q5",
+   "variant": "C",
+   "transcript": "So, uh, you divide time into fixed windows with a counter, increment on each request, drop at the threshold until the next window. It's memory efficient and easy to get. The weakness, hmm, I think it's that at the edges of the windows it ends up letting through fewer requests than the quota, since the counter resets.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-D",
+   "question_id": "q5",
+   "variant": "D",
+   "transcript": "Fixed window... uh... isn't that, like, a window in the UI? Like a modal? I'm blanking completely.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q5-F",
+   "question_id": "q5",
+   "variant": "F",
+   "transcript": "so you dye vide time in two fixed windows each with a counter and every request in cree ments it and at the thresh hold you drop till the next window. the problem is at the edge of the windows a burst can let through twice the quota. its memory efficient and easy to under stand",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q6-A",
+   "question_id": "q6",
+   "variant": "A",
+   "transcript": "So, uh, the sliding window log keeps timestamps of requests, usually in something like a Redis sorted set. When a new request comes in you throw away the outdated timestamps, add the new one, and if the log size is within the allowed count the request goes through, otherwise it's rejected. It's really accurate for any rolling window, but it eats a lot of memory, because even rejected requests can have their timestamps hanging around.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q6-B",
+   "question_id": "q6",
+   "variant": "B",
+   "transcript": "Um, it stores timestamps of the requests, and removes the old ones. And it's super accurate. Uh, yeah.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "covered",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q6-C",
+   "question_id": "q6",
+   "variant": "C",
+   "transcript": "It keeps timestamps, removes outdated ones, and accepts the request if the log size is within the limit. It's accurate in a rolling window. And memory-wise it's really lightweight, uh, because it only stores a single number.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   }
+  },
+  {
+   "id": "q6-D",
+   "question_id": "q6",
+   "variant": "D",
+   "transcript": "Sliding window log. Is that the, uh, error log in the window of a server? I don't know, sorry.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q6-E",
+   "question_id": "q6",
+   "variant": "E",
+   "transcript": "You basically jot down when every request arrived, in a sorted structure like Redis has. Each time a new one shows up you erase the stale entries first, add the new time, and check whether the number of entries is still under the cap. That gives you exact answers over any moving period, the catch being it hoards RAM since denied requests might still be written down.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q7-A",
+   "question_id": "q7",
+   "variant": "A",
+   "transcript": "So that one's a hybrid, it combines the fixed window counter with the sliding window log. You calculate the requests in the rolling window as the current window's count plus the previous window's count times the percentage of overlap. It smooths out spikes and doesn't use much memory. The catch is it's just an approximation because it assumes the previous window's requests were spread evenly, but Cloudflare measured like point zero zero three percent wrong, so it's fine.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q7-B",
+   "question_id": "q7",
+   "variant": "B",
+   "transcript": "Um, it combines the fixed window and the sliding log. And it smooths out spikes, and it's memory efficient.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "covered",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q7-C",
+   "question_id": "q7",
+   "variant": "C",
+   "transcript": "It's a hybrid of the fixed window counter and the sliding window log. The count is current window plus previous window times the overlap percentage. It smooths spikes and it's memory efficient. And, uh, it's exact, no request is ever wrongly allowed or limited.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   }
+  },
+  {
+   "id": "q7-D",
+   "question_id": "q7",
+   "variant": "D",
+   "transcript": "Sliding window counter, uh, I think it counts how many windows are open on your screen? No, that's not it. I don't know.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q7-H",
+   "question_id": "q7",
+   "variant": "H",
+   "transcript": "I think it's a hybrid of the fixed window and the sliding log? And the formula is, uh, current window count plus previous window count times the overlap percentage, I believe. It smooths spikes and it's memory efficient, I think. And it's an approximation because it assumes even distribution, I'm fairly confident.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q8-A",
+   "question_id": "q8",
+   "variant": "A",
+   "transcript": "So you don't use a normal database because disk access is slow. You'd use an in-memory cache like Redis since it's fast and it can expire things on a timer. Redis gives you INCR, which bumps the counter by one, and EXPIRE, which sets a timeout so the counter gets deleted automatically.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q8-B",
+   "question_id": "q8",
+   "variant": "B",
+   "transcript": "Uh, Redis, because it's in memory and fast and the database would be too slow with the disk. Um, and it has an, uh, increment command. That's all I got.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q8-C",
+   "question_id": "q8",
+   "variant": "C",
+   "transcript": "Honestly a relational database, uh, like Postgres, because counters need to be durable and the disk is totally fine for that. If you do use Redis, INCR bumps the counter by one and EXPIRE sets a timeout that deletes it.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q8-D",
+   "question_id": "q8",
+   "variant": "D",
+   "transcript": "Counters, uh, store them... in a spreadsheet? In a text file? I'm not sure, I'm sorry.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q8-F",
+   "question_id": "q8",
+   "variant": "F",
+   "transcript": "so not the data base cuz disk access is slow you use an in memory cache like red is because its fast and it supports expire times. red is has inker and ex pire. inker bumps the counter by one and ex pire sets a time out and the counter gets deleted",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q9-A",
+   "question_id": "q9",
+   "variant": "A",
+   "transcript": "So it sends back a four twenty nine, too many requests, and sometimes you might queue the request to handle later. And there's headers, X-Ratelimit-Remaining which is how many requests you've got left, X-Ratelimit-Limit which is the cap per window, and X-Ratelimit-Retry-After, the seconds you should wait.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q9-B",
+   "question_id": "q9",
+   "variant": "B",
+   "transcript": "Um, a 429 status code, uh, too many requests. That's, that's the main thing I remember.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q9-C",
+   "question_id": "q9",
+   "variant": "C",
+   "transcript": "It returns a 429, and there are headers. Retry-After tells you how many seconds to wait. And, uh, X-Ratelimit-Limit tells you how many requests you have left, and Remaining is the total allowed per window.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q9-D",
+   "question_id": "q9",
+   "variant": "D",
+   "transcript": "Uh, I, I don't remember what it sends back. Something about an error code? Sorry.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q9-H",
+   "question_id": "q9",
+   "variant": "H",
+   "transcript": "I believe it's a 429, too many requests? And there's, uh, headers, like remaining, and limit, I think... and a retry after one that says how many seconds to wait, if I'm remembering right.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q10-A",
+   "question_id": "q10",
+   "variant": "A",
+   "transcript": "Okay so two problems. Race conditions: two requests read the counter at the same time, both write back the same number, so the count's wrong. Locks fix it but slow everything down, so people use Lua scripts or Redis sorted sets. Then synchronization: with multiple rate limiter servers they need the same data. Sticky sessions aren't a good answer, not scalable or flexible, so you use a centralized store like Redis.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q10-B",
+   "question_id": "q10",
+   "variant": "B",
+   "transcript": "Um, the first is race conditions, where two requests read the counter at the same time and the count ends up wrong. And the second is synchronization, because there's multiple rate limiter servers. Uh, yeah.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "covered",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q10-C",
+   "question_id": "q10",
+   "variant": "C",
+   "transcript": "Race condition is when two requests read the same counter before either writes, so the value's wrong, and locks slow it down so you'd use Lua scripts or sorted sets. Synchronization is that you've got multiple rate limiter servers that need the same data. And for that, um, I'd just have each server keep its own local counter, since that scales best.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   }
+  },
+  {
+   "id": "q10-D",
+   "question_id": "q10",
+   "variant": "D",
+   "transcript": "Distributed... uh, challenges... network lag? I'm not sure, honestly. I can't really say.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q10-G",
+   "question_id": "q10",
+   "variant": "G",
+   "transcript": "So, uh, this reminds me of a bug I had once, with, like, a payments thing. Anyway! Race conditions. Two requests read the counter together, before either writes it back, so it's wrong. Locks are the obvious fix but they're slow, so Lua scripts or Redis sorted sets. And multiple rate limiter servers need to be synchronized. Sticky sessions, no, not scalable, so a centralized store, Redis. Sorry, the payments thing was awful.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  }
+ ]
+}

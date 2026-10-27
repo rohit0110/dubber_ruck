@@ -1,0 +1,529 @@
+{
+ "topic": "System design: Design a rate limiter",
+ "source_note": "Alex Xu, System Design Interview, chapter 4 (pages 51-69). Questions, answers, key points and transcripts are written in our own words.",
+ "questions": [
+  {
+   "id": "q1",
+   "question": "Name the main benefits of using a rate limiter.",
+   "answer": "A rate limiter prevents resource starvation from denial-of-service attacks, whether intentional or accidental, by blocking excess calls. It reduces cost, especially when you pay per call to third-party APIs. It also keeps servers from being overloaded by bots or misbehaving users.",
+   "source_page": "51",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It prevents resource starvation from denial-of-service attacks, intentional or not, by blocking excess calls.",
+     "keywords": [
+      "dos",
+      "denial of service",
+      "attack",
+      "starvation",
+      "ddos"
+     ],
+     "wrong_claims": [
+      "It protects against SQL injection and cross-site scripting."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "It reduces cost, for example fewer servers or fewer paid third-party API calls.",
+     "keywords": [
+      "cost",
+      "money",
+      "pay",
+      "paid",
+      "bill"
+     ],
+     "wrong_claims": [
+      "It does not affect cost; it is purely a security feature."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It keeps servers from being overloaded by bots or misbehaving users.",
+     "keywords": [
+      "overload",
+      "bots",
+      "load",
+      "misbehav"
+     ],
+     "wrong_claims": [
+      "It makes servers faster by caching responses."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q2",
+   "question": "Where can a rate limiter be placed, and why is the client side a poor choice?",
+   "answer": "A rate limiter can run on the server side, or as a middleware in front of the APIs. In cloud microservices it is usually implemented inside an API gateway. The client side is unreliable because requests can easily be forged by malicious actors, and you may not control the client implementation.",
+   "source_page": "53-54",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The client side is unreliable because requests can be forged by malicious actors and the client implementation may not be under your control.",
+     "keywords": [
+      "client",
+      "forged",
+      "forge",
+      "malicious",
+      "unreliable",
+      "control"
+     ],
+     "wrong_claims": [
+      "The client side is the best place because it saves server resources and cannot be bypassed."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "It can be placed on the server side or as a middleware in front of the APIs.",
+     "keywords": [
+      "server",
+      "middleware"
+     ],
+     "wrong_claims": [
+      "It must always live inside the database layer."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "In cloud microservices it is usually implemented in the API gateway.",
+     "keywords": [
+      "gateway",
+      "microservice"
+     ],
+     "wrong_claims": [
+      "Microservices cannot use a gateway for this; it must be coded into every service."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q3",
+   "question": "Explain the token bucket algorithm.",
+   "answer": "A token bucket is a container with a preset capacity. Tokens are added at a preset refill rate, and once the bucket is full the extra tokens overflow. Each request consumes one token, and if there are no tokens the request is dropped. It takes two parameters, bucket size and refill rate, and it allows short bursts of traffic.",
+   "source_page": "54-57",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The bucket has a preset capacity, tokens are refilled at a preset rate, and extra tokens overflow when it is full.",
+     "keywords": [
+      "capacity",
+      "bucket",
+      "refill",
+      "overflow",
+      "full"
+     ],
+     "wrong_claims": [
+      "The bucket has no maximum size; tokens pile up forever."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Each request consumes one token, and the request is dropped when there are no tokens.",
+     "keywords": [
+      "consume",
+      "takes a token",
+      "dropped",
+      "no tokens",
+      "empty"
+     ],
+     "wrong_claims": [
+      "Each request consumes all the tokens in the bucket."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It takes two parameters: bucket size and refill rate.",
+     "keywords": [
+      "two parameters",
+      "bucket size",
+      "refill rate"
+     ],
+     "wrong_claims": [
+      "It has a single parameter, the request count per second."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "It allows bursts of traffic for short periods, as long as tokens remain.",
+     "keywords": [
+      "burst",
+      "spike"
+     ],
+     "wrong_claims": [
+      "It never allows bursts; the output is perfectly smooth."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q4",
+   "question": "How does the leaking bucket algorithm differ from the token bucket?",
+   "answer": "The leaking bucket is similar to the token bucket except that requests are processed at a fixed rate, usually through a first-in-first-out queue. A new request is added to the queue if it is not full, otherwise it is dropped. Its parameters are the bucket size, which is the queue size, and the outflow rate. A burst of traffic can fill the queue with old requests, so recent requests get rate limited.",
+   "source_page": "58",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Requests are processed at a fixed rate, usually through a first-in-first-out queue.",
+     "keywords": [
+      "fixed rate",
+      "queue",
+      "fifo",
+      "first-in",
+      "first in",
+      "outflow"
+     ],
+     "wrong_claims": [
+      "Requests are processed as a stack, last in first out."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "If the queue is full a new request is dropped, otherwise it is added to the queue.",
+     "keywords": [
+      "full",
+      "dropped",
+      "added"
+     ],
+     "wrong_claims": [
+      "When the queue is full the oldest request is deleted to make room."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Its parameters are the bucket size, which equals the queue size, and the outflow rate.",
+     "keywords": [
+      "bucket size",
+      "queue size",
+      "outflow"
+     ],
+     "wrong_claims": [
+      "It has a single parameter, the refill rate."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "A burst of traffic can fill the queue with old requests, so recent requests are rate limited.",
+     "keywords": [
+      "burst",
+      "old requests",
+      "recent"
+     ],
+     "wrong_claims": [
+      "It handles bursts better than the token bucket with no penalty."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q5",
+   "question": "What is the main weakness of the fixed window counter algorithm?",
+   "answer": "The fixed window counter divides time into fixed windows, each with a counter. Every request increments the counter, and once it hits the threshold new requests are dropped until the next window starts. Its weakness is that a burst of traffic at the edges of windows can let through more than the quota, for example ten requests in a minute when only five are allowed. On the plus side it is memory efficient and easy to understand.",
+   "source_page": "58-60",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Time is divided into fixed windows, each with a counter that each request increments; at the threshold new requests are dropped until the next window.",
+     "keywords": [
+      "window",
+      "counter",
+      "increment",
+      "threshold"
+     ],
+     "wrong_claims": [
+      "The counter is never reset; it counts all requests forever."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "A burst at the edges of windows can let through more than the allowed quota, up to twice as many.",
+     "keywords": [
+      "edge",
+      "boundary",
+      "twice",
+      "double",
+      "spike"
+     ],
+     "wrong_claims": [
+      "The edge problem makes it allow fewer requests than the quota."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It is memory efficient and easy to understand.",
+     "keywords": [
+      "memory",
+      "simple",
+      "easy"
+     ],
+     "wrong_claims": [
+      "It is memory hungry because it stores every timestamp."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q6",
+   "question": "How does the sliding window log algorithm work, and what are its pros and cons?",
+   "answer": "The sliding window log keeps request timestamps, usually in a Redis sorted set. When a request arrives, outdated timestamps are removed and the new one is added, and the request is accepted if the log size is within the allowed count, otherwise it is rejected. It is very accurate in any rolling window, but it uses a lot of memory because even rejected requests can keep their timestamps.",
+   "source_page": "60-61",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It keeps request timestamps, usually in a Redis sorted set, and removes outdated ones when a new request arrives.",
+     "keywords": [
+      "timestamp",
+      "log",
+      "sorted set",
+      "outdated",
+      "remove"
+     ],
+     "wrong_claims": [
+      "It keeps a single counter per window and resets it."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "A request is accepted if the log size is within the allowed count, otherwise it is rejected.",
+     "keywords": [
+      "log size",
+      "allowed",
+      "count",
+      "rejected"
+     ],
+     "wrong_claims": [
+      "It always accepts requests and only logs the violations."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It is very accurate in any rolling window.",
+     "keywords": [
+      "accurate",
+      "rolling"
+     ],
+     "wrong_claims": [
+      "It is only approximate because it assumes requests are evenly distributed."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "It uses a lot of memory, because timestamps of rejected requests may stay in memory.",
+     "keywords": [
+      "memory",
+      "rejected"
+     ],
+     "wrong_claims": [
+      "It is the most memory efficient algorithm because it stores one number."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q7",
+   "question": "Describe the sliding window counter algorithm.",
+   "answer": "The sliding window counter is a hybrid of the fixed window counter and the sliding window log. It estimates the rolling count as the requests in the current window plus the requests in the previous window times the overlap percentage. It smooths out spikes and is memory efficient, but it is only an approximation because it assumes requests in the previous window are evenly distributed. Cloudflare found only about 0.003 percent of requests were wrongly allowed or limited.",
+   "source_page": "61-62",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It is a hybrid of the fixed window counter and the sliding window log.",
+     "keywords": [
+      "hybrid",
+      "combines",
+      "fixed window",
+      "sliding window log"
+     ],
+     "wrong_claims": [
+      "It is a variation of the token bucket."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "The rolling count is the current window's requests plus the previous window's requests times the overlap percentage.",
+     "keywords": [
+      "formula",
+      "overlap",
+      "percentage",
+      "previous window"
+     ],
+     "wrong_claims": [
+      "The rolling count is the maximum of the previous and current window counts."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It smooths out spikes in traffic and is memory efficient.",
+     "keywords": [
+      "smooth",
+      "memory"
+     ],
+     "wrong_claims": [
+      "It lets spikes through unchanged."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "It is only an approximation because it assumes the previous window's requests were evenly distributed; Cloudflare saw about 0.003 percent errors.",
+     "keywords": [
+      "approximation",
+      "evenly",
+      "0.003",
+      "cloudflare"
+     ],
+     "wrong_claims": [
+      "It is exact; no request is ever wrongly allowed or limited."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q8",
+   "question": "Where should a rate limiter store its counters, and which Redis commands help?",
+   "answer": "Using the database is a bad idea because disk access is slow. An in-memory cache is chosen because it is fast and supports time-based expiration. Redis is a popular option. Its INCR command increases the stored counter by one, and EXPIRE sets a timeout after which the counter is deleted automatically.",
+   "source_page": "62",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Not the database, because disk access is slow; use an in-memory cache because it is fast and supports time-based expiration.",
+     "keywords": [
+      "database",
+      "disk",
+      "slow",
+      "in-memory",
+      "cache",
+      "fast"
+     ],
+     "wrong_claims": [
+      "A relational database is best because counters must be durable."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Redis INCR increases the stored counter by one.",
+     "keywords": [
+      "incr",
+      "increment",
+      "increase"
+     ],
+     "wrong_claims": [
+      "INCR resets the counter to zero."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Redis EXPIRE sets a timeout, and the counter is deleted automatically when it expires.",
+     "keywords": [
+      "expire",
+      "timeout",
+      "deleted"
+     ],
+     "wrong_claims": [
+      "EXPIRE makes the counter permanent so it survives restarts."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q9",
+   "question": "What should happen when a request is rate limited, and which headers does the rate limiter return?",
+   "answer": "The API returns HTTP 429, too many requests, and depending on the use case the limited request may be queued to be processed later. The rate limiter also returns headers: X-Ratelimit-Remaining for the remaining allowed requests in the window, X-Ratelimit-Limit for how many calls the client can make per window, and X-Ratelimit-Retry-After for the seconds to wait before trying again.",
+   "source_page": "64-65",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The API returns HTTP 429 too many requests, and the request may be queued for later processing.",
+     "keywords": [
+      "429",
+      "too many requests",
+      "queue"
+     ],
+     "wrong_claims": [
+      "It returns HTTP 503 and always drops the request."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "X-Ratelimit-Remaining and X-Ratelimit-Limit show the remaining allowed requests and the calls allowed per window.",
+     "keywords": [
+      "remaining",
+      "limit"
+     ],
+     "wrong_claims": [
+      "X-Ratelimit-Limit shows how many requests are left."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "X-Ratelimit-Retry-After gives the number of seconds to wait before making a request again.",
+     "keywords": [
+      "retry-after",
+      "retry after",
+      "wait",
+      "seconds"
+     ],
+     "wrong_claims": [
+      "Retry-After is the timestamp when the limit was first hit."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q10",
+   "question": "What two problems arise when a rate limiter runs on multiple servers, and how are they handled?",
+   "answer": "The first is a race condition: two concurrent requests can read the same counter before either writes it back, so the count ends up wrong. Locks would solve it but slow the system down, so Lua scripts or Redis sorted sets are used. The second is synchronization: with several rate limiter servers they must share the same data. Sticky sessions are not advisable because they are neither scalable nor flexible, so a centralized data store like Redis is used.",
+   "source_page": "66-67",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Race condition: concurrent requests read the same counter value before writing it back, so the count ends up wrong.",
+     "keywords": [
+      "race",
+      "concurrent",
+      "read",
+      "write back"
+     ],
+     "wrong_claims": [
+      "Race conditions only occur on a single thread, so they do not matter when distributed."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Locks would fix it but slow the system down, so Lua scripts or Redis sorted sets are used.",
+     "keywords": [
+      "lock",
+      "lua",
+      "sorted set"
+     ],
+     "wrong_claims": [
+      "Locks are the best fix because they have no performance cost."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Synchronization: multiple rate limiter servers need to share the same data.",
+     "keywords": [
+      "synchron",
+      "multiple",
+      "share"
+     ],
+     "wrong_claims": [
+      "Synchronization is unnecessary because each client always reaches the same limiter."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "Sticky sessions are not advisable; use a centralized data store like Redis.",
+     "keywords": [
+      "sticky",
+      "centralized",
+      "central",
+      "redis"
+     ],
+     "wrong_claims": [
+      "Each rate limiter server should keep its own local counter."
+     ]
+    }
+   ]
+  }
+ ]
+}

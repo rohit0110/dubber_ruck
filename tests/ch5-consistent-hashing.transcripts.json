@@ -1,0 +1,325 @@
+{
+ "note": "Simulated speech-to-text transcripts. Labels: covered | missing | contradicted. Variants: A full, B partial, C one point contradicted, D clueless, E paraphrase-heavy, F speech-to-text noisy, G rambling, H hedged.",
+ "cases": [
+  {
+   "id": "q1-A",
+   "question_id": "q1",
+   "variant": "A",
+   "transcript": "So the basic way is you take the hash of the key and mod it by the number of servers. That's fine until the pool size changes, like a server goes offline, and then the mod gives different results, so most of the keys get remapped, not just the ones on the dead server. Then clients go to the wrong servers and you get a storm of cache misses.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q1-B",
+   "question_id": "q1",
+   "variant": "B",
+   "transcript": "Um, so you do hash of the key modulo the number of servers to pick one. Uh, and that's the, that's all I remember, sorry.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q1-C",
+   "question_id": "q1",
+   "variant": "C",
+   "transcript": "You take the hash mod N. And if a server goes offline then, um, only the keys that were on that server get remapped, everything else stays where it is. And then, uh, clients go to the wrong servers, which causes a storm of cache misses.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q1-D",
+   "question_id": "q1",
+   "variant": "D",
+   "transcript": "Rehashing... uh, is that when you re-hash passwords? Like with bcrypt? Not sure.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q1-F",
+   "question_id": "q1",
+   "variant": "F",
+   "transcript": "so you take the hash of the key mod N where N is the number of servers. when a server goes off line N changes so most keys get re mapped not just the ones on that server and clients hit the wrong servers and you get a storm of cash misses",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q2-A",
+   "question_id": "q2",
+   "variant": "A",
+   "transcript": "Okay so you take the hash space, like SHA-1's zero to two to the one sixty minus one, and connect the ends to make a ring. You hash the servers onto it and you hash the keys onto it with the same hash function, no modulo. To find a key's server you go clockwise from the key until you hit the first server.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q2-B",
+   "question_id": "q2",
+   "variant": "B",
+   "transcript": "Um, you put servers on a ring using a hash. And, uh, that's... yeah.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q2-C",
+   "question_id": "q2",
+   "variant": "C",
+   "transcript": "So the hash space is joined into a ring, and servers and keys both get hashed onto it with the same function, no modulo. To find which server a key lives on, you walk counter-clockwise from the key until you find a server.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   }
+  },
+  {
+   "id": "q2-D",
+   "question_id": "q2",
+   "variant": "D",
+   "transcript": "Hash ring... is that, like, a ring buffer? I don't, I don't really remember.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q2-E",
+   "question_id": "q2",
+   "variant": "E",
+   "transcript": "Picture a circle made from the whole range of hash outputs. Both the machines and the data items get placed around it using one and the same hash, with no remainder operation. For a given item you move round the circle in the forward direction, clockwise, until you bump into a machine, and that's the owner.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q3-A",
+   "question_id": "q3",
+   "variant": "A",
+   "transcript": "So when you add a server, only a small fraction of keys have to move. It's the ones between the new server and the previous server going anticlockwise, those go to the new one. And when you remove a server, only its keys get remapped, to the next server clockwise. Everything else stays.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q3-B",
+   "question_id": "q3",
+   "variant": "B",
+   "transcript": "Um, when you add a server only a few keys have to move. Uh, I don't remember about removing one.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q3-C",
+   "question_id": "q3",
+   "variant": "C",
+   "transcript": "Adding one only moves a few keys, the ones between it and the previous server. But removing a server, um, remaps all the keys on the ring, since the positions shift.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   }
+  },
+  {
+   "id": "q3-D",
+   "question_id": "q3",
+   "variant": "D",
+   "transcript": "Hmm, adding a server... you'd have to restart everything? I really am not sure. Sorry.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q3-H",
+   "question_id": "q3",
+   "variant": "H",
+   "transcript": "I think when you add a server only a fraction of the keys move, the ones between the new server and the previous one going anticlockwise, if I remember right. And removing one only moves its keys to the next server clockwise, I believe.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q4-A",
+   "question_id": "q4",
+   "variant": "A",
+   "transcript": "Right, two problems. One, you can't keep the partitions the same size because servers come and go, so one server can end up with a partition twice as big as another. Two, the keys might not be spread evenly on the ring, so one server could hold most of the keys and another gets none.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q4-B",
+   "question_id": "q4",
+   "variant": "B",
+   "transcript": "Um, the partitions can end up different sizes when a server's removed. And... that's what I've got.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q4-C",
+   "question_id": "q4",
+   "variant": "C",
+   "transcript": "Well, the first issue is partitions can get uneven when servers change. And the second, hmm, I think there's none really, because with a good hash function the keys are always spread perfectly evenly.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   }
+  },
+  {
+   "id": "q4-D",
+   "question_id": "q4",
+   "variant": "D",
+   "transcript": "Problems with it... maybe that it's slow? Or it uses too much memory? Honestly I don't remember.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing"
+   }
+  },
+  {
+   "id": "q4-F",
+   "question_id": "q4",
+   "variant": "F",
+   "transcript": "so one is you cant keep the partition sizes the same when servers get added or removed one servers partition can be twice as big. two is the keys can be non you uniform on the ring so one server gets most of the keys and others get none",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   }
+  },
+  {
+   "id": "q5-A",
+   "question_id": "q5",
+   "variant": "A",
+   "transcript": "So virtual nodes, each real server shows up many times on the ring as virtual nodes, so it owns lots of little partitions. A key goes clockwise to the first virtual node, which maps to a real server. The more virtual nodes you have, the more balanced the data gets because the standard deviation gets smaller. But, uh, you need more space to store them, so it's a tradeoff.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q5-B",
+   "question_id": "q5",
+   "variant": "B",
+   "transcript": "Um, so each server gets represented as multiple virtual nodes on the ring. And the more you have the more balanced it is. I'm not sure about, about downsides.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q5-C",
+   "question_id": "q5",
+   "variant": "C",
+   "transcript": "Each server has multiple virtual nodes on the ring, more of them means more balanced data, and there's really no downside, they cost nothing so you'd just use as many as you can.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   }
+  },
+  {
+   "id": "q5-D",
+   "question_id": "q5",
+   "variant": "D",
+   "transcript": "Virtual nodes... is that, uh, like virtual machines? Running on the servers? I'm not certain at all.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing"
+   }
+  },
+  {
+   "id": "q5-G",
+   "question_id": "q5",
+   "variant": "G",
+   "transcript": "So, uh, I always think of this like seating at a wedding, you know? Where you don't put all the cousins at one table. Anyway. Virtual nodes, each server's represented multiple times on the ring so it owns lots of partitions, and a key goes clockwise to the first virtual node. More virtual nodes means more balanced because the standard deviation gets smaller, but more space to store them, so, tradeoff. Weddings are hard.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   }
+  },
+  {
+   "id": "q6-A",
+   "question_id": "q6",
+   "variant": "A",
+   "transcript": "So the benefits are that minimal keys get moved when servers come and go, it makes horizontal scaling easy since the data's spread more evenly, and it helps with hotspot keys, like if a few celebrities' data all landed on the same shard. And it's used in a lot of real stuff, Dynamo, Cassandra, Discord, Akamai, Maglev.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q6-B",
+   "question_id": "q6",
+   "variant": "B",
+   "transcript": "Um, fewer keys have to be moved when servers are added. And, uh, it's used in Cassandra, I think.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "covered"
+   }
+  },
+  {
+   "id": "q6-C",
+   "question_id": "q6",
+   "variant": "C",
+   "transcript": "It keeps key movement to a minimum, it makes scaling horizontally easy, and it helps with hotspots by spreading popular data across shards. But honestly it's only a theoretical idea, no real production system uses it.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   }
+  },
+  {
+   "id": "q6-D",
+   "question_id": "q6",
+   "variant": "D",
+   "transcript": "Benefits... uh, it's, it's faster? I think? And, hmm, safer maybe. I can't say more.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "missing"
+   }
+  },
+  {
+   "id": "q6-H",
+   "question_id": "q6",
+   "variant": "H",
+   "transcript": "I think the benefits are minimal keys moving when servers change, and easy horizontal scaling because it's more even. And hotspots, like popular accounts all on one shard, it helps with that, I believe. And Dynamo and Cassandra use it, and, um, Discord maybe? And Akamai.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   }
+  }
+ ]
+}

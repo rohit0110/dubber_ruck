@@ -1,0 +1,314 @@
+{
+ "topic": "System design: Design a URL shortener",
+ "source_note": "Alex Xu, System Design Interview, chapter 8 (pages 119-130). Questions, answers, key points and transcripts are written in our own words.",
+ "questions": [
+  {
+   "id": "q1",
+   "question": "Walk through the back-of-the-envelope estimation for the URL shortener.",
+   "answer": "With 100 million URLs generated per day, writes are about 1160 per second. With a read to write ratio of 10 to 1, reads are about 11,600 per second. Running for 10 years means 365 billion records, and at an average URL length of 100 bytes that is about 365 terabytes of storage.",
+   "source_page": "120",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Writes: 100 million per day is about 1160 per second.",
+     "keywords": [
+      "1160",
+      "writes per second",
+      "1,160"
+     ],
+     "wrong_claims": [
+      "Writes are about 116,000 per second."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Reads: with a 10 to 1 read to write ratio, about 11,600 per second.",
+     "keywords": [
+      "11,600",
+      "11600",
+      "ten to one",
+      "10:1"
+     ],
+     "wrong_claims": [
+      "Reads are about 1160 per second, the same as writes."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Over 10 years that is 365 billion records, about 365 TB at 100 bytes each.",
+     "keywords": [
+      "365 billion",
+      "365 terabytes",
+      "365 tb"
+     ],
+     "wrong_claims": [
+      "Storage over 10 years is only about 36 gigabytes."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q2",
+   "question": "What API endpoints does a URL shortener need, and how do 301 and 302 redirects differ?",
+   "answer": "Two REST endpoints: a POST to api/v1/data/shorten with the long URL, returning the short URL, and a GET to api/v1/shortUrl, which returns the long URL for the redirect. A 301 redirect is permanent, so the browser caches it and later requests skip the shortener, which reduces server load. A 302 redirect is temporary, so every request goes through the shortener first, which is better for analytics.",
+   "source_page": "121-122",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A POST endpoint takes the long URL and returns the short URL; a GET endpoint returns the long URL for redirection.",
+     "keywords": [
+      "post",
+      "get",
+      "shorten",
+      "endpoint"
+     ],
+     "wrong_claims": [
+      "Both operations use a single DELETE endpoint."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "A 301 redirect is permanent, so the browser caches it and later requests skip the shortener, reducing server load.",
+     "keywords": [
+      "301",
+      "permanent",
+      "caches",
+      "load"
+     ],
+     "wrong_claims": [
+      "A 301 redirect is temporary, so every request goes through the shortener."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "A 302 redirect is temporary, so every request hits the shortener, which is better for analytics.",
+     "keywords": [
+      "302",
+      "temporary",
+      "analytics"
+     ],
+     "wrong_claims": [
+      "A 302 redirect is cached forever by the browser, which hides click data."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q3",
+   "question": "How long should the hash value of a short URL be, and why?",
+   "answer": "The hash value uses the characters 0-9, a-z and A-Z, which is 62 possible characters. We need the smallest n such that 62 to the power n is at least 365 billion. With n equal to 7, 62 to the 7 is about 3.5 trillion, which is more than enough, so the length is 7.",
+   "source_page": "124-125",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The hash value uses 62 possible characters: 0-9, a-z and A-Z.",
+     "keywords": [
+      "62",
+      "characters"
+     ],
+     "wrong_claims": [
+      "There are 36 possible characters, digits and lowercase letters only."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Find the smallest n such that 62 to the n is at least 365 billion.",
+     "keywords": [
+      "smallest",
+      "62 to the n",
+      "365 billion"
+     ],
+     "wrong_claims": [
+      "Find n so that 62 times n is at least 365 billion."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "With n equal to 7, 62 to the 7 is about 3.5 trillion, so the length is 7.",
+     "keywords": [
+      "7",
+      "seven",
+      "3.5 trillion"
+     ],
+     "wrong_claims": [
+      "n equal to 5 is enough, giving about 900 million."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q4",
+   "question": "Compare hash plus collision resolution with base 62 conversion for creating the short URL.",
+   "answer": "Hash plus collision resolution takes a well-known hash such as CRC32, MD5 or SHA-1 and keeps the first 7 characters, which can collide. Collisions are resolved by recursively appending a predefined string until there is no collision, but checking the database every time is expensive, so bloom filters can help. Base 62 conversion instead converts a unique ID to base 62, for example 11157 becomes 2TX, and needs no collision handling.",
+   "source_page": "125-127",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Hash plus collision resolution: use CRC32, MD5 or SHA-1, keep the first 7 characters, and append a predefined string on collision.",
+     "keywords": [
+      "crc32",
+      "md5",
+      "sha-1",
+      "first 7",
+      "collision"
+     ],
+     "wrong_claims": [
+      "A full SHA-1 hash is used as is, since it is short enough."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Checking the database for collisions is expensive, and bloom filters can improve performance.",
+     "keywords": [
+      "bloom filter",
+      "expensive",
+      "database"
+     ],
+     "wrong_claims": [
+      "Bloom filters guarantee no false positives and replace the database entirely."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Base 62 conversion turns a unique ID into a base 62 string, with no collision handling needed.",
+     "keywords": [
+      "base 62",
+      "convert",
+      "id"
+     ],
+     "wrong_claims": [
+      "Base 62 conversion needs collision resolution on every request."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q5",
+   "question": "Describe the URL shortening flow.",
+   "answer": "The input is the long URL. The system checks whether it is already in the database, and if so returns the stored short URL. If not, the unique ID generator creates a new ID, which is converted to the short URL with base 62, and a new database row with the ID, short URL and long URL is saved.",
+   "source_page": "127-128",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Check whether the long URL is already in the database, and if so return the stored short URL.",
+     "keywords": [
+      "already",
+      "database",
+      "exists"
+     ],
+     "wrong_claims": [
+      "Always generate a new short URL, even for a long URL already seen."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "If it is new, the unique ID generator creates a new ID.",
+     "keywords": [
+      "unique id",
+      "generator",
+      "new id"
+     ],
+     "wrong_claims": [
+      "The short URL is a random string chosen without any ID."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Convert the ID to the short URL with base 62 and save a row with the ID, short URL and long URL.",
+     "keywords": [
+      "base 62",
+      "save",
+      "row"
+     ],
+     "wrong_claims": [
+      "Convert the ID with MD5 and store only the short URL."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q6",
+   "question": "Describe the URL redirecting flow.",
+   "answer": "A user clicks a short URL and the load balancer forwards the request to the web servers. If the short URL is in the cache, the long URL is returned directly. If not, it is fetched from the database, and if it is not in the database either, the short URL is likely invalid. The mapping is cached because reads outnumber writes.",
+   "source_page": "129",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The request goes through the load balancer to the web servers.",
+     "keywords": [
+      "load balancer",
+      "web servers"
+     ],
+     "wrong_claims": [
+      "The request goes straight to the database with no web servers."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Check the cache first and return the long URL if present; otherwise fetch it from the database.",
+     "keywords": [
+      "cache",
+      "database"
+     ],
+     "wrong_claims": [
+      "Always query the database first; the cache is only used for analytics."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "If it is not in the database it is likely an invalid short URL; the cache helps because reads outnumber writes.",
+     "keywords": [
+      "invalid",
+      "reads"
+     ],
+     "wrong_claims": [
+      "If it is missing from the database, the system creates a new mapping automatically."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q7",
+   "question": "What extra talking points can you raise at the end of the URL shortener interview?",
+   "answer": "You can add a rate limiter to stop malicious users from sending huge numbers of shortening requests, filtering by IP address. You can scale the stateless web tier by adding servers, and scale the database with replication and sharding. You can also integrate analytics, such as how many people click a link and when.",
+   "source_page": "130",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A rate limiter can stop malicious users from flooding shortening requests, filtering by IP address or other rules.",
+     "keywords": [
+      "rate limiter",
+      "malicious",
+      "ip"
+     ],
+     "wrong_claims": [
+      "A rate limiter is not needed because short URLs cannot be abused."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Scale the stateless web tier by adding servers, and the database with replication and sharding.",
+     "keywords": [
+      "stateless",
+      "replication",
+      "sharding"
+     ],
+     "wrong_claims": [
+      "The web tier is stateful, so scaling it requires sticky sessions."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Add analytics, for example how many people click a link and when.",
+     "keywords": [
+      "analytics",
+      "clicks"
+     ],
+     "wrong_claims": [
+      "Analytics is not useful for a URL shortener."
+     ]
+    }
+   ]
+  }
+ ]
+}

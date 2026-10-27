@@ -1,0 +1,261 @@
+{
+ "topic": "System design: Design a unique ID generator in distributed systems",
+ "source_note": "Alex Xu, System Design Interview, chapter 7 (pages 110-117). Questions, answers, key points and transcripts are written in our own words.",
+ "questions": [
+  {
+   "id": "q1",
+   "question": "Why doesn't a database auto_increment work for IDs in a distributed system, and what are the requirements?",
+   "answer": "A single database's auto_increment does not work in a distributed environment because one database server is not large enough, and generating unique IDs across multiple databases with minimal delay is hard. The requirements are IDs that are unique, numerical only, fit in 64 bits, ordered by date, and generated at over 10,000 per second.",
+   "source_page": "110-111",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "auto_increment fails because one database server is not large enough and generating unique IDs across multiple databases with minimal delay is hard.",
+     "keywords": [
+      "auto_increment",
+      "auto increment",
+      "single database",
+      "not large enough",
+      "multiple"
+     ],
+     "wrong_claims": [
+      "auto_increment is fine in a distributed system; the only problem is that IDs are too short."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "The requirements: unique, numerical only, fit in 64 bits, ordered by date, and over 10,000 IDs per second.",
+     "keywords": [
+      "64-bit",
+      "64 bit",
+      "unique",
+      "numerical",
+      "ordered",
+      "10,000"
+     ],
+     "wrong_claims": [
+      "IDs must be 128-bit and do not need to be sortable."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q2",
+   "question": "How does multi-master replication generate IDs, and what are its drawbacks?",
+   "answer": "Multi-master replication uses each database's auto_increment but increases the next ID by k, the number of database servers, instead of by 1. It scales with the number of servers, but it is hard to scale across multiple data centers, IDs do not go up with time across servers, and it does not scale well when servers are added or removed.",
+   "source_page": "112",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It uses auto_increment but increases the next ID by k, the number of database servers, instead of by 1.",
+     "keywords": [
+      "k",
+      "number of servers",
+      "instead of one",
+      "step"
+     ],
+     "wrong_claims": [
+      "Each server increments by 1 from a random starting number."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Drawbacks: hard to scale across data centers, IDs do not rise with time across servers, and poor handling when servers are added or removed.",
+     "keywords": [
+      "data center",
+      "time",
+      "added or removed",
+      "add or remove"
+     ],
+     "wrong_claims": [
+      "IDs always increase with time across all servers, which is its main advantage."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q3",
+   "question": "What are the pros and cons of using UUIDs?",
+   "answer": "A UUID is a 128-bit number that each server can generate independently, so no coordination or synchronization is needed and it is easy to scale. Collisions are extremely unlikely: generating a billion per second for about 100 years gives only a 50 percent chance of one duplicate. The downsides are that it is 128 bits when we need 64, IDs do not go up with time, and they could be non-numeric.",
+   "source_page": "112-113",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A UUID is a 128-bit number each server generates independently, with no coordination, so it scales easily.",
+     "keywords": [
+      "128",
+      "independent",
+      "no coordination",
+      "without coordination"
+     ],
+     "wrong_claims": [
+      "UUIDs need a central coordinator that hands out ranges."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "The chance of a collision is extremely low.",
+     "keywords": [
+      "collision",
+      "duplicate",
+      "billion",
+      "unlikely"
+     ],
+     "wrong_claims": [
+      "Collisions are common at scale, so a uniqueness check is needed on every insert."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Downsides: 128 bits instead of 64, IDs do not go up with time, and they could be non-numeric.",
+     "keywords": [
+      "64",
+      "time",
+      "non-numeric",
+      "numeric"
+     ],
+     "wrong_claims": [
+      "UUIDs are 64-bit, numeric and sortable by time, which fits the requirements perfectly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q4",
+   "question": "How does a ticket server generate IDs, and what is its main drawback?",
+   "answer": "A ticket server uses one centralized auto_increment database, as Flickr did. The IDs are numeric and it is easy to implement, working for small to medium applications. The main drawback is a single point of failure; adding multiple ticket servers introduces data synchronization challenges.",
+   "source_page": "113-114",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It uses a single centralized auto_increment database, as Flickr did; IDs are numeric and it is easy for small to medium applications.",
+     "keywords": [
+      "ticket server",
+      "centralized",
+      "flickr",
+      "numeric"
+     ],
+     "wrong_claims": [
+      "Ticket servers are fully decentralized, with each web server making its own tickets."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Its drawback is a single point of failure; multiple ticket servers bring data synchronization challenges.",
+     "keywords": [
+      "single point of failure",
+      "synchronization",
+      "sync"
+     ],
+     "wrong_claims": [
+      "A ticket server has no single point of failure because it is replicated by default."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q5",
+   "question": "What is the bit layout of a Twitter snowflake ID?",
+   "answer": "A snowflake ID is 64 bits: 1 sign bit that is always 0, a 41-bit timestamp in milliseconds since a custom epoch, 5 bits of datacenter ID giving 32 datacenters, 5 bits of machine ID giving 32 machines per datacenter, and a 12-bit sequence number that is incremented for every ID generated on that machine and reset to 0 every millisecond.",
+   "source_page": "114",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "One sign bit, always 0, followed by a 41-bit timestamp in milliseconds since an epoch.",
+     "keywords": [
+      "1 bit",
+      "sign",
+      "41",
+      "timestamp",
+      "milliseconds"
+     ],
+     "wrong_claims": [
+      "41 bits are the machine ID and the timestamp is only 5 bits."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "A 5-bit datacenter ID (32 datacenters) and a 5-bit machine ID (32 machines per datacenter).",
+     "keywords": [
+      "5 bits",
+      "datacenter",
+      "machine",
+      "32"
+     ],
+     "wrong_claims": [
+      "The datacenter ID takes 12 bits and the machine ID takes 1 bit."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "A 12-bit sequence number, incremented per ID on a machine and reset to 0 every millisecond.",
+     "keywords": [
+      "12 bits",
+      "sequence",
+      "reset",
+      "4096"
+     ],
+     "wrong_claims": [
+      "The sequence number is reset to 0 every second."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q6",
+   "question": "What are the key details of the snowflake deep dive: timestamp lifetime, sequence capacity, and clock issues?",
+   "answer": "The 41-bit timestamp lasts about 69 years from the epoch, so a custom epoch close to today delays the overflow. The 12-bit sequence number allows 4096 IDs per millisecond on one machine. Datacenter and machine IDs are chosen at startup and generally fixed, and an accidental change can cause ID conflicts. Clock synchronization is a concern, and Network Time Protocol is the most popular solution.",
+   "source_page": "115-117",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The 41-bit timestamp lasts about 69 years, and a custom epoch close to today delays overflow.",
+     "keywords": [
+      "69 years",
+      "epoch",
+      "overflow"
+     ],
+     "wrong_claims": [
+      "The 41-bit timestamp lasts only about 69 days."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "The 12-bit sequence number allows 4096 IDs per millisecond on one machine.",
+     "keywords": [
+      "4096",
+      "per millisecond"
+     ],
+     "wrong_claims": [
+      "A machine can generate only about 40 IDs per millisecond."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Datacenter and machine IDs are fixed at startup; an accidental change can cause ID conflicts.",
+     "keywords": [
+      "startup",
+      "fixed",
+      "conflict"
+     ],
+     "wrong_claims": [
+      "Machine IDs are reassigned dynamically on every request."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "Clock synchronization is a concern, and NTP is the common solution.",
+     "keywords": [
+      "clock",
+      "ntp",
+      "network time protocol",
+      "synchronization"
+     ],
+     "wrong_claims": [
+      "Clock synchronization is not an issue because all clocks are identical."
+     ]
+    }
+   ]
+  }
+ ]
+}

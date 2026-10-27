@@ -1,0 +1,1770 @@
+{
+ "topic": "System design (Alex Xu, System Design Interview), chapters 4-8 combined",
+ "source_note": "Chapters 4 to 8 (pages 51-130), written in our own words. Question ids are prefixed c4..c8 by chapter.",
+ "questions": [
+  {
+   "id": "c4q1",
+   "question": "Name the main benefits of using a rate limiter.",
+   "answer": "A rate limiter prevents resource starvation from denial-of-service attacks, whether intentional or accidental, by blocking excess calls. It reduces cost, especially when you pay per call to third-party APIs. It also keeps servers from being overloaded by bots or misbehaving users.",
+   "source_page": "51",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It prevents resource starvation from denial-of-service attacks, intentional or not, by blocking excess calls.",
+     "keywords": [
+      "dos",
+      "denial of service",
+      "attack",
+      "starvation",
+      "ddos"
+     ],
+     "wrong_claims": [
+      "It protects against SQL injection and cross-site scripting."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "It reduces cost, for example fewer servers or fewer paid third-party API calls.",
+     "keywords": [
+      "cost",
+      "money",
+      "pay",
+      "paid",
+      "bill"
+     ],
+     "wrong_claims": [
+      "It does not affect cost; it is purely a security feature."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It keeps servers from being overloaded by bots or misbehaving users.",
+     "keywords": [
+      "overload",
+      "bots",
+      "load",
+      "misbehav"
+     ],
+     "wrong_claims": [
+      "It makes servers faster by caching responses."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4q2",
+   "question": "Where can a rate limiter be placed, and why is the client side a poor choice?",
+   "answer": "A rate limiter can run on the server side, or as a middleware in front of the APIs. In cloud microservices it is usually implemented inside an API gateway. The client side is unreliable because requests can easily be forged by malicious actors, and you may not control the client implementation.",
+   "source_page": "53-54",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The client side is unreliable because requests can be forged by malicious actors and the client implementation may not be under your control.",
+     "keywords": [
+      "client",
+      "forged",
+      "forge",
+      "malicious",
+      "unreliable",
+      "control"
+     ],
+     "wrong_claims": [
+      "The client side is the best place because it saves server resources and cannot be bypassed."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "It can be placed on the server side or as a middleware in front of the APIs.",
+     "keywords": [
+      "server",
+      "middleware"
+     ],
+     "wrong_claims": [
+      "It must always live inside the database layer."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "In cloud microservices it is usually implemented in the API gateway.",
+     "keywords": [
+      "gateway",
+      "microservice"
+     ],
+     "wrong_claims": [
+      "Microservices cannot use a gateway for this; it must be coded into every service."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4q3",
+   "question": "Explain the token bucket algorithm.",
+   "answer": "A token bucket is a container with a preset capacity. Tokens are added at a preset refill rate, and once the bucket is full the extra tokens overflow. Each request consumes one token, and if there are no tokens the request is dropped. It takes two parameters, bucket size and refill rate, and it allows short bursts of traffic.",
+   "source_page": "54-57",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The bucket has a preset capacity, tokens are refilled at a preset rate, and extra tokens overflow when it is full.",
+     "keywords": [
+      "capacity",
+      "bucket",
+      "refill",
+      "overflow",
+      "full"
+     ],
+     "wrong_claims": [
+      "The bucket has no maximum size; tokens pile up forever."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Each request consumes one token, and the request is dropped when there are no tokens.",
+     "keywords": [
+      "consume",
+      "takes a token",
+      "dropped",
+      "no tokens",
+      "empty"
+     ],
+     "wrong_claims": [
+      "Each request consumes all the tokens in the bucket."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It takes two parameters: bucket size and refill rate.",
+     "keywords": [
+      "two parameters",
+      "bucket size",
+      "refill rate"
+     ],
+     "wrong_claims": [
+      "It has a single parameter, the request count per second."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "It allows bursts of traffic for short periods, as long as tokens remain.",
+     "keywords": [
+      "burst",
+      "spike"
+     ],
+     "wrong_claims": [
+      "It never allows bursts; the output is perfectly smooth."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4q4",
+   "question": "How does the leaking bucket algorithm differ from the token bucket?",
+   "answer": "The leaking bucket is similar to the token bucket except that requests are processed at a fixed rate, usually through a first-in-first-out queue. A new request is added to the queue if it is not full, otherwise it is dropped. Its parameters are the bucket size, which is the queue size, and the outflow rate. A burst of traffic can fill the queue with old requests, so recent requests get rate limited.",
+   "source_page": "58",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Requests are processed at a fixed rate, usually through a first-in-first-out queue.",
+     "keywords": [
+      "fixed rate",
+      "queue",
+      "fifo",
+      "first-in",
+      "first in",
+      "outflow"
+     ],
+     "wrong_claims": [
+      "Requests are processed as a stack, last in first out."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "If the queue is full a new request is dropped, otherwise it is added to the queue.",
+     "keywords": [
+      "full",
+      "dropped",
+      "added"
+     ],
+     "wrong_claims": [
+      "When the queue is full the oldest request is deleted to make room."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Its parameters are the bucket size, which equals the queue size, and the outflow rate.",
+     "keywords": [
+      "bucket size",
+      "queue size",
+      "outflow"
+     ],
+     "wrong_claims": [
+      "It has a single parameter, the refill rate."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "A burst of traffic can fill the queue with old requests, so recent requests are rate limited.",
+     "keywords": [
+      "burst",
+      "old requests",
+      "recent"
+     ],
+     "wrong_claims": [
+      "It handles bursts better than the token bucket with no penalty."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4q5",
+   "question": "What is the main weakness of the fixed window counter algorithm?",
+   "answer": "The fixed window counter divides time into fixed windows, each with a counter. Every request increments the counter, and once it hits the threshold new requests are dropped until the next window starts. Its weakness is that a burst of traffic at the edges of windows can let through more than the quota, for example ten requests in a minute when only five are allowed. On the plus side it is memory efficient and easy to understand.",
+   "source_page": "58-60",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Time is divided into fixed windows, each with a counter that each request increments; at the threshold new requests are dropped until the next window.",
+     "keywords": [
+      "window",
+      "counter",
+      "increment",
+      "threshold"
+     ],
+     "wrong_claims": [
+      "The counter is never reset; it counts all requests forever."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "A burst at the edges of windows can let through more than the allowed quota, up to twice as many.",
+     "keywords": [
+      "edge",
+      "boundary",
+      "twice",
+      "double",
+      "spike"
+     ],
+     "wrong_claims": [
+      "The edge problem makes it allow fewer requests than the quota."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It is memory efficient and easy to understand.",
+     "keywords": [
+      "memory",
+      "simple",
+      "easy"
+     ],
+     "wrong_claims": [
+      "It is memory hungry because it stores every timestamp."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4q6",
+   "question": "How does the sliding window log algorithm work, and what are its pros and cons?",
+   "answer": "The sliding window log keeps request timestamps, usually in a Redis sorted set. When a request arrives, outdated timestamps are removed and the new one is added, and the request is accepted if the log size is within the allowed count, otherwise it is rejected. It is very accurate in any rolling window, but it uses a lot of memory because even rejected requests can keep their timestamps.",
+   "source_page": "60-61",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It keeps request timestamps, usually in a Redis sorted set, and removes outdated ones when a new request arrives.",
+     "keywords": [
+      "timestamp",
+      "log",
+      "sorted set",
+      "outdated",
+      "remove"
+     ],
+     "wrong_claims": [
+      "It keeps a single counter per window and resets it."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "A request is accepted if the log size is within the allowed count, otherwise it is rejected.",
+     "keywords": [
+      "log size",
+      "allowed",
+      "count",
+      "rejected"
+     ],
+     "wrong_claims": [
+      "It always accepts requests and only logs the violations."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It is very accurate in any rolling window.",
+     "keywords": [
+      "accurate",
+      "rolling"
+     ],
+     "wrong_claims": [
+      "It is only approximate because it assumes requests are evenly distributed."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "It uses a lot of memory, because timestamps of rejected requests may stay in memory.",
+     "keywords": [
+      "memory",
+      "rejected"
+     ],
+     "wrong_claims": [
+      "It is the most memory efficient algorithm because it stores one number."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4q7",
+   "question": "Describe the sliding window counter algorithm.",
+   "answer": "The sliding window counter is a hybrid of the fixed window counter and the sliding window log. It estimates the rolling count as the requests in the current window plus the requests in the previous window times the overlap percentage. It smooths out spikes and is memory efficient, but it is only an approximation because it assumes requests in the previous window are evenly distributed. Cloudflare found only about 0.003 percent of requests were wrongly allowed or limited.",
+   "source_page": "61-62",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It is a hybrid of the fixed window counter and the sliding window log.",
+     "keywords": [
+      "hybrid",
+      "combines",
+      "fixed window",
+      "sliding window log"
+     ],
+     "wrong_claims": [
+      "It is a variation of the token bucket."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "The rolling count is the current window's requests plus the previous window's requests times the overlap percentage.",
+     "keywords": [
+      "formula",
+      "overlap",
+      "percentage",
+      "previous window"
+     ],
+     "wrong_claims": [
+      "The rolling count is the maximum of the previous and current window counts."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It smooths out spikes in traffic and is memory efficient.",
+     "keywords": [
+      "smooth",
+      "memory"
+     ],
+     "wrong_claims": [
+      "It lets spikes through unchanged."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "It is only an approximation because it assumes the previous window's requests were evenly distributed; Cloudflare saw about 0.003 percent errors.",
+     "keywords": [
+      "approximation",
+      "evenly",
+      "0.003",
+      "cloudflare"
+     ],
+     "wrong_claims": [
+      "It is exact; no request is ever wrongly allowed or limited."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4q8",
+   "question": "Where should a rate limiter store its counters, and which Redis commands help?",
+   "answer": "Using the database is a bad idea because disk access is slow. An in-memory cache is chosen because it is fast and supports time-based expiration. Redis is a popular option. Its INCR command increases the stored counter by one, and EXPIRE sets a timeout after which the counter is deleted automatically.",
+   "source_page": "62",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Not the database, because disk access is slow; use an in-memory cache because it is fast and supports time-based expiration.",
+     "keywords": [
+      "database",
+      "disk",
+      "slow",
+      "in-memory",
+      "cache",
+      "fast"
+     ],
+     "wrong_claims": [
+      "A relational database is best because counters must be durable."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Redis INCR increases the stored counter by one.",
+     "keywords": [
+      "incr",
+      "increment",
+      "increase"
+     ],
+     "wrong_claims": [
+      "INCR resets the counter to zero."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Redis EXPIRE sets a timeout, and the counter is deleted automatically when it expires.",
+     "keywords": [
+      "expire",
+      "timeout",
+      "deleted"
+     ],
+     "wrong_claims": [
+      "EXPIRE makes the counter permanent so it survives restarts."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4q9",
+   "question": "What should happen when a request is rate limited, and which headers does the rate limiter return?",
+   "answer": "The API returns HTTP 429, too many requests, and depending on the use case the limited request may be queued to be processed later. The rate limiter also returns headers: X-Ratelimit-Remaining for the remaining allowed requests in the window, X-Ratelimit-Limit for how many calls the client can make per window, and X-Ratelimit-Retry-After for the seconds to wait before trying again.",
+   "source_page": "64-65",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The API returns HTTP 429 too many requests, and the request may be queued for later processing.",
+     "keywords": [
+      "429",
+      "too many requests",
+      "queue"
+     ],
+     "wrong_claims": [
+      "It returns HTTP 503 and always drops the request."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "X-Ratelimit-Remaining and X-Ratelimit-Limit show the remaining allowed requests and the calls allowed per window.",
+     "keywords": [
+      "remaining",
+      "limit"
+     ],
+     "wrong_claims": [
+      "X-Ratelimit-Limit shows how many requests are left."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "X-Ratelimit-Retry-After gives the number of seconds to wait before making a request again.",
+     "keywords": [
+      "retry-after",
+      "retry after",
+      "wait",
+      "seconds"
+     ],
+     "wrong_claims": [
+      "Retry-After is the timestamp when the limit was first hit."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4q10",
+   "question": "What two problems arise when a rate limiter runs on multiple servers, and how are they handled?",
+   "answer": "The first is a race condition: two concurrent requests can read the same counter before either writes it back, so the count ends up wrong. Locks would solve it but slow the system down, so Lua scripts or Redis sorted sets are used. The second is synchronization: with several rate limiter servers they must share the same data. Sticky sessions are not advisable because they are neither scalable nor flexible, so a centralized data store like Redis is used.",
+   "source_page": "66-67",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Race condition: concurrent requests read the same counter value before writing it back, so the count ends up wrong.",
+     "keywords": [
+      "race",
+      "concurrent",
+      "read",
+      "write back"
+     ],
+     "wrong_claims": [
+      "Race conditions only occur on a single thread, so they do not matter when distributed."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Locks would fix it but slow the system down, so Lua scripts or Redis sorted sets are used.",
+     "keywords": [
+      "lock",
+      "lua",
+      "sorted set"
+     ],
+     "wrong_claims": [
+      "Locks are the best fix because they have no performance cost."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Synchronization: multiple rate limiter servers need to share the same data.",
+     "keywords": [
+      "synchron",
+      "multiple",
+      "share"
+     ],
+     "wrong_claims": [
+      "Synchronization is unnecessary because each client always reaches the same limiter."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "Sticky sessions are not advisable; use a centralized data store like Redis.",
+     "keywords": [
+      "sticky",
+      "centralized",
+      "central",
+      "redis"
+     ],
+     "wrong_claims": [
+      "Each rate limiter server should keep its own local counter."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5q1",
+   "question": "What is the rehashing problem with hash(key) mod N?",
+   "answer": "A simple way to balance load is to pick the server with the hash of the key modulo N, where N is the number of servers. That works while the pool is fixed. When a server is added or removed, N changes, so most keys map to different servers, not just those on the affected server. Clients then go to the wrong servers, causing a storm of cache misses.",
+   "source_page": "72-74",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A simple approach picks the server as the hash of the key modulo N, where N is the size of the server pool.",
+     "keywords": [
+      "modulo",
+      "mod",
+      "hash",
+      "n servers"
+     ],
+     "wrong_claims": [
+      "Keys are assigned to servers round-robin as they arrive."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "When servers are added or removed, N changes and most keys are remapped, not just those on the affected server.",
+     "keywords": [
+      "most keys",
+      "redistributed",
+      "remapped",
+      "changes"
+     ],
+     "wrong_claims": [
+      "Only the keys on the removed server move; everything else stays."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Clients then contact the wrong servers, causing a storm of cache misses.",
+     "keywords": [
+      "cache miss",
+      "wrong server",
+      "storm"
+     ],
+     "wrong_claims": [
+      "It causes a storm of cache hits that overloads the network."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5q2",
+   "question": "How does the hash ring work and how is a key's server found?",
+   "answer": "Servers and keys are hashed with the same hash function, such as SHA-1, onto a ring formed by joining the two ends of the hash space, and no modulo is used. To find a key's server, go clockwise from the key's position on the ring until you reach a server.",
+   "source_page": "75-77",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The hash space is joined into a ring, and servers and keys are hashed onto it with the same hash function, with no modulo operation.",
+     "keywords": [
+      "ring",
+      "sha-1",
+      "hash space",
+      "no modulo"
+     ],
+     "wrong_claims": [
+      "Servers sit on the ring but keys are assigned by hash modulo the server count."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "To find a key's server, go clockwise from the key's position to the first server.",
+     "keywords": [
+      "clockwise",
+      "first server"
+     ],
+     "wrong_claims": [
+      "Go counter-clockwise from the key to the first server."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5q3",
+   "question": "What happens to the keys when a server is added to or removed from the ring?",
+   "answer": "When a server is added, only a fraction of the keys must move: the keys between the new server and the previous server, going anticlockwise, are redistributed to the new server. When a server is removed, only its keys move, to the next server clockwise. The rest are unaffected.",
+   "source_page": "77-78, 82-83",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Adding a server moves only a fraction of the keys: those between the new server and the previous server going anticlockwise.",
+     "keywords": [
+      "fraction",
+      "only",
+      "between",
+      "anticlockwise",
+      "affected"
+     ],
+     "wrong_claims": [
+      "Adding a server forces every key to be rehashed."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Removing a server remaps only its keys, to the next server clockwise.",
+     "keywords": [
+      "removed",
+      "next server",
+      "only its keys"
+     ],
+     "wrong_claims": [
+      "Removing a server remaps all the keys on the ring."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5q4",
+   "question": "What two issues does the basic consistent hashing approach have?",
+   "answer": "First, it is impossible to keep the partitions the same size when servers are added or removed; one server's partition can become twice as large as the others. Second, the key distribution on the ring can be non-uniform, so one server may hold most of the keys while others hold none.",
+   "source_page": "79-80",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Partition sizes cannot be kept equal when servers are added or removed, so one partition can become much larger.",
+     "keywords": [
+      "partition",
+      "same size",
+      "equal",
+      "uneven",
+      "twice"
+     ],
+     "wrong_claims": [
+      "Partition sizes always stay equal because the hash function is uniform."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Key distribution on the ring can be non-uniform, so some servers get most keys and others none.",
+     "keywords": [
+      "non-uniform",
+      "uneven",
+      "most of the keys",
+      "none"
+     ],
+     "wrong_claims": [
+      "The distribution is always perfectly even with a good hash function."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5q5",
+   "question": "What are virtual nodes and what tradeoff do they involve?",
+   "answer": "Virtual nodes solve the two problems. Each real server is represented by multiple virtual nodes on the ring, so it owns multiple partitions, and a key goes clockwise to the first virtual node, which refers to a real server. With more virtual nodes the distribution is more balanced because the standard deviation gets smaller, but more space is needed to store virtual node data, so it is a tradeoff.",
+   "source_page": "80-82",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Each server is represented by multiple virtual nodes on the ring, owning multiple partitions; a key goes clockwise to the first virtual node.",
+     "keywords": [
+      "virtual node",
+      "replicas",
+      "multiple partitions"
+     ],
+     "wrong_claims": [
+      "Virtual nodes are extra servers you must pay for."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "More virtual nodes give a more balanced distribution, since the standard deviation gets smaller.",
+     "keywords": [
+      "balanced",
+      "standard deviation",
+      "more virtual nodes"
+     ],
+     "wrong_claims": [
+      "More virtual nodes make the distribution less balanced."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "The tradeoff is that more virtual nodes need more space to store.",
+     "keywords": [
+      "tradeoff",
+      "trade-off",
+      "space",
+      "memory"
+     ],
+     "wrong_claims": [
+      "Virtual nodes cost nothing, so use as many as possible."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5q6",
+   "question": "What are the benefits of consistent hashing, and where is it used?",
+   "answer": "It minimizes the keys redistributed when servers are added or removed, makes horizontal scaling easy because data is spread more evenly, and mitigates the hotspot key problem, such as celebrity data landing on the same shard. It is used in Amazon's Dynamo, Apache Cassandra, Discord, the Akamai CDN and the Maglev load balancer.",
+   "source_page": "85",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It minimizes the number of keys redistributed when servers are added or removed.",
+     "keywords": [
+      "minimize",
+      "fewer keys",
+      "redistributed",
+      "moved"
+     ],
+     "wrong_claims": [
+      "It redistributes all keys evenly each time to stay balanced."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "It makes horizontal scaling easy because data is more evenly distributed.",
+     "keywords": [
+      "horizontal",
+      "scale",
+      "evenly"
+     ],
+     "wrong_claims": [
+      "It makes horizontal scaling harder because of the ring."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It mitigates hotspot keys by spreading popular data across shards.",
+     "keywords": [
+      "hotspot",
+      "celebrity",
+      "shard"
+     ],
+     "wrong_claims": [
+      "It concentrates popular keys on one shard for faster access."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "It is used in real systems such as Dynamo, Cassandra, Discord, Akamai and Maglev.",
+     "keywords": [
+      "dynamo",
+      "cassandra",
+      "discord",
+      "akamai",
+      "maglev"
+     ],
+     "wrong_claims": [
+      "It is only a theoretical idea; no production system uses it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q1",
+   "question": "Why is a single-server key-value store not enough, and what can be done before going distributed?",
+   "answer": "On a single server you can keep key-value pairs in an in-memory hash table, but memory runs out. Two optimizations are compressing the data and keeping only frequently used data in memory with the rest on disk. Even so a single server reaches capacity quickly, so a distributed key-value store, also called a distributed hash table, is needed.",
+   "source_page": "89-90",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A single-server store keeps the pairs in an in-memory hash table.",
+     "keywords": [
+      "hash table",
+      "memory"
+     ],
+     "wrong_claims": [
+      "A single-server store keeps everything on disk in a B-tree only."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Optimizations: compress the data, and keep only frequently used data in memory with the rest on disk.",
+     "keywords": [
+      "compress",
+      "disk",
+      "frequently"
+     ],
+     "wrong_claims": [
+      "Store everything uncompressed in memory for speed."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "A single server still hits capacity quickly, so a distributed key-value store (distributed hash table) is needed.",
+     "keywords": [
+      "distributed",
+      "capacity"
+     ],
+     "wrong_claims": [
+      "A single server can scale to any size, so distribution is never needed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q2",
+   "question": "Explain the CAP theorem.",
+   "answer": "The CAP theorem says a distributed system cannot simultaneously provide more than two of consistency, availability and partition tolerance. Consistency means all clients see the same data at the same time, availability means any request gets a response even if some nodes are down, and partition tolerance means the system keeps working despite network breaks between nodes. Since network failures are unavoidable, a real system must tolerate partitions, so a CA system cannot exist in the real world.",
+   "source_page": "90-91",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A distributed system cannot guarantee more than two of consistency, availability and partition tolerance at once.",
+     "keywords": [
+      "two of",
+      "cap",
+      "can't have all three",
+      "cannot have all three"
+     ],
+     "wrong_claims": [
+      "A distributed system can have all three guarantees at once if designed carefully."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Consistency: all clients see the same data at once. Availability: every request gets a response even if nodes are down. Partition tolerance: it keeps working despite network breaks.",
+     "keywords": [
+      "same data",
+      "response",
+      "network"
+     ],
+     "wrong_claims": [
+      "Availability means all clients see the same data at the same time."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Network partitions are unavoidable, so real systems must tolerate them and a CA system cannot exist in practice.",
+     "keywords": [
+      "unavoidable",
+      "ca"
+     ],
+     "wrong_claims": [
+      "CA systems are the most common in the real world because networks are reliable."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q3",
+   "question": "What is the difference between a CP system and an AP system during a network partition?",
+   "answer": "When a partition happens you must choose. A CP system keeps consistency by blocking writes to the affected nodes, sacrificing availability, which suits banks where the balance must be up to date. An AP system stays available and keeps accepting reads and writes even though it might return stale data, and it syncs once the partition is resolved.",
+   "source_page": "91-92",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A CP system keeps consistency by blocking writes or returning errors during a partition, sacrificing availability; banks are an example.",
+     "keywords": [
+      "cp",
+      "block",
+      "bank",
+      "error"
+     ],
+     "wrong_claims": [
+      "CP systems keep accepting writes on every node and reconcile later."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "An AP system stays available and keeps accepting reads and writes, possibly returning stale data, and syncs when the partition is resolved.",
+     "keywords": [
+      "ap",
+      "stale",
+      "accept",
+      "sync"
+     ],
+     "wrong_claims": [
+      "AP systems refuse requests to avoid returning stale data."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q4",
+   "question": "How is data partitioned and replicated in the key-value store?",
+   "answer": "Data is partitioned with consistent hashing, which gives automatic scaling and heterogeneity, where servers with higher capacity get more virtual nodes. For replication, data is copied asynchronously to N servers: walk clockwise from the key's position and pick the first N unique servers. Replicas should be placed in distinct data centers for reliability.",
+   "source_page": "93-94",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Partition with consistent hashing, which scales automatically and gives more virtual nodes to higher-capacity servers.",
+     "keywords": [
+      "consistent hashing",
+      "virtual nodes",
+      "capacity"
+     ],
+     "wrong_claims": [
+      "Data is partitioned by range using a central lookup table with fixed server assignments."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Replicate to N servers by walking clockwise from the key and choosing the first N unique servers.",
+     "keywords": [
+      "n servers",
+      "clockwise",
+      "unique"
+     ],
+     "wrong_claims": [
+      "Replication picks N servers at random regardless of the ring."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Place replicas in distinct data centers for reliability.",
+     "keywords": [
+      "data center",
+      "distinct",
+      "different"
+     ],
+     "wrong_claims": [
+      "All replicas should be in the same data center to minimize latency."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q5",
+   "question": "Explain quorum consensus with N, W and R.",
+   "answer": "N is the number of replicas, W is the write quorum, and R is the read quorum. A write succeeds once W replicas acknowledge it, and a read waits for at least R responses. If W plus R is greater than N, strong consistency is guaranteed, because at least one overlapping node has the latest data. A smaller W or R is faster but less consistent; R equal to 1 with W equal to N is optimized for fast reads, and W equal to 1 with R equal to N for fast writes.",
+   "source_page": "95-96",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "N is the number of replicas, W the number of acknowledgements needed for a write, and R the number of responses needed for a read.",
+     "keywords": [
+      "replicas",
+      "write quorum",
+      "read quorum",
+      "acknowledge"
+     ],
+     "wrong_claims": [
+      "W is the number of write threads and R the number of retries."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "If W plus R is greater than N, strong consistency is guaranteed because an overlapping node has the latest data.",
+     "keywords": [
+      "w + r",
+      "greater than n",
+      "overlap",
+      "strong consistency"
+     ],
+     "wrong_claims": [
+      "If W plus R is less than or equal to N then strong consistency is guaranteed."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "It is a tradeoff: small W or R is fast but less consistent, larger is more consistent but slower.",
+     "keywords": [
+      "tradeoff",
+      "trade-off",
+      "latency",
+      "fast read",
+      "fast write"
+     ],
+     "wrong_claims": [
+      "Larger W and R make the system faster as well as more consistent."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q6",
+   "question": "Describe strong, weak and eventual consistency.",
+   "answer": "Strong consistency means any read returns the most recent write, so a client never sees stale data; it is achieved by blocking new reads and writes until all replicas agree, which hurts availability. Weak consistency means subsequent reads may not see the latest value. Eventual consistency is a form of weak consistency where, given enough time, all updates propagate and replicas converge. Dynamo and Cassandra use eventual consistency, which the chapter recommends.",
+   "source_page": "96",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Strong consistency: reads always return the latest write; achieved by blocking operations until all replicas agree, which hurts availability.",
+     "keywords": [
+      "strong",
+      "latest",
+      "block",
+      "agree"
+     ],
+     "wrong_claims": [
+      "Strong consistency lets replicas accept writes freely and fix conflicts later."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Weak consistency: subsequent reads may not see the latest value.",
+     "keywords": [
+      "weak",
+      "may not"
+     ],
+     "wrong_claims": [
+      "Weak consistency guarantees every read sees the latest value."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Eventual consistency: given enough time all replicas converge; used by Dynamo and Cassandra and recommended.",
+     "keywords": [
+      "eventual",
+      "converge",
+      "dynamo",
+      "cassandra"
+     ],
+     "wrong_claims": [
+      "Eventual consistency guarantees every read sees the latest write immediately."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q7",
+   "question": "What is a vector clock and what are its downsides?",
+   "answer": "A vector clock is a set of server and version pairs attached to a data item, used to check whether one version precedes, succeeds or conflicts with another. Version X is an ancestor of Y if every counter in Y is greater than or equal to X's; otherwise they conflict. The downsides are that it adds complexity to the client, which must resolve conflicts, and the pairs can grow rapidly, so a threshold removes the oldest pairs.",
+   "source_page": "97-99",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A vector clock is a set of server and version pairs attached to a data item, used to detect whether versions precede, succeed or conflict.",
+     "keywords": [
+      "server",
+      "version",
+      "pair",
+      "conflict"
+     ],
+     "wrong_claims": [
+      "A vector clock is a single wall-clock timestamp synchronized across servers."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "X is an ancestor of Y if all counters in Y are greater than or equal to X's; if any counter is lower there is a conflict.",
+     "keywords": [
+      "ancestor",
+      "counters",
+      "greater",
+      "sibling"
+     ],
+     "wrong_claims": [
+      "If any counter in Y is smaller than in X, Y is simply a newer version with no conflict."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Downsides: more complexity for the client to resolve conflicts, and the pairs can grow so the oldest are pruned.",
+     "keywords": [
+      "complexity",
+      "grow",
+      "oldest",
+      "threshold"
+     ],
+     "wrong_claims": [
+      "Vector clocks need no client logic; the server always resolves conflicts automatically."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q8",
+   "question": "How are failures detected in the key-value store?",
+   "answer": "A server is not marked down because one other server says so; at least two independent sources are required. All-to-all multicasting works but is inefficient with many servers, so a decentralized gossip protocol is used. Each node keeps a membership list with heartbeat counters, increments its own, and periodically sends heartbeats to random nodes. If a member's heartbeat has not increased for a predefined period, it is considered offline.",
+   "source_page": "99-101",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "At least two independent sources are needed to mark a server down; all-to-all multicasting is inefficient at scale.",
+     "keywords": [
+      "two independent",
+      "multicast",
+      "inefficient"
+     ],
+     "wrong_claims": [
+      "One report from a single server is enough to mark a node down."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Gossip protocol: each node keeps a membership list with heartbeat counters, increments its own and sends heartbeats to random nodes.",
+     "keywords": [
+      "gossip",
+      "heartbeat",
+      "membership list",
+      "random"
+     ],
+     "wrong_claims": [
+      "In gossip, a central master pings every node and keeps the only membership list."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "A member whose heartbeat has not increased for a predefined period is considered offline.",
+     "keywords": [
+      "not increased",
+      "period",
+      "offline"
+     ],
+     "wrong_claims": [
+      "A node is marked down as soon as one heartbeat is delayed by a millisecond."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q9",
+   "question": "How does the system handle temporary and permanent failures?",
+   "answer": "For temporary failures, a sloppy quorum uses the first W healthy servers for writes and the first R healthy servers for reads on the ring, ignoring offline ones. Another server handles requests meanwhile and hands the data back when the original recovers, which is called hinted handoff. For permanent failures an anti-entropy protocol keeps replicas in sync using Merkle trees, which compare root hashes and walk down to find only the out-of-sync buckets, so the data transferred is proportional to the differences.",
+   "source_page": "101-103",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "For temporary failures a sloppy quorum uses the first W or R healthy servers on the ring and ignores offline ones.",
+     "keywords": [
+      "sloppy quorum",
+      "healthy"
+     ],
+     "wrong_claims": [
+      "A strict quorum is always enforced and requests block until the failed server returns."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Hinted handoff: another server handles requests temporarily and hands the data back when the original recovers.",
+     "keywords": [
+      "hinted handoff",
+      "hand back",
+      "temporarily"
+     ],
+     "wrong_claims": [
+      "A temporary replacement server keeps the data permanently and the original is discarded."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "For permanent failures, anti-entropy with Merkle trees compares hashes top-down so only the differing buckets are synchronized.",
+     "keywords": [
+      "anti-entropy",
+      "merkle",
+      "hash tree",
+      "buckets"
+     ],
+     "wrong_claims": [
+      "Anti-entropy copies the entire data set between replicas every time."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6q10",
+   "question": "Describe the write path and the read path of the key-value store.",
+   "answer": "On a write, the request is first persisted in a commit log, the data is saved in the memory cache, and when the cache is full or reaches a threshold the data is flushed to an SSTable on disk. On a read, the node first checks the memory cache and returns the data if found. If not, it uses a bloom filter to work out which SSTables might contain the key, retrieves the data from them and returns it.",
+   "source_page": "105-107",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Write path: persist in a commit log, save to the memory cache, and flush to an SSTable on disk when the cache is full.",
+     "keywords": [
+      "commit log",
+      "memory cache",
+      "sstable",
+      "flush"
+     ],
+     "wrong_claims": [
+      "Writes go straight to SSTables on disk; the commit log is only used for reads."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Read path: check the memory cache first; if missing, use a bloom filter to find which SSTables may hold the key, then return the data from them.",
+     "keywords": [
+      "bloom filter",
+      "sstable",
+      "memory first",
+      "cache first"
+     ],
+     "wrong_claims": [
+      "Reads always scan every SSTable on disk, with no bloom filter."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7q1",
+   "question": "Why doesn't a database auto_increment work for IDs in a distributed system, and what are the requirements?",
+   "answer": "A single database's auto_increment does not work in a distributed environment because one database server is not large enough, and generating unique IDs across multiple databases with minimal delay is hard. The requirements are IDs that are unique, numerical only, fit in 64 bits, ordered by date, and generated at over 10,000 per second.",
+   "source_page": "110-111",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "auto_increment fails because one database server is not large enough and generating unique IDs across multiple databases with minimal delay is hard.",
+     "keywords": [
+      "auto_increment",
+      "auto increment",
+      "single database",
+      "not large enough",
+      "multiple"
+     ],
+     "wrong_claims": [
+      "auto_increment is fine in a distributed system; the only problem is that IDs are too short."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "The requirements: unique, numerical only, fit in 64 bits, ordered by date, and over 10,000 IDs per second.",
+     "keywords": [
+      "64-bit",
+      "64 bit",
+      "unique",
+      "numerical",
+      "ordered",
+      "10,000"
+     ],
+     "wrong_claims": [
+      "IDs must be 128-bit and do not need to be sortable."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7q2",
+   "question": "How does multi-master replication generate IDs, and what are its drawbacks?",
+   "answer": "Multi-master replication uses each database's auto_increment but increases the next ID by k, the number of database servers, instead of by 1. It scales with the number of servers, but it is hard to scale across multiple data centers, IDs do not go up with time across servers, and it does not scale well when servers are added or removed.",
+   "source_page": "112",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It uses auto_increment but increases the next ID by k, the number of database servers, instead of by 1.",
+     "keywords": [
+      "k",
+      "number of servers",
+      "instead of one",
+      "step"
+     ],
+     "wrong_claims": [
+      "Each server increments by 1 from a random starting number."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Drawbacks: hard to scale across data centers, IDs do not rise with time across servers, and poor handling when servers are added or removed.",
+     "keywords": [
+      "data center",
+      "time",
+      "added or removed",
+      "add or remove"
+     ],
+     "wrong_claims": [
+      "IDs always increase with time across all servers, which is its main advantage."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7q3",
+   "question": "What are the pros and cons of using UUIDs?",
+   "answer": "A UUID is a 128-bit number that each server can generate independently, so no coordination or synchronization is needed and it is easy to scale. Collisions are extremely unlikely: generating a billion per second for about 100 years gives only a 50 percent chance of one duplicate. The downsides are that it is 128 bits when we need 64, IDs do not go up with time, and they could be non-numeric.",
+   "source_page": "112-113",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A UUID is a 128-bit number each server generates independently, with no coordination, so it scales easily.",
+     "keywords": [
+      "128",
+      "independent",
+      "no coordination",
+      "without coordination"
+     ],
+     "wrong_claims": [
+      "UUIDs need a central coordinator that hands out ranges."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "The chance of a collision is extremely low.",
+     "keywords": [
+      "collision",
+      "duplicate",
+      "billion",
+      "unlikely"
+     ],
+     "wrong_claims": [
+      "Collisions are common at scale, so a uniqueness check is needed on every insert."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Downsides: 128 bits instead of 64, IDs do not go up with time, and they could be non-numeric.",
+     "keywords": [
+      "64",
+      "time",
+      "non-numeric",
+      "numeric"
+     ],
+     "wrong_claims": [
+      "UUIDs are 64-bit, numeric and sortable by time, which fits the requirements perfectly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7q4",
+   "question": "How does a ticket server generate IDs, and what is its main drawback?",
+   "answer": "A ticket server uses one centralized auto_increment database, as Flickr did. The IDs are numeric and it is easy to implement, working for small to medium applications. The main drawback is a single point of failure; adding multiple ticket servers introduces data synchronization challenges.",
+   "source_page": "113-114",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "It uses a single centralized auto_increment database, as Flickr did; IDs are numeric and it is easy for small to medium applications.",
+     "keywords": [
+      "ticket server",
+      "centralized",
+      "flickr",
+      "numeric"
+     ],
+     "wrong_claims": [
+      "Ticket servers are fully decentralized, with each web server making its own tickets."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Its drawback is a single point of failure; multiple ticket servers bring data synchronization challenges.",
+     "keywords": [
+      "single point of failure",
+      "synchronization",
+      "sync"
+     ],
+     "wrong_claims": [
+      "A ticket server has no single point of failure because it is replicated by default."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7q5",
+   "question": "What is the bit layout of a Twitter snowflake ID?",
+   "answer": "A snowflake ID is 64 bits: 1 sign bit that is always 0, a 41-bit timestamp in milliseconds since a custom epoch, 5 bits of datacenter ID giving 32 datacenters, 5 bits of machine ID giving 32 machines per datacenter, and a 12-bit sequence number that is incremented for every ID generated on that machine and reset to 0 every millisecond.",
+   "source_page": "114",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "One sign bit, always 0, followed by a 41-bit timestamp in milliseconds since an epoch.",
+     "keywords": [
+      "1 bit",
+      "sign",
+      "41",
+      "timestamp",
+      "milliseconds"
+     ],
+     "wrong_claims": [
+      "41 bits are the machine ID and the timestamp is only 5 bits."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "A 5-bit datacenter ID (32 datacenters) and a 5-bit machine ID (32 machines per datacenter).",
+     "keywords": [
+      "5 bits",
+      "datacenter",
+      "machine",
+      "32"
+     ],
+     "wrong_claims": [
+      "The datacenter ID takes 12 bits and the machine ID takes 1 bit."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "A 12-bit sequence number, incremented per ID on a machine and reset to 0 every millisecond.",
+     "keywords": [
+      "12 bits",
+      "sequence",
+      "reset",
+      "4096"
+     ],
+     "wrong_claims": [
+      "The sequence number is reset to 0 every second."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7q6",
+   "question": "What are the key details of the snowflake deep dive: timestamp lifetime, sequence capacity, and clock issues?",
+   "answer": "The 41-bit timestamp lasts about 69 years from the epoch, so a custom epoch close to today delays the overflow. The 12-bit sequence number allows 4096 IDs per millisecond on one machine. Datacenter and machine IDs are chosen at startup and generally fixed, and an accidental change can cause ID conflicts. Clock synchronization is a concern, and Network Time Protocol is the most popular solution.",
+   "source_page": "115-117",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The 41-bit timestamp lasts about 69 years, and a custom epoch close to today delays overflow.",
+     "keywords": [
+      "69 years",
+      "epoch",
+      "overflow"
+     ],
+     "wrong_claims": [
+      "The 41-bit timestamp lasts only about 69 days."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "The 12-bit sequence number allows 4096 IDs per millisecond on one machine.",
+     "keywords": [
+      "4096",
+      "per millisecond"
+     ],
+     "wrong_claims": [
+      "A machine can generate only about 40 IDs per millisecond."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Datacenter and machine IDs are fixed at startup; an accidental change can cause ID conflicts.",
+     "keywords": [
+      "startup",
+      "fixed",
+      "conflict"
+     ],
+     "wrong_claims": [
+      "Machine IDs are reassigned dynamically on every request."
+     ]
+    },
+    {
+     "id": "k4",
+     "text": "Clock synchronization is a concern, and NTP is the common solution.",
+     "keywords": [
+      "clock",
+      "ntp",
+      "network time protocol",
+      "synchronization"
+     ],
+     "wrong_claims": [
+      "Clock synchronization is not an issue because all clocks are identical."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8q1",
+   "question": "Walk through the back-of-the-envelope estimation for the URL shortener.",
+   "answer": "With 100 million URLs generated per day, writes are about 1160 per second. With a read to write ratio of 10 to 1, reads are about 11,600 per second. Running for 10 years means 365 billion records, and at an average URL length of 100 bytes that is about 365 terabytes of storage.",
+   "source_page": "120",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Writes: 100 million per day is about 1160 per second.",
+     "keywords": [
+      "1160",
+      "writes per second",
+      "1,160"
+     ],
+     "wrong_claims": [
+      "Writes are about 116,000 per second."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Reads: with a 10 to 1 read to write ratio, about 11,600 per second.",
+     "keywords": [
+      "11,600",
+      "11600",
+      "ten to one",
+      "10:1"
+     ],
+     "wrong_claims": [
+      "Reads are about 1160 per second, the same as writes."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Over 10 years that is 365 billion records, about 365 TB at 100 bytes each.",
+     "keywords": [
+      "365 billion",
+      "365 terabytes",
+      "365 tb"
+     ],
+     "wrong_claims": [
+      "Storage over 10 years is only about 36 gigabytes."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8q2",
+   "question": "What API endpoints does a URL shortener need, and how do 301 and 302 redirects differ?",
+   "answer": "Two REST endpoints: a POST to api/v1/data/shorten with the long URL, returning the short URL, and a GET to api/v1/shortUrl, which returns the long URL for the redirect. A 301 redirect is permanent, so the browser caches it and later requests skip the shortener, which reduces server load. A 302 redirect is temporary, so every request goes through the shortener first, which is better for analytics.",
+   "source_page": "121-122",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A POST endpoint takes the long URL and returns the short URL; a GET endpoint returns the long URL for redirection.",
+     "keywords": [
+      "post",
+      "get",
+      "shorten",
+      "endpoint"
+     ],
+     "wrong_claims": [
+      "Both operations use a single DELETE endpoint."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "A 301 redirect is permanent, so the browser caches it and later requests skip the shortener, reducing server load.",
+     "keywords": [
+      "301",
+      "permanent",
+      "caches",
+      "load"
+     ],
+     "wrong_claims": [
+      "A 301 redirect is temporary, so every request goes through the shortener."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "A 302 redirect is temporary, so every request hits the shortener, which is better for analytics.",
+     "keywords": [
+      "302",
+      "temporary",
+      "analytics"
+     ],
+     "wrong_claims": [
+      "A 302 redirect is cached forever by the browser, which hides click data."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8q3",
+   "question": "How long should the hash value of a short URL be, and why?",
+   "answer": "The hash value uses the characters 0-9, a-z and A-Z, which is 62 possible characters. We need the smallest n such that 62 to the power n is at least 365 billion. With n equal to 7, 62 to the 7 is about 3.5 trillion, which is more than enough, so the length is 7.",
+   "source_page": "124-125",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The hash value uses 62 possible characters: 0-9, a-z and A-Z.",
+     "keywords": [
+      "62",
+      "characters"
+     ],
+     "wrong_claims": [
+      "There are 36 possible characters, digits and lowercase letters only."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Find the smallest n such that 62 to the n is at least 365 billion.",
+     "keywords": [
+      "smallest",
+      "62 to the n",
+      "365 billion"
+     ],
+     "wrong_claims": [
+      "Find n so that 62 times n is at least 365 billion."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "With n equal to 7, 62 to the 7 is about 3.5 trillion, so the length is 7.",
+     "keywords": [
+      "7",
+      "seven",
+      "3.5 trillion"
+     ],
+     "wrong_claims": [
+      "n equal to 5 is enough, giving about 900 million."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8q4",
+   "question": "Compare hash plus collision resolution with base 62 conversion for creating the short URL.",
+   "answer": "Hash plus collision resolution takes a well-known hash such as CRC32, MD5 or SHA-1 and keeps the first 7 characters, which can collide. Collisions are resolved by recursively appending a predefined string until there is no collision, but checking the database every time is expensive, so bloom filters can help. Base 62 conversion instead converts a unique ID to base 62, for example 11157 becomes 2TX, and needs no collision handling.",
+   "source_page": "125-127",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Hash plus collision resolution: use CRC32, MD5 or SHA-1, keep the first 7 characters, and append a predefined string on collision.",
+     "keywords": [
+      "crc32",
+      "md5",
+      "sha-1",
+      "first 7",
+      "collision"
+     ],
+     "wrong_claims": [
+      "A full SHA-1 hash is used as is, since it is short enough."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Checking the database for collisions is expensive, and bloom filters can improve performance.",
+     "keywords": [
+      "bloom filter",
+      "expensive",
+      "database"
+     ],
+     "wrong_claims": [
+      "Bloom filters guarantee no false positives and replace the database entirely."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Base 62 conversion turns a unique ID into a base 62 string, with no collision handling needed.",
+     "keywords": [
+      "base 62",
+      "convert",
+      "id"
+     ],
+     "wrong_claims": [
+      "Base 62 conversion needs collision resolution on every request."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8q5",
+   "question": "Describe the URL shortening flow.",
+   "answer": "The input is the long URL. The system checks whether it is already in the database, and if so returns the stored short URL. If not, the unique ID generator creates a new ID, which is converted to the short URL with base 62, and a new database row with the ID, short URL and long URL is saved.",
+   "source_page": "127-128",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "Check whether the long URL is already in the database, and if so return the stored short URL.",
+     "keywords": [
+      "already",
+      "database",
+      "exists"
+     ],
+     "wrong_claims": [
+      "Always generate a new short URL, even for a long URL already seen."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "If it is new, the unique ID generator creates a new ID.",
+     "keywords": [
+      "unique id",
+      "generator",
+      "new id"
+     ],
+     "wrong_claims": [
+      "The short URL is a random string chosen without any ID."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Convert the ID to the short URL with base 62 and save a row with the ID, short URL and long URL.",
+     "keywords": [
+      "base 62",
+      "save",
+      "row"
+     ],
+     "wrong_claims": [
+      "Convert the ID with MD5 and store only the short URL."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8q6",
+   "question": "Describe the URL redirecting flow.",
+   "answer": "A user clicks a short URL and the load balancer forwards the request to the web servers. If the short URL is in the cache, the long URL is returned directly. If not, it is fetched from the database, and if it is not in the database either, the short URL is likely invalid. The mapping is cached because reads outnumber writes.",
+   "source_page": "129",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "The request goes through the load balancer to the web servers.",
+     "keywords": [
+      "load balancer",
+      "web servers"
+     ],
+     "wrong_claims": [
+      "The request goes straight to the database with no web servers."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Check the cache first and return the long URL if present; otherwise fetch it from the database.",
+     "keywords": [
+      "cache",
+      "database"
+     ],
+     "wrong_claims": [
+      "Always query the database first; the cache is only used for analytics."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "If it is not in the database it is likely an invalid short URL; the cache helps because reads outnumber writes.",
+     "keywords": [
+      "invalid",
+      "reads"
+     ],
+     "wrong_claims": [
+      "If it is missing from the database, the system creates a new mapping automatically."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8q7",
+   "question": "What extra talking points can you raise at the end of the URL shortener interview?",
+   "answer": "You can add a rate limiter to stop malicious users from sending huge numbers of shortening requests, filtering by IP address. You can scale the stateless web tier by adding servers, and scale the database with replication and sharding. You can also integrate analytics, such as how many people click a link and when.",
+   "source_page": "130",
+   "key_points": [
+    {
+     "id": "k1",
+     "text": "A rate limiter can stop malicious users from flooding shortening requests, filtering by IP address or other rules.",
+     "keywords": [
+      "rate limiter",
+      "malicious",
+      "ip"
+     ],
+     "wrong_claims": [
+      "A rate limiter is not needed because short URLs cannot be abused."
+     ]
+    },
+    {
+     "id": "k2",
+     "text": "Scale the stateless web tier by adding servers, and the database with replication and sharding.",
+     "keywords": [
+      "stateless",
+      "replication",
+      "sharding"
+     ],
+     "wrong_claims": [
+      "The web tier is stateful, so scaling it requires sticky sessions."
+     ]
+    },
+    {
+     "id": "k3",
+     "text": "Add analytics, for example how many people click a link and when.",
+     "keywords": [
+      "analytics",
+      "clicks"
+     ],
+     "wrong_claims": [
+      "Analytics is not useful for a URL shortener."
+     ]
+    }
+   ]
+  }
+ ]
+}
