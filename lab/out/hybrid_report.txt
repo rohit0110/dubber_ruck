@@ -1,0 +1,11 @@
+| Policy | Answers sent to the API | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|---|
+| local only (never calls the API) | 0% | 0.805 | 0.776 | 0.835 | 0.805 | 105/149 / 88/149 | 83 |
+| send when any point's confidence < 0.6 | 36% | 0.901 | 0.912 | 0.924 | 0.918 | 129/149 / 113/149 | 37 |
+| send when any point's confidence < 0.7 | 56% | 0.928 | 0.945 | 0.942 | 0.943 | 134/149 / 123/149 | 26 |
+| send when any point's confidence < 0.8 | 70% | 0.949 | 0.962 | 0.969 | 0.966 | 142/149 / 130/149 | 16 |
+| send when any point's confidence < 0.9 | 90% | 0.969 | 0.993 | 0.983 | 0.988 | 146/149 / 135/149 | 7 |
+| send when any point's confidence < 0.95 | 97% | 0.975 | 0.997 | 0.99 | 0.993 | 148/149 / 138/149 | 6 |
+| send when the local check flags any problem | 70% | 0.954 | 1.0 | 0.928 | 0.963 | 131/149 / 121/149 | 6 |
+| send when it flags a problem OR any confidence < 0.8 | 88% | 0.973 | 0.997 | 0.983 | 0.99 | 146/149 / 136/149 | 6 |
+| always send to the API | 100% | 0.975 | 0.997 | 0.99 | 0.993 | 148/149 / 138/149 | 6 |

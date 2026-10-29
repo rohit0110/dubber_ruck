@@ -1,0 +1,19 @@
+2026-10-28 04:55:57 watchdog start warn=42.0 kill=30.0 cpu_kill=85.0 dry=True
+2026-10-28 04:55:57 bat=38.7C cpu=65C health=GOOD charge=99% ok
+2026-10-28 04:55:57 WOULD KILL: battery 38.7C >= 30.0C
+2026-10-28 04:56:05 watchdog start warn=42.0 kill=45.0 cpu_kill=85.0 dry=False
+2026-10-28 04:56:05 bat=38.7C cpu=55C health=GOOD charge=99% ok
+2026-10-28 04:57:05 bat=38.7C cpu=61C health=GOOD charge=98% ok
+2026-10-28 04:58:05 bat=38.7C cpu=55C health=GOOD charge=98% ok
+2026-10-28 04:59:05 bat=38.7C cpu=62C health=GOOD charge=98% ok
+2026-10-28 05:00:05 bat=39.0C cpu=63C health=GOOD charge=98% ok
+2026-10-28 05:01:05 bat=39.0C cpu=59C health=GOOD charge=98% ok
+2026-10-28 05:02:05 bat=39.0C cpu=59C health=GOOD charge=98% ok
+2026-10-28 05:03:05 bat=39.0C cpu=59C health=GOOD charge=98% ok
+2026-10-28 05:04:06 bat=39.0C cpu=57C health=GOOD charge=98% ok
+2026-10-28 05:05:06 bat=39.0C cpu=61C health=GOOD charge=98% ok
+2026-10-28 05:06:06 bat=39.0C cpu=62C health=GOOD charge=98% ok
+2026-10-28 05:07:06 bat=39.0C cpu=56C health=GOOD charge=98% ok
+2026-10-28 05:08:06 bat=39.0C cpu=55C health=GOOD charge=98% ok
+2026-10-28 05:09:06 bat=38.7C cpu=58C health=GOOD charge=98% ok
+2026-10-28 05:10:06 bat=38.2C cpu=55C health=GOOD charge=98% ok

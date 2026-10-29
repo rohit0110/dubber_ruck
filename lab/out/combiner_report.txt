@@ -1,0 +1,97 @@
+## Reference: rule-based stage 1 (B3-04), same folds
+| Model | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| EKM keyword boost + wrong_claims (rules) | 0.886 | 0.831 | 0.9 | 0.864 | 24/39 / 20/39 | 7 |
+
+## Logistic regression, leave-one-chapter-out
+| Model | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| base only (similarity + keyword hits) | 0.767 | 0.685 | 0.954 | 0.798 | 29/39 / 22/39 | 97 |
+| + wrong_claims | 0.84 | 0.757 | 0.941 | 0.839 | 31/39 / 29/39 | 55 |
+| + wrong_claims + numbers | 0.836 | 0.751 | 0.936 | 0.833 | 30/39 / 28/39 | 57 |
+| + wrong_claims + numbers + negation | 0.841 | 0.765 | 0.936 | 0.842 | 30/39 / 27/39 | 55 |
+| all cheap features (+ antonyms) | 0.845 | 0.769 | 0.941 | 0.846 | 31/39 / 28/39 | 53 |
+
+## Ablation: all cheap features minus one group
+| Model | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| without base | 0.816 | 0.733 | 0.913 | 0.813 | 33/39 / 29/39 | 53 |
+| without wrong_claims | 0.809 | 0.741 | 0.941 | 0.829 | 27/39 / 20/39 | 72 |
+| without numbers | 0.855 | 0.774 | 0.954 | 0.855 | 32/39 / 30/39 | 48 |
+| without negation | 0.843 | 0.756 | 0.936 | 0.837 | 30/39 / 28/39 | 53 |
+| without antonyms | 0.841 | 0.765 | 0.936 | 0.842 | 30/39 / 27/39 | 55 |
+
+## Regularization and a non-linear model (all cheap features)
+| Model | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| LR C=0.1 | 0.857 | 0.78 | 0.954 | 0.858 | 32/39 / 30/39 | 48 |
+| LR C=1 | 0.845 | 0.769 | 0.941 | 0.846 | 31/39 / 28/39 | 53 |
+| LR C=10 | 0.845 | 0.769 | 0.941 | 0.846 | 31/39 / 27/39 | 52 |
+| LR C=1, no class weights | 0.888 | 0.871 | 0.863 | 0.867 | 22/39 / 18/39 | 11 |
+| gradient boosting, depth 3 | 0.897 | 0.857 | 0.904 | 0.88 | 27/39 / 24/39 | 17 |
+
+## With zero-shot NLI scores as extra features (separating what depends on the authored wrong claims)
+| Model | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| cheap features, no wrong claims | 0.809 | 0.741 | 0.941 | 0.829 | 27/39 / 20/39 | 72 |
+| cheap features + wrong-claim embedding match | 0.845 | 0.769 | 0.941 | 0.846 | 31/39 / 28/39 | 53 |
+| NO wrong-claim info: base + NLI key point (P1, P2) | 0.834 | 0.765 | 0.95 | 0.847 | 29/39 / 24/39 | 63 |
+| NO wrong-claim info: cheap + NLI key point (P1, P2) | 0.843 | 0.777 | 0.941 | 0.851 | 28/39 / 23/39 | 59 |
+| NO wrong-claim info: cheap + NLI (P1, P2), gradient boosting | 0.893 | 0.886 | 0.886 | 0.886 | 24/39 / 18/39 | 20 |
+| wrong-claim embedding match + NLI key point (P1, P2) | 0.881 | 0.81 | 0.954 | 0.876 | 33/39 / 30/39 | 39 |
+| everything incl. NLI sentence vs wrong claim (P3) | 0.94 | 0.887 | 0.973 | 0.928 | 37/39 / 36/39 | 10 |
+| base + NLI incl. P3 | 0.943 | 0.895 | 0.977 | 0.934 | 38/39 / 37/39 | 10 |
+
+## Abstention: say 'unsure' below a confidence bar (cheap features incl. wrong-claim embedding match, no NLI)
+| Confidence bar | Answered | Accuracy on answered | Points that needed feedback but were called 'covered' | Flag recall (unsure counts as flagged) | Flag precision |
+|---|---|---|---|---|---|
+| 0.0 | 100% | 0.845 | 13 of 219 | 0.941 | 0.769 |
+| 0.5 | 98% | 0.860 | 11 of 219 | 0.950 | 0.765 |
+| 0.6 | 91% | 0.892 | 9 of 219 | 0.959 | 0.727 |
+| 0.7 | 84% | 0.909 | 4 of 219 | 0.982 | 0.689 |
+| 0.8 | 73% | 0.924 | 3 of 219 | 0.986 | 0.619 |
+| 0.9 | 57% | 0.948 | 1 of 219 | 0.995 | 0.545 |
+
+## Failures by answer variant (same model)
+| Variant | Covered points falsely flagged | Not-covered points called covered |
+|---|---|---|
+| A | 9 / 116 | 0 / 0 |
+| B | 11 / 52 | 1 / 64 |
+| C | 12 / 77 | 8 / 39 |
+| D | 0 / 0 | 4 / 116 |
+| E | 17 / 26 | 0 / 0 |
+| F | 11 / 38 | 0 / 0 |
+| G | 1 / 21 | 0 / 0 |
+| H | 1 / 31 | 0 / 0 |
+
+## Abstention: say 'unsure' below a confidence bar (NO wrong-claim info at all: cheap + NLI key point (P1, P2))
+| Confidence bar | Answered | Accuracy on answered | Points that needed feedback but were called 'covered' | Flag recall (unsure counts as flagged) | Flag precision |
+|---|---|---|---|---|---|
+| 0.0 | 100% | 0.843 | 13 of 219 | 0.941 | 0.777 |
+| 0.5 | 97% | 0.861 | 11 of 219 | 0.950 | 0.762 |
+| 0.6 | 90% | 0.883 | 8 of 219 | 0.963 | 0.730 |
+| 0.7 | 81% | 0.901 | 6 of 219 | 0.973 | 0.672 |
+| 0.8 | 70% | 0.933 | 5 of 219 | 0.977 | 0.617 |
+| 0.9 | 48% | 0.946 | 3 of 219 | 0.986 | 0.507 |
+
+## Failures by answer variant (same model)
+| Variant | Covered points falsely flagged | Not-covered points called covered |
+|---|---|---|
+| A | 8 / 116 | 0 / 0 |
+| B | 9 / 52 | 0 / 64 |
+| C | 11 / 77 | 11 / 39 |
+| D | 0 / 0 | 2 / 116 |
+| E | 16 / 26 | 0 / 0 |
+| F | 9 / 38 | 0 / 0 |
+| G | 1 / 21 | 0 / 0 |
+| H | 5 / 31 | 0 / 0 |
+
+## Abstention: say 'unsure' below a confidence bar (everything incl. NLI vs wrong claim (P3))
+| Confidence bar | Answered | Accuracy on answered | Points that needed feedback but were called 'covered' | Flag recall (unsure counts as flagged) | Flag precision |
+|---|---|---|---|---|---|
+| 0.0 | 100% | 0.940 | 6 of 219 | 0.973 | 0.887 |
+| 0.5 | 99% | 0.939 | 6 of 219 | 0.973 | 0.877 |
+| 0.6 | 96% | 0.953 | 6 of 219 | 0.973 | 0.866 |
+| 0.7 | 93% | 0.970 | 1 of 219 | 0.995 | 0.858 |
+| 0.8 | 89% | 0.977 | 1 of 219 | 0.995 | 0.826 |
+| 0.9 | 84% | 0.982 | 0 of 219 | 1.000 | 0.779 |

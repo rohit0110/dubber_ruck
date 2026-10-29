@@ -1,0 +1,382 @@
+{
+ "lr: base only (similarity + keyword hits)": {
+  "points": 580,
+  "exact": 0.767,
+  "flag_p": 0.685,
+  "flag_r": 0.954,
+  "flag_f1": 0.798,
+  "contradicted_flagged": "29/39",
+  "contradicted_named": "22/39",
+  "false_contradicted": 97
+ },
+ "lr: + wrong_claims": {
+  "points": 580,
+  "exact": 0.84,
+  "flag_p": 0.757,
+  "flag_r": 0.941,
+  "flag_f1": 0.839,
+  "contradicted_flagged": "31/39",
+  "contradicted_named": "29/39",
+  "false_contradicted": 55
+ },
+ "lr: + wrong_claims + numbers": {
+  "points": 580,
+  "exact": 0.836,
+  "flag_p": 0.751,
+  "flag_r": 0.936,
+  "flag_f1": 0.833,
+  "contradicted_flagged": "30/39",
+  "contradicted_named": "28/39",
+  "false_contradicted": 57
+ },
+ "lr: + wrong_claims + numbers + negation": {
+  "points": 580,
+  "exact": 0.841,
+  "flag_p": 0.765,
+  "flag_r": 0.936,
+  "flag_f1": 0.842,
+  "contradicted_flagged": "30/39",
+  "contradicted_named": "27/39",
+  "false_contradicted": 55
+ },
+ "lr: all cheap features (+ antonyms)": {
+  "points": 580,
+  "exact": 0.845,
+  "flag_p": 0.769,
+  "flag_r": 0.941,
+  "flag_f1": 0.846,
+  "contradicted_flagged": "31/39",
+  "contradicted_named": "28/39",
+  "false_contradicted": 53
+ },
+ "ablation without base": {
+  "points": 580,
+  "exact": 0.816,
+  "flag_p": 0.733,
+  "flag_r": 0.913,
+  "flag_f1": 0.813,
+  "contradicted_flagged": "33/39",
+  "contradicted_named": "29/39",
+  "false_contradicted": 53
+ },
+ "ablation without wrong_claims": {
+  "points": 580,
+  "exact": 0.809,
+  "flag_p": 0.741,
+  "flag_r": 0.941,
+  "flag_f1": 0.829,
+  "contradicted_flagged": "27/39",
+  "contradicted_named": "20/39",
+  "false_contradicted": 72
+ },
+ "ablation without numbers": {
+  "points": 580,
+  "exact": 0.855,
+  "flag_p": 0.774,
+  "flag_r": 0.954,
+  "flag_f1": 0.855,
+  "contradicted_flagged": "32/39",
+  "contradicted_named": "30/39",
+  "false_contradicted": 48
+ },
+ "ablation without negation": {
+  "points": 580,
+  "exact": 0.843,
+  "flag_p": 0.756,
+  "flag_r": 0.936,
+  "flag_f1": 0.837,
+  "contradicted_flagged": "30/39",
+  "contradicted_named": "28/39",
+  "false_contradicted": 53
+ },
+ "ablation without antonyms": {
+  "points": 580,
+  "exact": 0.841,
+  "flag_p": 0.765,
+  "flag_r": 0.936,
+  "flag_f1": 0.842,
+  "contradicted_flagged": "30/39",
+  "contradicted_named": "27/39",
+  "false_contradicted": 55
+ },
+ "model: LR C=0.1": {
+  "points": 580,
+  "exact": 0.857,
+  "flag_p": 0.78,
+  "flag_r": 0.954,
+  "flag_f1": 0.858,
+  "contradicted_flagged": "32/39",
+  "contradicted_named": "30/39",
+  "false_contradicted": 48
+ },
+ "model: LR C=1": {
+  "points": 580,
+  "exact": 0.845,
+  "flag_p": 0.769,
+  "flag_r": 0.941,
+  "flag_f1": 0.846,
+  "contradicted_flagged": "31/39",
+  "contradicted_named": "28/39",
+  "false_contradicted": 53
+ },
+ "model: LR C=10": {
+  "points": 580,
+  "exact": 0.845,
+  "flag_p": 0.769,
+  "flag_r": 0.941,
+  "flag_f1": 0.846,
+  "contradicted_flagged": "31/39",
+  "contradicted_named": "27/39",
+  "false_contradicted": 52
+ },
+ "model: LR C=1, no class weights": {
+  "points": 580,
+  "exact": 0.888,
+  "flag_p": 0.871,
+  "flag_r": 0.863,
+  "flag_f1": 0.867,
+  "contradicted_flagged": "22/39",
+  "contradicted_named": "18/39",
+  "false_contradicted": 11
+ },
+ "model: gradient boosting, depth 3": {
+  "points": 580,
+  "exact": 0.897,
+  "flag_p": 0.857,
+  "flag_r": 0.904,
+  "flag_f1": 0.88,
+  "contradicted_flagged": "27/39",
+  "contradicted_named": "24/39",
+  "false_contradicted": 17
+ },
+ "nli: cheap features, no wrong claims": {
+  "points": 580,
+  "exact": 0.809,
+  "flag_p": 0.741,
+  "flag_r": 0.941,
+  "flag_f1": 0.829,
+  "contradicted_flagged": "27/39",
+  "contradicted_named": "20/39",
+  "false_contradicted": 72
+ },
+ "nli: cheap features + wrong-claim embedding match": {
+  "points": 580,
+  "exact": 0.845,
+  "flag_p": 0.769,
+  "flag_r": 0.941,
+  "flag_f1": 0.846,
+  "contradicted_flagged": "31/39",
+  "contradicted_named": "28/39",
+  "false_contradicted": 53
+ },
+ "nli: NO wrong-claim info: base + NLI key point (P1, P2)": {
+  "points": 580,
+  "exact": 0.834,
+  "flag_p": 0.765,
+  "flag_r": 0.95,
+  "flag_f1": 0.847,
+  "contradicted_flagged": "29/39",
+  "contradicted_named": "24/39",
+  "false_contradicted": 63
+ },
+ "nli: NO wrong-claim info: cheap + NLI key point (P1, P2)": {
+  "points": 580,
+  "exact": 0.843,
+  "flag_p": 0.777,
+  "flag_r": 0.941,
+  "flag_f1": 0.851,
+  "contradicted_flagged": "28/39",
+  "contradicted_named": "23/39",
+  "false_contradicted": 59
+ },
+ "nli: NO wrong-claim info: cheap + NLI (P1, P2), gradient boosting": {
+  "points": 580,
+  "exact": 0.893,
+  "flag_p": 0.886,
+  "flag_r": 0.886,
+  "flag_f1": 0.886,
+  "contradicted_flagged": "24/39",
+  "contradicted_named": "18/39",
+  "false_contradicted": 20
+ },
+ "nli: wrong-claim embedding match + NLI key point (P1, P2)": {
+  "points": 580,
+  "exact": 0.881,
+  "flag_p": 0.81,
+  "flag_r": 0.954,
+  "flag_f1": 0.876,
+  "contradicted_flagged": "33/39",
+  "contradicted_named": "30/39",
+  "false_contradicted": 39
+ },
+ "nli: everything incl. NLI sentence vs wrong claim (P3)": {
+  "points": 580,
+  "exact": 0.94,
+  "flag_p": 0.887,
+  "flag_r": 0.973,
+  "flag_f1": 0.928,
+  "contradicted_flagged": "37/39",
+  "contradicted_named": "36/39",
+  "false_contradicted": 10
+ },
+ "nli: base + NLI incl. P3": {
+  "points": 580,
+  "exact": 0.943,
+  "flag_p": 0.895,
+  "flag_r": 0.977,
+  "flag_f1": 0.934,
+  "contradicted_flagged": "38/39",
+  "contradicted_named": "37/39",
+  "false_contradicted": 10
+ },
+ "abstention: cheap features incl. wrong-claim embedding match, no NLI": [
+  {
+   "tau": 0.0,
+   "answered": 1.0,
+   "accuracy": 0.8448275862068966,
+   "false_reassurance": 13,
+   "flag_recall": 0.9406392694063926,
+   "flag_precision": 0.7686567164179104
+  },
+  {
+   "tau": 0.5,
+   "answered": 0.9758620689655172,
+   "accuracy": 0.8604240282685512,
+   "false_reassurance": 11,
+   "flag_recall": 0.9497716894977168,
+   "flag_precision": 0.7647058823529411
+  },
+  {
+   "tau": 0.6,
+   "answered": 0.906896551724138,
+   "accuracy": 0.8916349809885932,
+   "false_reassurance": 9,
+   "flag_recall": 0.958904109589041,
+   "flag_precision": 0.726643598615917
+  },
+  {
+   "tau": 0.7,
+   "answered": 0.8362068965517241,
+   "accuracy": 0.9092783505154639,
+   "false_reassurance": 4,
+   "flag_recall": 0.9817351598173516,
+   "flag_precision": 0.6891025641025641
+  },
+  {
+   "tau": 0.8,
+   "answered": 0.7275862068965517,
+   "accuracy": 0.9241706161137441,
+   "false_reassurance": 3,
+   "flag_recall": 0.9863013698630136,
+   "flag_precision": 0.6189111747851003
+  },
+  {
+   "tau": 0.9,
+   "answered": 0.5672413793103448,
+   "accuracy": 0.9483282674772037,
+   "false_reassurance": 1,
+   "flag_recall": 0.9954337899543378,
+   "flag_precision": 0.545
+  }
+ ],
+ "abstention: NO wrong-claim info at all: cheap + NLI key point (P1, P2)": [
+  {
+   "tau": 0.0,
+   "answered": 1.0,
+   "accuracy": 0.843103448275862,
+   "false_reassurance": 13,
+   "flag_recall": 0.9406392694063926,
+   "flag_precision": 0.7773584905660378
+  },
+  {
+   "tau": 0.5,
+   "answered": 0.9655172413793104,
+   "accuracy": 0.8607142857142858,
+   "false_reassurance": 11,
+   "flag_recall": 0.9497716894977168,
+   "flag_precision": 0.7619047619047619
+  },
+  {
+   "tau": 0.6,
+   "answered": 0.9017241379310345,
+   "accuracy": 0.8833652007648184,
+   "false_reassurance": 8,
+   "flag_recall": 0.9634703196347032,
+   "flag_precision": 0.7301038062283737
+  },
+  {
+   "tau": 0.7,
+   "answered": 0.8051724137931034,
+   "accuracy": 0.9014989293361885,
+   "false_reassurance": 6,
+   "flag_recall": 0.9726027397260274,
+   "flag_precision": 0.6719242902208202
+  },
+  {
+   "tau": 0.8,
+   "answered": 0.7,
+   "accuracy": 0.9334975369458128,
+   "false_reassurance": 5,
+   "flag_recall": 0.9771689497716894,
+   "flag_precision": 0.6167146974063401
+  },
+  {
+   "tau": 0.9,
+   "answered": 0.47586206896551725,
+   "accuracy": 0.9456521739130435,
+   "false_reassurance": 3,
+   "flag_recall": 0.9863013698630136,
+   "flag_precision": 0.5070422535211268
+  }
+ ],
+ "abstention: everything incl. NLI vs wrong claim (P3)": [
+  {
+   "tau": 0.0,
+   "answered": 1.0,
+   "accuracy": 0.9396551724137931,
+   "false_reassurance": 6,
+   "flag_recall": 0.9726027397260274,
+   "flag_precision": 0.8875
+  },
+  {
+   "tau": 0.5,
+   "answered": 0.993103448275862,
+   "accuracy": 0.9392361111111112,
+   "false_reassurance": 6,
+   "flag_recall": 0.9726027397260274,
+   "flag_precision": 0.8765432098765432
+  },
+  {
+   "tau": 0.6,
+   "answered": 0.9620689655172414,
+   "accuracy": 0.953405017921147,
+   "false_reassurance": 6,
+   "flag_recall": 0.9726027397260274,
+   "flag_precision": 0.8658536585365854
+  },
+  {
+   "tau": 0.7,
+   "answered": 0.9310344827586207,
+   "accuracy": 0.9703703703703703,
+   "false_reassurance": 1,
+   "flag_recall": 0.9954337899543378,
+   "flag_precision": 0.8582677165354331
+  },
+  {
+   "tau": 0.8,
+   "answered": 0.8948275862068965,
+   "accuracy": 0.976878612716763,
+   "false_reassurance": 1,
+   "flag_recall": 0.9954337899543378,
+   "flag_precision": 0.8257575757575758
+  },
+  {
+   "tau": 0.9,
+   "answered": 0.8396551724137931,
+   "accuracy": 0.9815195071868583,
+   "false_reassurance": 0,
+   "flag_recall": 1.0,
+   "flag_precision": 0.7793594306049823
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "metrics": {
+  "points": 811,
+  "exact": 0.975,
+  "flag_p": 0.997,
+  "flag_r": 0.99,
+  "flag_f1": 0.993,
+  "contradicted_flagged": "148/149",
+  "contradicted_named": "138/149",
+  "false_contradicted": 6
+ },
+ "contradicted_precision": [
+  138,
+  144
+ ],
+ "invalid": 0,
+ "missing_cases": 0
+}

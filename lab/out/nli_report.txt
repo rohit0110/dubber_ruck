@@ -1,0 +1,29 @@
+model labels: {0: 'contradiction', 1: 'entailment', 2: 'neutral'} | parameters: 82 M
+P1 sentence vs key point: 580 pairs in 18.0 s (31 ms per pair on this Mac container, 4 threads; the phone will be far slower)
+P2 whole answer vs key point: 580 pairs in 28.5 s (49 ms per pair on this Mac container, 4 threads; the phone will be far slower)
+P3 sentence vs wrong claim: 580 pairs in 17.2 s (30 ms per pair on this Mac container, 4 threads; the phone will be far slower)
+
+## Zero-shot NLI alone (argmax: entailment = covered, contradiction = contradicted, neutral = missing), 580 points
+| Premise | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| P1 closest sentence | 0.586 | 0.536 | 0.977 | 0.693 | 34/39 / 22/39 | 61 |
+| P2 whole answer | 0.581 | 0.537 | 0.982 | 0.695 | 35/39 / 25/39 | 85 |
+
+Confusion, P1 (label -> NLI verdict): {'con->con': 22, 'con->cov': 5, 'con->mis': 12, 'cov->con': 23, 'cov->cov': 176, 'cov->mis': 162, 'mis->con': 38, 'mis->mis': 142}
+Confusion, P2 (label -> NLI verdict): {'con->con': 25, 'con->cov': 4, 'con->mis': 10, 'cov->con': 41, 'cov->cov': 176, 'cov->mis': 144, 'mis->con': 44, 'mis->mis': 136}
+
+## P3: does the speaker's sentence entail the typical mistake? (entailment >= 0.5 -> 'made that mistake')
+named 34 of 39 contradictions, 6 false alarms among the other 541 points
+
+## NLI as second opinion on EKM stage 1 (rule-based, leave-one-chapter-out), routed points only (stage 1 flags it or it is borderline)
+| Policy | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| EKM stage 1 only | 0.886 | 0.831 | 0.9 | 0.864 | 24/39 / 20/39 | 7 |
+| P1 sentence: NLI vetoes flags | 0.907 | 0.882 | 0.886 | 0.884 | 21/39 / 18/39 | 4 |
+| P1 sentence: NLI vetoes flags, escalates borderline | 0.903 | 0.852 | 0.918 | 0.884 | 23/39 / 20/39 | 6 |
+| P1 sentence: NLI names contradictions | 0.824 | 0.826 | 0.909 | 0.865 | 26/39 / 24/39 | 53 |
+| P1 sentence: NLI decides on routed points | 0.831 | 0.852 | 0.918 | 0.884 | 23/39 / 16/39 | 47 |
+| P2 whole answer: NLI vetoes flags | 0.905 | 0.874 | 0.89 | 0.882 | 22/39 / 19/39 | 3 |
+| P2 whole answer: NLI vetoes flags, escalates borderline | 0.897 | 0.842 | 0.922 | 0.88 | 24/39 / 21/39 | 7 |
+| P2 whole answer: NLI names contradictions | 0.817 | 0.827 | 0.918 | 0.87 | 26/39 / 24/39 | 60 |
+| P2 whole answer: NLI decides on routed points | 0.817 | 0.842 | 0.922 | 0.88 | 24/39 / 17/39 | 53 |

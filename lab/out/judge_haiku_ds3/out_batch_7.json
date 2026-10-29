@@ -1,0 +1,68 @@
+{
+  "verdicts": {
+    "c8q2-X03": {"k1": "missing", "k2": "covered", "k3": "missing"},
+    "c5q4-X03": {"k1": "missing", "k2": "covered"},
+    "c8q4-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c8q4-X03": {"k1": "missing", "k2": "missing", "k3": "covered"},
+    "c8q5-X05": {"k1": "covered", "k2": "missing", "k3": "contradicted"},
+    "c7q3-X05": {"k1": "contradicted", "k2": "covered", "k3": "covered"},
+    "c6q10-X06": {"k1": "contradicted", "k2": "contradicted"},
+    "c4q6-X04": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "contradicted"},
+    "c5q6-X06": {"k1": "contradicted", "k2": "covered", "k3": "missing", "k4": "missing"},
+    "c4q2-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c4q8-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c5q2-X06": {"k1": "contradicted", "k2": "contradicted"},
+    "c4q7-X05": {"k1": "missing", "k2": "missing", "k3": "contradicted", "k4": "covered"},
+    "c5q1-X05": {"k1": "covered", "k2": "missing", "k3": "covered"},
+    "c4q4-X01": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c8q4-X07": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c7q2-X06": {"k1": "contradicted", "k2": "contradicted"},
+    "c4q8-X06": {"k1": "covered", "k2": "covered", "k3": "contradicted"},
+    "c5q3-X04": {"k1": "covered", "k2": "contradicted"},
+    "c6q2-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c5q3-X05": {"k1": "contradicted", "k2": "missing"},
+    "c6q10-X04": {"k1": "contradicted", "k2": "covered"},
+    "c4q3-X05": {"k1": "covered", "k2": "contradicted", "k3": "covered", "k4": "missing"},
+    "c7q3-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c5q4-X01": {"k1": "covered", "k2": "covered"},
+    "c7q6-X07": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c6q4-X07": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c8q5-X04": {"k1": "contradicted", "k2": "covered", "k3": "covered"},
+    "c4q6-X01": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c4q2-X06": {"k1": "contradicted", "k2": "missing", "k3": "contradicted"},
+    "c6q7-X07": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c6q5-X01": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c5q6-X04": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "contradicted"},
+    "c5q1-X07": {"k1": "covered", "k2": "covered", "k3": "covered"}
+  },
+  "notes": {
+    "c8q5-X05": {"k3": "Says MD5 hash is used, not base 62 conversion."},
+    "c7q3-X05": {"k1": "Says UUID comes from a central service, not independent generation."},
+    "c6q10-X06": {
+      "k1": "Says cache comes first, commit log after, not log first.",
+      "k2": "Says reads skip the memory cache; bloom filter checks cache instead."
+    },
+    "c4q6-X04": {"k4": "Says rejected requests are not stored, so memory stays small."},
+    "c5q6-X06": {"k1": "Says every server change redistributes all keys, not minimal movement."},
+    "c4q2-X06": {
+      "k1": "Says client library is the best place and can be trusted.",
+      "k3": "Says microservices use service registry, not the API gateway."
+    },
+    "c5q2-X06": {
+      "k1": "Says ring is mod N hashing with position from modulo.",
+      "k2": "Says key goes to closest server on either side, not clockwise."
+    },
+    "c4q7-X05": {"k3": "Says spikes pass straight through; no smoothing effect."},
+    "c7q2-X06": {
+      "k1": "Says offset then increments by one, not by number of servers.",
+      "k2": "Says multi-master scales well and IDs rise with time globally."
+    },
+    "c4q8-X06": {"k3": "Says EXPIRE caps the counter value, not timed deletion."},
+    "c5q3-X04": {"k2": "Says removed keys spread evenly over all remaining servers."},
+    "c5q3-X05": {"k1": "Says keys move from the next clockwise server, not previous."},
+    "c6q10-X04": {"k1": "Says commit log is updated after the cache flush, not before."},
+    "c4q3-X05": {"k2": "Says requests wait in a queue instead of being dropped."},
+    "c8q5-X04": {"k1": "Says a new short URL is created even when one already exists."},
+    "c5q6-X04": {"k4": "Says Dynamo and Cassandra use range partitioning, not the ring."}
+  }
+}

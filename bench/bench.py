@@ -31,6 +31,17 @@ def load(dataset):
     return {q["id"]: q for q in quiz["questions"]}, cases
 
 
+def read_jsonl(path):
+    """Read finished records for resuming; skip a truncated last line left by a killed run."""
+    out = []
+    for line in open(path):
+        try:
+            out.append(json.loads(line))
+        except ValueError:
+            pass
+    return out
+
+
 def post(port, path, body, timeout=600):
     req = urllib.request.Request(f"http://127.0.0.1:{port}{path}", json.dumps(body).encode(),
                                  {"Content-Type": "application/json"})
@@ -231,7 +242,7 @@ def run_llm(args, qs, cases):
         part = args.out + ".partial.jsonl" if args.out else None  # one finished answer per line, for resuming
         done = {}
         if part and os.path.exists(part):
-            done = {r["case"]: r for r in map(json.loads, open(part))}
+            done = {r["case"]: r for r in read_jsonl(part)}
         for c in cases:
             q = qs[c["question_id"]]
             n = len(q["key_points"])

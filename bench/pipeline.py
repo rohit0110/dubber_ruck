@@ -71,7 +71,7 @@ def run_pipeline(args, qs, cases):
     part = args.out + ".partial.jsonl"
     done = {}
     if os.path.exists(part):
-        done = {(r["cid"], r["kid"]): r for r in map(json.loads, open(part))}
+        done = {(r["cid"], r["kid"]): r for r in B.read_jsonl(part)}
     srv = B.Server(args.model, args.port, ["-c", "2048"], args.threads)
     try:
         B.post(args.port, "/v1/chat/completions", {"messages": [{"role": "user", "content": "hi"}], "max_tokens": 1})

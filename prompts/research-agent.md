@@ -13,7 +13,7 @@ Output, per key point: `covered`, `missing`, or `contradicted` (the user stated 
 It is a pairwise entailment / short-answer-grading problem, not a chat problem.
 
 ## Hard constraints (the target device)
-- Moto G5 Plus (2017), Snapdragon 625: 8 x Cortex-A53 at about 2 GHz, **32-bit userland (armv7l / armeabi-v7a)** even though the SoC is 64-bit.
+- Moto G (5S) (2017, codename montana), Snapdragon 430 (MSM8937): 8 x Cortex-A53 at 1.4 GHz (cpu0) and 1.09 GHz (cpu4-7), **32-bit userland (armv7l / armeabi-v7a)** even though the SoC is 64-bit capable.
 - Android 8.1, running Linux tools in Termux. About 3.6 GB RAM, about 2.4 GB available. 20 GB free storage.
 - No GPU/NPU usable. NEON yes. **No dotprod, no fp16 vector arithmetic, no i8mm.**
 - llama.cpp builds and runs (build b1-6c44591, needed a patch for a duplicate `vcvtnq_s32_f32` with clang 21). Python 3.14 in Termux. Check the availability of any other runtime (ONNX Runtime, ncnn, MNN, TFLite, CTranslate2, sherpa-onnx) for **armv7 / Termux** explicitly before recommending it.

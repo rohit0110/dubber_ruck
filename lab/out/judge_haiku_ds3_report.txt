@@ -1,0 +1,46 @@
+judge 'haiku_ds3': 272 of 272 cases returned; unreadable files: none
+points scored: 811 | cases not returned: 0 | invalid or absent verdicts (counted as 'covered'): 0
+
+| Model | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| haiku_ds3 | 0.975 | 0.997 | 0.99 | 0.993 | 148/149 / 138/149 | 6 |
+
+precision of its 'contradicted' calls: 138 right of 144 (96%)
+confusion (label -> verdict): {'con->con': 138, 'con->cov': 1, 'con->mis': 10, 'cov->cov': 519, 'cov->mis': 1, 'mis->con': 6, 'mis->cov': 2, 'mis->mis': 134}
+
+## By kind of answer
+| Kind | Covered points falsely flagged | Not-covered points called covered | Contradicted points named |
+|---|---|---|---|
+| confident_wrong | 0 / 15 | 1 / 101 | 57 / 62 |
+| correct_noisy_stt | 0 / 116 | 0 / 0 | 0 / 0 |
+| correct_own_words | 0 / 116 | 0 / 0 | 0 / 0 |
+| hedged_wrong | 0 / 18 | 0 / 8 | 8 / 8 |
+| mixed | 0 / 37 | 2 / 79 | 34 / 40 |
+| one_subtle_mistake | 1 / 77 | 0 / 39 | 39 / 39 |
+| partial | 0 / 52 | 0 / 64 | 0 / 0 |
+| self_correction | 0 / 89 | 0 / 0 | 0 / 0 |
+
+## Contradicted points by mistake type: flagged as a problem / named 'contradicted'
+| Mistake type | n | flagged / named |
+|---|---|---|
+| opposite_direction | 26 | 26 / 26 |
+| confuses_with_related_concept | 24 | 24 / 22 |
+| swapped_terms | 22 | 22 / 22 |
+| invented_detail | 19 | 19 / 16 |
+| partial_truth_with_wrong_detail | 19 | 19 / 19 |
+| wrong_cause | 10 | 9 / 5 |
+| negation_error | 7 | 7 / 7 |
+| overgeneralization | 7 | 7 / 6 |
+| wrong_number | 6 | 6 / 6 |
+| wrong_tradeoff | 5 | 5 / 5 |
+| wrong_order_or_step | 4 | 4 / 4 |
+
+## Sample of its notes on true contradictions (is the explanation right?)
+- [c4q1-X04 k2 / wrong_tradeoff] Says rate limiter raises cost via extra machines and per-call fees.
+- [c4q1-X06 k2 / negation_error] Says cost is not part of the picture.
+- [c4q1-X06 k3 / confuses_with_related_concept] Says bots are handled at the CDN, not this layer.
+- [c4q2-X04 k3 / confuses_with_related_concept] Says the load balancer does it, not the API gateway.
+- [c4q2-X06 k1 / opposite_direction] Says client library is the best place and can be trusted.
+- [c4q2-X06 k3 / confuses_with_related_concept] Says microservices use service registry, not the API gateway.
+- [c4q3-X04 k4 / confuses_with_related_concept] Says flattening traffic means bursts never reach the backend.
+- [c4q3-X05 k2 / confuses_with_related_concept] Says requests wait in a queue instead of being dropped.

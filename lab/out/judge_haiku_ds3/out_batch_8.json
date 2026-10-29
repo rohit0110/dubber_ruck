@@ -1,0 +1,64 @@
+{
+  "verdicts": {
+    "c4q10-X07": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c4q10-X04": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "contradicted"},
+    "c8q1-X01": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c4q10-X03": {"k1": "covered", "k2": "covered", "k3": "missing", "k4": "missing"},
+    "c8q5-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c6q7-X05": {"k1": "covered", "k2": "missing", "k3": "contradicted"},
+    "c7q4-X02": {"k1": "covered", "k2": "covered"},
+    "c8q7-X05": {"k1": "covered", "k2": "contradicted", "k3": "missing"},
+    "c6q1-X03": {"k1": "covered", "k2": "missing", "k3": "covered"},
+    "c7q5-X06": {"k1": "contradicted", "k2": "missing", "k3": "contradicted"},
+    "c5q4-X06": {"k1": "missing", "k2": "missing"},
+    "c7q1-X02": {"k1": "covered", "k2": "covered"},
+    "c4q10-X05": {"k1": "covered", "k2": "contradicted", "k3": "covered", "k4": "missing"},
+    "c7q4-X03": {"k1": "covered", "k2": "missing"},
+    "c6q9-X05": {"k1": "missing", "k2": "covered", "k3": "contradicted"},
+    "c5q6-X01": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c7q2-X04": {"k1": "contradicted", "k2": "covered"},
+    "c6q7-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c5q4-X07": {"k1": "covered", "k2": "covered"},
+    "c4q10-X06": {"k1": "contradicted", "k2": "missing", "k3": "covered", "k4": "covered"},
+    "c6q10-X02": {"k1": "covered", "k2": "covered"},
+    "c6q2-X06": {"k1": "contradicted", "k2": "contradicted", "k3": "contradicted"},
+    "c6q7-X01": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c8q3-X04": {"k1": "contradicted", "k2": "covered", "k3": "covered"},
+    "c6q1-X04": {"k1": "covered", "k2": "contradicted", "k3": "covered"},
+    "c6q3-X01": {"k1": "covered", "k2": "covered"},
+    "c8q7-X03": {"k1": "missing", "k2": "missing", "k3": "covered"},
+    "c6q9-X06": {"k1": "missing", "k2": "contradicted", "k3": "contradicted"},
+    "c5q6-X02": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c5q5-X03": {"k1": "covered", "k2": "covered", "k3": "missing"},
+    "c4q9-X01": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c4q7-X04": {"k1": "covered", "k2": "contradicted", "k3": "covered", "k4": "covered"},
+    "c8q6-X01": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c6q8-X04": {"k1": "contradicted", "k2": "covered", "k3": "covered"}
+  },
+  "notes": {
+    "c4q10-X04": {"k4": "Says sticky sessions are the recommended fix."},
+    "c6q7-X05": {"k3": "Says complexity is not a downside; client stays simple."},
+    "c8q7-X05": {"k2": "Says web tier is stateful, needing sticky sessions."},
+    "c7q5-X06": {
+      "k1": "Says the ID starts with a user-ID hash, not a timestamp.",
+      "k3": "Calls the 12 bits random noise, not a sequence number."
+    },
+    "c4q10-X05": {"k2": "Says locks have no real cost, so locks are the choice."},
+    "c6q9-X05": {"k3": "Describes Merkle full-stream comparison, not top-down hash diffing."},
+    "c7q2-X04": {"k1": "Says step by data centers, not by database servers."},
+    "c4q10-X06": {"k1": "Blames clock drift for the race condition, not concurrent reads."},
+    "c6q2-X06": {
+      "k1": "Says partition tolerance is optional, contrary to CAP.",
+      "k2": "Wrong definitions of consistency and partition tolerance.",
+      "k3": "Says avoiding network breaks makes partition tolerance optional."
+    },
+    "c8q3-X04": {"k1": "Says 64 characters including plus and slash signs."},
+    "c6q1-X04": {"k2": "Puts rarely used data in memory and hot data on disk; reversed."},
+    "c6q9-X06": {
+      "k2": "Calls hinted handoff the permanent fix, not a temporary one.",
+      "k3": "Says Merkle trees handle temporary failures."
+    },
+    "c4q7-X04": {"k2": "Uses previous window divided by two, not overlap percentage."},
+    "c6q8-X04": {"k1": "Says one other server's report suffices, not two sources."}
+  }
+}

@@ -1,0 +1,132 @@
+{
+ "keywords (at least 1 hit)": {
+  "points": 811,
+  "exact": 0.744,
+  "flag_p": 0.797,
+  "flag_r": 0.512,
+  "flag_f1": 0.623,
+  "contradicted_flagged": "28/149",
+  "contradicted_named": "0/149",
+  "false_contradicted": 0
+ },
+ "EKM rules: keyword boost + wrong claims (B3-04 method, tuned on DS2)": {
+  "points": 811,
+  "exact": 0.751,
+  "flag_p": 0.777,
+  "flag_r": 0.598,
+  "flag_f1": 0.676,
+  "contradicted_flagged": "41/149",
+  "contradicted_named": "7/149",
+  "false_contradicted": 8
+ },
+ "LR, no wrong-claim info": {
+  "points": 811,
+  "exact": 0.679,
+  "flag_p": 0.601,
+  "flag_r": 0.787,
+  "flag_f1": 0.682,
+  "contradicted_flagged": "90/149",
+  "contradicted_named": "72/149",
+  "false_contradicted": 162
+ },
+ "LR, + wrong-claim embedding match": {
+  "points": 811,
+  "exact": 0.74,
+  "flag_p": 0.683,
+  "flag_r": 0.687,
+  "flag_f1": 0.685,
+  "contradicted_flagged": "65/149",
+  "contradicted_named": "48/149",
+  "false_contradicted": 77
+ },
+ "LR, no wrong-claim info + NLI key point (P1, P2)": {
+  "points": 811,
+  "exact": 0.805,
+  "flag_p": 0.776,
+  "flag_r": 0.835,
+  "flag_f1": 0.805,
+  "contradicted_flagged": "105/149",
+  "contradicted_named": "88/149",
+  "false_contradicted": 83
+ },
+ "LR, + wrong-claim match + NLI key point (P1, P2)": {
+  "points": 811,
+  "exact": 0.798,
+  "flag_p": 0.779,
+  "flag_r": 0.777,
+  "flag_f1": 0.778,
+  "contradicted_flagged": "88/149",
+  "contradicted_named": "66/149",
+  "false_contradicted": 64
+ },
+ "LR, everything incl. NLI vs wrong claim (P3)": {
+  "points": 811,
+  "exact": 0.813,
+  "flag_p": 0.88,
+  "flag_r": 0.653,
+  "flag_f1": 0.75,
+  "contradicted_flagged": "62/149",
+  "contradicted_named": "40/149",
+  "false_contradicted": 15
+ },
+ "GBM, no wrong-claim info + NLI (P1, P2)": {
+  "points": 811,
+  "exact": 0.806,
+  "flag_p": 0.852,
+  "flag_r": 0.711,
+  "flag_f1": 0.775,
+  "contradicted_flagged": "81/149",
+  "contradicted_named": "57/149",
+  "false_contradicted": 39
+ },
+ "GBM, + wrong-claim match + NLI (P1, P2)": {
+  "points": 811,
+  "exact": 0.806,
+  "flag_p": 0.89,
+  "flag_r": 0.667,
+  "flag_f1": 0.762,
+  "contradicted_flagged": "65/149",
+  "contradicted_named": "35/149",
+  "false_contradicted": 18
+ },
+ "GBM, everything incl. P3": {
+  "points": 811,
+  "exact": 0.809,
+  "flag_p": 0.894,
+  "flag_r": 0.663,
+  "flag_f1": 0.761,
+  "contradicted_flagged": "68/149",
+  "contradicted_named": "38/149",
+  "false_contradicted": 16
+ },
+ "LR, no class weights, + wrong claim + NLI (P1, P2)": {
+  "points": 811,
+  "exact": 0.805,
+  "flag_p": 0.899,
+  "flag_r": 0.615,
+  "flag_f1": 0.731,
+  "contradicted_flagged": "58/149",
+  "contradicted_named": "36/149",
+  "false_contradicted": 11
+ },
+ "zero-shot NLI alone, sentence premise (P1)": {
+  "points": 811,
+  "exact": 0.576,
+  "flag_p": 0.551,
+  "flag_r": 0.918,
+  "flag_f1": 0.688,
+  "contradicted_flagged": "130/149",
+  "contradicted_named": "69/149",
+  "false_contradicted": 75
+ },
+ "zero-shot NLI alone, whole-answer premise (P2)": {
+  "points": 811,
+  "exact": 0.55,
+  "flag_p": 0.52,
+  "flag_r": 0.907,
+  "flag_f1": 0.661,
+  "contradicted_flagged": "129/149",
+  "contradicted_named": "68/149",
+  "false_contradicted": 82
+ }
+}

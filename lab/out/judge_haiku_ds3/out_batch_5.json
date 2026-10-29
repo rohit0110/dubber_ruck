@@ -1,0 +1,80 @@
+{
+  "verdicts": {
+    "c8q2-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c5q4-X05": {"k1": "missing", "k2": "missing"},
+    "c5q3-X01": {"k1": "covered", "k2": "covered"},
+    "c8q1-X06": {"k1": "covered", "k2": "covered", "k3": "contradicted"},
+    "c5q6-X07": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c6q4-X04": {"k1": "covered", "k2": "covered", "k3": "contradicted"},
+    "c5q5-X06": {"k1": "contradicted", "k2": "missing", "k3": "covered"},
+    "c4q10-X01": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c5q5-X05": {"k1": "covered", "k2": "contradicted", "k3": "covered"},
+    "c8q2-X07": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c4q2-X07": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c4q1-X07": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c8q7-X06": {"k1": "contradicted", "k2": "contradicted", "k3": "missing"},
+    "c8q5-X07": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c7q4-X07": {"k1": "covered", "k2": "covered"},
+    "c6q8-X06": {"k1": "missing", "k2": "contradicted", "k3": "missing"},
+    "c5q5-X04": {"k1": "covered", "k2": "covered", "k3": "contradicted"},
+    "c4q5-X05": {"k1": "covered", "k2": "missing", "k3": "contradicted"},
+    "c6q1-X06": {"k1": "missing", "k2": "covered", "k3": "contradicted"},
+    "c7q5-X01": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c7q4-X05": {"k1": "contradicted", "k2": "covered"},
+    "c6q9-X03": {"k1": "missing", "k2": "covered", "k3": "missing"},
+    "c6q3-X05": {"k1": "contradicted", "k2": "missing"},
+    "c6q2-X07": {"k1": "covered", "k2": "covered", "k3": "contradicted"},
+    "c4q9-X07": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c8q6-X04": {"k1": "missing", "k2": "contradicted", "k3": "covered"},
+    "c4q3-X03": {"k1": "covered", "k2": "covered", "k3": "missing", "k4": "missing"},
+    "c6q6-X01": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c4q5-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c4q2-X05": {"k1": "missing", "k2": "missing", "k3": "covered"},
+    "c6q6-X02": {"k1": "covered", "k2": "covered", "k3": "covered"},
+    "c4q3-X02": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c4q7-X02": {"k1": "covered", "k2": "covered", "k3": "covered", "k4": "covered"},
+    "c4q4-X03": {"k1": "covered", "k2": "covered", "k3": "missing", "k4": "missing"}
+  },
+  "notes": {
+    "c8q1-X06": {
+      "k3": "Says 365 million records and 36 GB, not 365 billion and 365 TB"
+    },
+    "c6q4-X04": {
+      "k3": "Says replicas go in the same data center, not distinct ones"
+    },
+    "c5q5-X06": {
+      "k1": "Describes virtual nodes as warm spare servers, not ring positions"
+    },
+    "c5q5-X05": {
+      "k2": "Says more virtual nodes make distribution less balanced"
+    },
+    "c8q7-X06": {
+      "k1": "Says no real attackers are involved, only legit users",
+      "k2": "Shards the web servers instead of adding them, no DB sharding"
+    },
+    "c6q8-X06": {
+      "k2": "Uses a central health-check service instead of gossip"
+    },
+    "c5q5-X04": {
+      "k3": "Says more virtual nodes need less space, not more"
+    },
+    "c4q5-X05": {
+      "k3": "Calls memory the main problem, contradicting memory efficiency"
+    },
+    "c6q1-X06": {
+      "k3": "Says capacity is not the reason to go distributed"
+    },
+    "c7q4-X05": {
+      "k1": "Describes servers handing out random UUIDs, not auto_increment DB"
+    },
+    "c6q3-X05": {
+      "k1": "Says CP keeps serving requests through a partition"
+    },
+    "c6q2-X07": {
+      "k3": "Claims a CA system can exist in one rack"
+    },
+    "c8q6-X04": {
+      "k2": "Says database is checked before cache, not cache first"
+    }
+  }
+}

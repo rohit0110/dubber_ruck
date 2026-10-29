@@ -1,0 +1,83 @@
+DS2: 580 points (Counter({'covered': 361, 'missing': 180, 'contradicted': 39})); DS3: 811 points (Counter({'covered': 520, 'contradicted': 149, 'missing': 142}))
+
+Thresholds tuned on DS2 only: T=0.8, keyword boost=0.3, wrong-claim T=0.7, margin=0.15
+
+## Train on DS2, test on DS3 (independent mistakes written by another agent)
+| Model | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| keywords (at least 1 hit) | 0.744 | 0.797 | 0.512 | 0.623 | 28/149 / 0/149 | 0 |
+| EKM rules: keyword boost + wrong claims (B3-04 method, tuned on DS2) | 0.751 | 0.777 | 0.598 | 0.676 | 41/149 / 7/149 | 8 |
+| LR, no wrong-claim info | 0.679 | 0.601 | 0.787 | 0.682 | 90/149 / 72/149 | 162 |
+| LR, + wrong-claim embedding match | 0.74 | 0.683 | 0.687 | 0.685 | 65/149 / 48/149 | 77 |
+| LR, no wrong-claim info + NLI key point (P1, P2) | 0.805 | 0.776 | 0.835 | 0.805 | 105/149 / 88/149 | 83 |
+| LR, + wrong-claim match + NLI key point (P1, P2) | 0.798 | 0.779 | 0.777 | 0.778 | 88/149 / 66/149 | 64 |
+| LR, everything incl. NLI vs wrong claim (P3) | 0.813 | 0.88 | 0.653 | 0.75 | 62/149 / 40/149 | 15 |
+| GBM, no wrong-claim info + NLI (P1, P2) | 0.806 | 0.852 | 0.711 | 0.775 | 81/149 / 57/149 | 39 |
+| GBM, + wrong-claim match + NLI (P1, P2) | 0.806 | 0.89 | 0.667 | 0.762 | 65/149 / 35/149 | 18 |
+| GBM, everything incl. P3 | 0.809 | 0.894 | 0.663 | 0.761 | 68/149 / 38/149 | 16 |
+| LR, no class weights, + wrong claim + NLI (P1, P2) | 0.805 | 0.899 | 0.615 | 0.731 | 58/149 / 36/149 | 11 |
+| zero-shot NLI alone, sentence premise (P1) | 0.576 | 0.551 | 0.918 | 0.688 | 130/149 / 69/149 | 75 |
+| zero-shot NLI alone, whole-answer premise (P2) | 0.55 | 0.52 | 0.907 | 0.661 | 129/149 / 68/149 | 82 |
+
+For reference, the same rules scored on DS2 itself (in-sample): exact 0.898, F1 0.884, named 21/39
+
+## Do the authored wrong claims cover the independent mistakes?
+| Contradicted points | n | mean similarity to nearest authored wrong claim | share with similarity >= 0.75 | share where NLI says the sentence entails a wrong claim (>= 0.5) |
+|---|---|---|---|---|
+| DS2 (built from the wrong claims) | 39 | 0.80 | 64% | 87% |
+| DS3 (independent) | 149 | 0.58 | 15% | 15% |
+| DS3 other points (covered/missing) | 662 | 0.52 | 8% | - |
+
+## Contradicted points: flagged as a problem / named 'contradicted', by mistake type (independent data)
+| Mistake type | n | EKM rules | LR no-WC + NLI | LR + WC + NLI | LR everything (P3) | GBM no-WC + NLI |
+|---|---|---|---|---|---|---|
+| opposite_direction | 26 | 4 / 1 | 21 / 20 | 17 / 15 | 10 / 7 | 19 / 15 |
+| confuses_with_related_concept | 24 | 10 / 4 | 20 / 16 | 16 / 12 | 12 / 8 | 13 / 10 |
+| swapped_terms | 22 | 2 / 0 | 10 / 9 | 7 / 6 | 6 / 5 | 3 / 1 |
+| invented_detail | 19 | 8 / 0 | 17 / 13 | 14 / 9 | 11 / 7 | 15 / 10 |
+| partial_truth_with_wrong_detail | 19 | 7 / 1 | 13 / 11 | 10 / 7 | 9 / 6 | 10 / 8 |
+| wrong_cause | 10 | 2 / 0 | 5 / 3 | 5 / 2 | 3 / 0 | 7 / 3 |
+| negation_error | 7 | 1 / 1 | 5 / 5 | 4 / 3 | 3 / 2 | 4 / 4 |
+| overgeneralization | 7 | 4 / 0 | 5 / 2 | 6 / 3 | 4 / 1 | 4 / 1 |
+| wrong_number | 6 | 2 / 0 | 4 / 4 | 3 / 3 | 1 / 1 | 3 / 3 |
+| wrong_tradeoff | 5 | 1 / 0 | 4 / 4 | 3 / 3 | 3 / 3 | 3 / 2 |
+| wrong_order_or_step | 4 | 0 / 0 | 1 / 1 | 3 / 3 | 0 / 0 | 0 / 0 |
+| all | 149 | 41 / 7 | 105 / 88 | 88 / 66 | 62 / 40 | 81 / 57 |
+
+## Failures by kind of answer (LR, no wrong-claim info + NLI key point (P1, P2))
+| Kind | Covered points falsely flagged | Not-covered points called covered | Contradicted points named |
+|---|---|---|---|
+| confident_wrong | 2 / 15 | 20 / 101 | 37 / 62 |
+| correct_noisy_stt | 10 / 116 | 0 / 0 | 0 / 0 |
+| correct_own_words | 25 / 116 | 0 / 0 | 0 / 0 |
+| hedged_wrong | 2 / 18 | 1 / 8 | 6 / 8 |
+| mixed | 3 / 37 | 13 / 79 | 23 / 40 |
+| one_subtle_mistake | 12 / 77 | 14 / 39 | 22 / 39 |
+| partial | 2 / 52 | 0 / 64 | 0 / 0 |
+| self_correction | 14 / 89 | 0 / 0 | 0 / 0 |
+
+## Abstention on DS3 (confidence bar applied to the model trained on DS2)
+
+LR, no wrong-claim info + NLI key point (P1, P2)
+| Bar | Answered | Accuracy on answered | Needed-feedback points still called 'covered' | Flag recall (unsure = flagged) | Flag precision |
+|---|---|---|---|---|---|
+| 0.0 | 100% | 0.805 | 48 of 291 | 0.835 | 0.776 |
+| 0.6 | 86% | 0.854 | 32 of 291 | 0.890 | 0.713 |
+| 0.7 | 74% | 0.876 | 25 of 291 | 0.914 | 0.639 |
+| 0.8 | 62% | 0.889 | 20 of 291 | 0.931 | 0.578 |
+| 0.9 | 40% | 0.925 | 9 of 291 | 0.969 | 0.475 |
+
+LR, + wrong-claim match + NLI key point (P1, P2)
+| Bar | Answered | Accuracy on answered | Needed-feedback points still called 'covered' | Flag recall (unsure = flagged) | Flag precision |
+|---|---|---|---|---|---|
+| 0.0 | 100% | 0.798 | 65 of 291 | 0.777 | 0.779 |
+| 0.6 | 90% | 0.833 | 50 of 291 | 0.828 | 0.742 |
+| 0.7 | 82% | 0.854 | 41 of 291 | 0.859 | 0.696 |
+| 0.8 | 71% | 0.891 | 28 of 291 | 0.904 | 0.651 |
+| 0.9 | 55% | 0.922 | 18 of 291 | 0.938 | 0.563 |
+
+## Adding some independent data to the training set (leave-one-chapter-out, scored on DS3 of the held-out chapter)
+| Model | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | False 'contradicted' |
+|---|---|---|---|---|---|---|
+| train on DS2 only | 0.787 | 0.763 | 0.773 | 0.768 | 93/149 / 68/149 | 66 |
+| train on DS2 + DS3 (other chapters) | 0.811 | 0.754 | 0.876 | 0.811 | 116/149 / 100/149 | 84 |

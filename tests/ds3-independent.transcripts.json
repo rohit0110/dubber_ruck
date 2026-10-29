@@ -1,0 +1,4159 @@
+{
+ "note": "Independent test set DS3. Labels: covered | missing | contradicted.",
+ "cases": [
+  {
+   "id": "c4q1-X01",
+   "question_id": "c4q1",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "Basically it protects you from getting flooded, whether somebody is attacking on purpose or a client has a bug and hammers you in a loop. The extra calls just get refused so everyone else still has capacity. It also saves money, since you're not scaling out more boxes or paying a vendor for each call to their API. And it keeps a scraper or some noisy user from bogging your machines down.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q1-X02",
+   "question_id": "c4q1",
+   "persona": "student",
+   "kind": "correct_noisy_stt",
+   "transcript": "so a rate limiter stops resource starvation from dee dos attacks whether on purpose or by accident cause it just blocks the extra calls it also cuts cost you need less servers and less pay per call third party a p i stuff and bots or bad users cant over load the servers",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q1-X03",
+   "question_id": "c4q1",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, mostly it's about money I think? Like if you're paying per call to some third-party API you don't want a runaway client burning through your bill, and you can run fewer servers too.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q1-X04",
+   "question_id": "c4q1",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "okay so it protects against denial of service accidental or deliberate it drops the extra requests and it keeps servers from getting swamped by bots and abusive users and on cost it ends up raising your bill because you need extra machines just to run the limiter and you pay for every check on third party calls",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "wrong_tradeoff"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q1-X05",
+   "question_id": "c4q1",
+   "persona": "non-native English speaker",
+   "kind": "mixed",
+   "transcript": "It is for stop the attackers to break in, you know, like SQL injection, this kind of thing do not reach the database. And also is saving the money on the API of other company, they charge for each call.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q1-X06",
+   "question_id": "c4q1",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "I see it as basically a caching layer. It keeps responses fast by serving repeated answers out of memory. Cost isn't really part of the picture, that's a capacity planning question, and bots get dealt with at the CDN, not at this layer.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "negation_error",
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q1-X07",
+   "question_id": "c4q1",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "So it blocks the excess calls from denial of service, accidental or on purpose. Saves money when you pay per call on external APIs. And, uh, it throttles the database to, no wait, it keeps your servers from being overloaded by bots or by users who misbehave.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c4q2-X01",
+   "question_id": "c4q2",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "You'd put it on the backend, either baked into the servers or as a layer sitting in front of the APIs. In cloud microservice setups people usually just switch it on in the gateway. You don't want it in the app on the user's device, since anyone with bad intentions can fake requests and you don't own that code anyway.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q2-X02",
+   "question_id": "c4q2",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "so you can put it server side or as a middle ware in front of the a p is. in cloud micro services is usually done in the a p i gate way. the client side is bad because bad actors can for ge the requests and you maybe not control the clients implementation",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q2-X03",
+   "question_id": "c4q2",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, server side mostly, or like a middleware in front of your APIs, and with microservices on the cloud it's typically the API gateway doing it.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q2-X04",
+   "question_id": "c4q2",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "server side or middleware in front of the apis sure and the client side is no good because bad actors can forge requests and you might not own the client code and in cloud microservices its usually the load balancer that does it",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q2-X05",
+   "question_id": "c4q2",
+   "persona": "rambling",
+   "kind": "mixed",
+   "transcript": "Right so the client side, it's a bad spot because the user's connection is slow and flaky, you know, so the limiting wouldn't kick in on time. And then with microservices up in the cloud, the API gateway generally takes that job.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "wrong_cause"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q2-X06",
+   "question_id": "c4q2",
+   "persona": "bootcamp grad",
+   "kind": "confident_wrong",
+   "transcript": "A client library is the best place for it, saves network trips, and you wrote the app so you can trust it. For cloud microservices you'd typically find it living in the service registry, since that's where every service gets looked up anyway.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "opposite_direction",
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q2-X07",
+   "question_id": "c4q2",
+   "persona": "student",
+   "kind": "self_correction",
+   "transcript": "It goes server side, or middleware in front of the APIs. In cloud microservices it's the load balancer, no sorry, the API gateway. Client side is unreliable since people can forge requests and you may not own the client.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c4q3-X01",
+   "question_id": "c4q3",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "Picture a bucket that holds a fixed number of tokens. A timer drops new tokens in at a steady pace, and if it's already full the new ones just spill out. Every incoming call takes one token out, and when the bucket is empty the call gets thrown away. You tune it with just two knobs, how big the bucket is and how quickly it refills. And since tokens pile up while it's quiet, a sudden spike for a little while can still get through.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q3-X02",
+   "question_id": "c4q3",
+   "persona": "student",
+   "kind": "correct_noisy_stt",
+   "transcript": "token bucket um its a bucket with a set capacity tokens come in at a fixed refill rate and when its full the extra ones over flow. each request takes one token and if there are no tokens left the request gets dropped. two perimeters bucket size and refill rate. and it lets bursts through for a short time while there's still tokens",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q3-X03",
+   "question_id": "c4q3",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Okay so there's a bucket with a max number of tokens, refilled at some rate, extra ones just spill over. Each request uses up a token and when it's empty you drop it.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q3-X04",
+   "question_id": "c4q3",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "bucket with a size and tokens get added at a refill rate and spill when full each request eats one token no tokens its dropped two params size and rate and basically it flattens traffic into a constant flow so a spike gets spread out and nothing bursty reaches the backend",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   },
+   "mistake_types": {
+    "k4": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q3-X05",
+   "question_id": "c4q3",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "So, like, the bucket has a max size and it fills up at some rate, and extras just spill over when it's full. And when there's no token left the request just waits in a queue until one shows up, I mean it doesn't get thrown away.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k2": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q3-X06",
+   "question_id": "c4q3",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "So the bucket drains at a constant rate, and every request pours a token in; once it's full the next request is turned away. That's the design Amazon and Stripe went with.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k1": "swapped_terms",
+    "k2": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q3-X07",
+   "question_id": "c4q3",
+   "persona": "non-native English speaker",
+   "kind": "self_correction",
+   "transcript": "Is a bucket with capacity, tokens refill with fixed speed, overflow when full. One request, one token, empty bucket the request is drop. Two parameters, bucket size and, ah no, drain rate, sorry, I mean refill rate. And short bursts they can pass if the tokens are there.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c4q3-X08",
+   "question_id": "c4q3",
+   "persona": "student",
+   "kind": "hedged_wrong",
+   "transcript": "It's a bucket that refills with tokens at a fixed rate, with a max capacity so extra ones overflow, and each request takes a token or gets dropped if it's empty. For parameters I think there are three? Bucket size, refill rate and maybe like a burst timeout. And yeah bursts are allowed while tokens remain.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted",
+    "k4": "covered"
+   },
+   "mistake_types": {
+    "k3": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q4-X01",
+   "question_id": "c4q4",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "It's a queue really. Requests wait in line and get handled at a steady pace, one at a time in arrival order. A newcomer joins the line if there's room, otherwise it's tossed. You configure how long the line can get and how fast it drains. Downside is a spike stuffs the line with stale stuff, so the fresh requests behind it get turned away.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q4-X02",
+   "question_id": "c4q4",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "the leeking bucket is like token bucket but requests get processed at a steady rate normally with a fifo que. if the que is full the new request is dropped if not its added. two parameters bucket size thats the que size and the out flow rate. a big burst fills up the que with old requests and then newer ones get limited",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q4-X03",
+   "question_id": "c4q4",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "It processes requests at a constant speed through a first in first out queue, um, and when the queue is full the new request just gets dropped.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q4-X04",
+   "question_id": "c4q4",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "leaky bucket so requests go through a FIFO queue at a fixed rate full queue means the new one is dropped otherwise it goes in the queue parameters are the bucket size and the refill rate and a burst fills the queue with old requests so the recent ones are limited",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted",
+    "k4": "covered"
+   },
+   "mistake_types": {
+    "k3": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q4-X05",
+   "question_id": "c4q4",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "The outflow is steady but it's a stack, last in first out, so the newest request is served first. When the stack is full you drop the incoming one.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k1": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q4-X06",
+   "question_id": "c4q4",
+   "persona": "bootcamp grad",
+   "kind": "confident_wrong",
+   "transcript": "The whole point of the leaky bucket is that it copes with bursts better than the token bucket does. The queue soaks up a spike, and if it's full the extras go into some overflow table to be handled later, so nobody ends up being limited because of a burst.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted",
+    "k3": "missing",
+    "k4": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "invented_detail",
+    "k4": "overgeneralization"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q4-X07",
+   "question_id": "c4q4",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "Fixed rate out of a FIFO queue, full queue means drop. The bucket size is the queue size, and the outflow rate, is it tokens? no, outflow rate. And a burst fills the queue with old requests so recent ones get limited.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c4q5-X01",
+   "question_id": "c4q5",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "Chop time into slots, say a minute each, and every slot has a tally that goes up per request. Hit the limit and everything else is refused until the next slot begins. Trouble is the boundary: someone fires a bunch right at the end of one slot and another bunch right at the start of the next, so over a short stretch you let through nearly double what you meant to. Upside is it's cheap on memory and simple to reason about.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q5-X02",
+   "question_id": "c4q5",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "fixed window counter splits the time in to fixed windows each one with a counter every request bumps it up and when it reach the thresh hold new requests are dropped till the next window. at the edges a burst can pass up to two times the quota. is memory efficient and easy to under stand",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q5-X03",
+   "question_id": "c4q5",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, I think it's good because it doesn't use much memory and it's pretty easy to get your head around. That's about it.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q5-X04",
+   "question_id": "c4q5",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "so you have windows with a counter each each request increments it and at the limit you drop till the next window the problem is a burst in the middle of a window can slip through over the quota and the upside is its cheap on memory and simple",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q5-X05",
+   "question_id": "c4q5",
+   "persona": "student",
+   "kind": "mixed",
+   "transcript": "It counts per window, resets, drops after the threshold, fine. Memory is a problem though, because it keeps every request's timestamp around for the whole window.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q5-X06",
+   "question_id": "c4q5",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "Main weakness: at the edges of windows people get throttled too early. A user who's been quiet gets blocked at the start of a new window because the old window's counter carries over.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "invented_detail",
+    "k2": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q5-X07",
+   "question_id": "c4q5",
+   "persona": "rambling",
+   "kind": "hedged_wrong",
+   "transcript": "So windows, a counter per window, count goes up per request and past the threshold requests are dropped until the next window. Bursts at the boundary can let through up to double the quota. And I guess it's easy to understand, but it eats a lot of memory, I think? Because each window keeps all the requests?",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q6-X01",
+   "question_id": "c4q6",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "You remember when each request arrived, typically in a Redis sorted set. A new request comes in, you drop the entries that fell out of the rolling window, add the new time, then count. If the count is within the limit it goes through, otherwise it's refused. It's precise no matter where the window sits. The catch is memory, since refused requests can still leave their times in the set.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q6-X02",
+   "question_id": "c4q6",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "sliding window log it keeps the time stamps of requests in a redis sorted set and when new request come the old time stamps are remove. the request is accept if the log size is inside the limit if not rejected. very accurate for any rolling window but use a lot of memory because even rejected requests can keep there timestamps",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q6-X03",
+   "question_id": "c4q6",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um it's very accurate in any rolling window. But, uh, yeah it takes up a lot of memory, because timestamps of rejected requests can stick around.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q6-X04",
+   "question_id": "c4q6",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "keeps timestamps in a redis sorted set trims the old ones on each new request accepts if the log size is within the allowed count else rejects super accurate and the memory use stays small since rejected requests are not stored at all",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   },
+   "mistake_types": {
+    "k4": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q6-X05",
+   "question_id": "c4q6",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "It keeps timestamps in a Redis sorted set and throws out the outdated ones. It's an approximation, though, can be a bit off at the window boundaries. Memory is heavy because rejected ones stay.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted",
+    "k4": "covered"
+   },
+   "mistake_types": {
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q6-X06",
+   "question_id": "c4q6",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "It stores one counter per user in a Redis hash. Each request bumps it, and the counter gets reset when the window is over.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k1": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q6-X07",
+   "question_id": "c4q6",
+   "persona": "student",
+   "kind": "hedged_wrong",
+   "transcript": "So timestamps in a Redis sorted set, outdated ones removed. The request is accepted if the log is bigger than the allowed count? Or no, smaller, hmm, I think bigger. It's accurate and memory hungry because rejected requests keep their timestamps.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {
+    "k2": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q7-X01",
+   "question_id": "c4q7",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "It mixes the other two ideas, the fixed counter and the log. To estimate the rolling count you take what's come in during the current window and add the previous window's count scaled by how much of it still overlaps. Spikes get smoothed and memory stays small. It's only an estimate though, since it assumes the previous window's traffic was spread evenly, and Cloudflare measured something like three thousandths of a percent being misjudged.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q7-X02",
+   "question_id": "c4q7",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "sliding window counter is a hy brid of fixed window counter and sliding window log. the rolling count is current window requests plus previous window requests times the over lap percent. it smooth the spikes and is memory efficient. only approximation because assume even distribution in the previous window cloud flare saw zero point zero zero three percent errors",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q7-X03",
+   "question_id": "c4q7",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "It's, um, a combination of the fixed window counter and the log one. And it smooths out spikes, and doesn't use much memory.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "covered",
+    "k4": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q7-X04",
+   "question_id": "c4q7",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "its a hybrid of fixed window and sliding log you take current window requests plus the previous window requests divided by two to get the rolling count smooths spikes memory efficient and approximate because it assumes the previous window was evenly distributed cloudflare saw about point zero zero three percent",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {
+    "k2": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q7-X05",
+   "question_id": "c4q7",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "It doesn't really smooth anything, spikes pass straight through to the backend. And it's an approximation, yeah, because the previous window's requests are assumed to be evenly spread.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "contradicted",
+    "k4": "covered"
+   },
+   "mistake_types": {
+    "k3": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q7-X06",
+   "question_id": "c4q7",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "Well, since the token bucket handles bursts and the leaky bucket handles queuing, this one just merges those two and takes the best of both. It's cheap on memory and smooths traffic out nicely.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "covered",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k1": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q7-X07",
+   "question_id": "c4q7",
+   "persona": "bootcamp grad",
+   "kind": "hedged_wrong",
+   "transcript": "Hybrid of fixed window and the log, the count is current plus previous times overlap, smooths spikes, memory efficient. And it's exact I think? Maybe? Since it uses the real numbers from the previous window.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   },
+   "mistake_types": {
+    "k4": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q8-X01",
+   "question_id": "c4q8",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "Don't hit the database for this, disk reads are too slow for something on the hot path. Keep it in an in-memory cache, quick and it can expire stuff for you. Redis is the usual pick. INCR bumps the number by one, and EXPIRE puts a timer on the key so it vanishes by itself afterwards.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q8-X02",
+   "question_id": "c4q8",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "no data base because the disk access is slow you use in memory cache is fast and it have time based expiration. redis is popular in car adds the counter by one and ex pire sets a time out and then the counter is delete automatic",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q8-X03",
+   "question_id": "c4q8",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "So Redis has INCR, which just adds one to the counter. And EXPIRE, that sets a timeout and the counter gets removed on its own after that.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q8-X04",
+   "question_id": "c4q8",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "in memory cache not the database since disk is slow redis incr decreases the counter by one because you count down the remaining allowance and expire sets a timeout and the key gets deleted on its own",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q8-X05",
+   "question_id": "c4q8",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "A database with proper indexes is plenty fast for counters, so I'd just use that, and keep Redis for when you want persistence. INCR in Redis adds one to the stored counter.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q8-X06",
+   "question_id": "c4q8",
+   "persona": "student",
+   "kind": "confident_wrong",
+   "transcript": "In-memory cache is better than the database since disk is slow and a cache can expire entries. INCR bumps the counter by one. And EXPIRE puts a ceiling on the counter's value, so once it hits that max the following calls are blocked.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q8-X07",
+   "question_id": "c4q8",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "Not the database, disk is slow, so an in-memory cache, fast and with expiry. INCR adds one. And the TTL command, no, EXPIRE, sets the timeout and deletes the counter automatically when it runs out.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c4q9-X01",
+   "question_id": "c4q9",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "You respond with a 429, too many requests, and depending on the situation you might park the call in a queue to run later. You also send back headers: one telling the client how many calls it has left in the window, one with the per-window ceiling, and one saying how many seconds to wait before retrying.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q9-X02",
+   "question_id": "c4q9",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "the a p i return four twenty nine too many requests and maybe the request is put in a que for later. headers are x rate limit remaining and x rate limit limit for the remaining and the allowed per window and x rate limit retry after is the seconds to wait before you try again",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q9-X03",
+   "question_id": "c4q9",
+   "persona": "rushed",
+   "kind": "partial",
+   "transcript": "429 too many requests and sometimes you queue the request and process it later",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q9-X04",
+   "question_id": "c4q9",
+   "persona": "nervous beginner",
+   "kind": "one_subtle_mistake",
+   "transcript": "Um, it sends back a five oh three, service unavailable, and might queue the call. The remaining and limit headers show what you have left and the cap per window, and retry after tells you how many seconds to wait.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "wrong_number"
+   },
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "c4q9-X05",
+   "question_id": "c4q9",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "Return a 429, and the request can be queued for later. The retry-after header carries the exact timestamp when the window resets, as an epoch value. I don't remember the other headers.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q9-X06",
+   "question_id": "c4q9",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "Well the client gets rejected, of course. Then the headers, so X-Ratelimit-Limit tells the client how many requests it has left, and X-Ratelimit-Remaining is the total it's allowed in each window. And retry-after is how many seconds you should hold off.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q9-X07",
+   "question_id": "c4q9",
+   "persona": "student",
+   "kind": "self_correction",
+   "transcript": "It returns a 403, no wait, 429, too many requests, and the call may be queued. Headers show remaining requests and the limit per window, and retry after gives seconds to wait.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c4q10-X01",
+   "question_id": "c4q10",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "First one is a race: two requests can both read the same counter value before either has written its update back, so you undercount. Locking would cure it but drags things down, so people reach for Lua scripts or sorted sets in Redis. Second is keeping the limiter servers in agreement, they all need to see the same data. Pinning a client to one limiter, sticky sessions, doesn't scale or flex, so you use one central store such as Redis.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q10-X02",
+   "question_id": "c4q10",
+   "persona": "student",
+   "kind": "correct_noisy_stt",
+   "transcript": "race condition two concurrent requests read the same counter before writing it back so the count ends up wrong. locks would fix it but slow every thing down so you use loo a scripts or redis sorted sets. then synchronization several rate limiter servers have to share the same data. sticky sessions are not a good idea you use a central data store like redis",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q10-X03",
+   "question_id": "c4q10",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um there's a race condition where concurrent requests read the same counter and then, uh, write it back so it ends up wrong. And locks would slow it down so you use Lua scripts or sorted sets.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c4q10-X04",
+   "question_id": "c4q10",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "race condition is two requests reading the same counter before writing so the count is off locks are too slow so lua scripts or sorted sets then sync multiple limiter servers need the same data and sticky sessions are the recommended fix since each user always lands on the same limiter",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   },
+   "mistake_types": {
+    "k4": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q10-X05",
+   "question_id": "c4q10",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "So the race condition is when concurrent requests read the same counter before writing it back, so the count's wrong. For that I'd just use locks, they fix it with no real cost, so that's what you'd go with. And the second problem is servers needing to share the same data.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k2": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q10-X06",
+   "question_id": "c4q10",
+   "persona": "bootcamp grad",
+   "kind": "confident_wrong",
+   "transcript": "The race condition comes from clock drift between servers. Two machines disagree about which time window they're in, so the counts end up wrong. The second problem is sync, the limiters have to share the same data, and for that you use a central store like Redis, not sticky sessions.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {
+    "k1": "wrong_cause"
+   },
+   "tags": []
+  },
+  {
+   "id": "c4q10-X07",
+   "question_id": "c4q10",
+   "persona": "non-native English speaker",
+   "kind": "self_correction",
+   "transcript": "First problem is race condition, two requests read same counter, then write, count wrong. Lock is the solution, but slow, so Lua scripts or sorted set. Second, synchronization, servers must share data. Sticky session is good, no, is not advisable, centralized store like Redis.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c5q1-X01",
+   "question_id": "c5q1",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "The naive way to spread keys is to hash the key and take the remainder after dividing by the number of servers. Fine while the pool never changes. But the moment you add or drop a machine the divisor changes, and suddenly nearly every key lands somewhere new, not only the ones from the box that changed. Clients go looking in the wrong place and you get a flood of cache misses.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q1-X02",
+   "question_id": "c5q1",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "simple way is server equals hash of the key mod n where n is the size of the server pool. when a server is add or remove n change and most of the keys get remap not just the ones on the affected server. then clients connect to wrong servers and you get a storm of cash misses",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q1-X03",
+   "question_id": "c5q1",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, so you pick a server by hashing the key and then doing modulo the number of servers. That's the idea, yeah.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q1-X04",
+   "question_id": "c5q1",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "so you hash the key mod n n being the pool size and when a server is added or removed only the keys that lived on that one server get remapped but the clients still hit the wrong servers and get a storm of cache misses",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q1-X05",
+   "question_id": "c5q1",
+   "persona": "rambling",
+   "kind": "mixed",
+   "transcript": "The pick is hash of key mod N, N is how many servers. And, hm, the trouble is when clients end up at the wrong servers, the data there gets corrupted, I mean overwritten with stale values, and that's the real damage.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "wrong_cause"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q1-X06",
+   "question_id": "c5q1",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "You take the hash of the key modulo N, N being the number of keys you're storing. So every time a new key gets added N goes up and everything shifts around.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "swapped_terms",
+    "k2": "wrong_cause"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q1-X07",
+   "question_id": "c5q1",
+   "persona": "student",
+   "kind": "self_correction",
+   "transcript": "Hash of the key mod N where N is the pool size. If a server goes away only that server's keys move, no wait, most keys move because N changed. So clients hit the wrong servers and cache misses spike.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c5q2-X01",
+   "question_id": "c5q2",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "Take the whole range of hash outputs and bend it into a circle so the last value touches the first. Hash your servers onto it, and hash the keys onto it with the very same function; no remainder operation anywhere. To locate a key you start at its spot and walk clockwise until you bump into a server.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q2-X02",
+   "question_id": "c5q2",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "the hash space is join in to a ring servers and keys are hash on to it with the same hash function like sha one and no modulo. to find the server for a key you go clock wise from the key position until the first server",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q2-X03",
+   "question_id": "c5q2",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, so you have this ring, and the servers and keys both get hashed onto it with the same hash function. And, uh, no modulo.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q2-X04",
+   "question_id": "c5q2",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "ring made from the hash space servers and keys hashed with same function no modulo then to find the server for a key you go counter clockwise from the key until you hit a server",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q2-X05",
+   "question_id": "c5q2",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "I think servers get hashed with SHA-1 onto the ring, and the keys use a lighter hash like MD5 since there are so many more of them. Um, the lookup goes clockwise from the key to the first server.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered"
+   },
+   "mistake_types": {
+    "k1": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q2-X06",
+   "question_id": "c5q2",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "The ring is basically mod N drawn as a circle, you still take the hash mod the server count to get the position. Then the key goes to whichever server is closest to it, on either side.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "negation_error",
+    "k2": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q2-X07",
+   "question_id": "c5q2",
+   "persona": "rambling",
+   "kind": "self_correction",
+   "transcript": "So everything's on a ring, same hash for servers and keys, no mod. For a key, you go anticlockwise, hmm no, clockwise, to the first server you meet.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c5q3-X01",
+   "question_id": "c5q3",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "Add a node and it only takes over a slice: the keys sitting between it and its predecessor, looking anticlockwise. Everything else stays put. Pull a node out and just its keys slide over to the next node going clockwise; again nothing else moves.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q3-X02",
+   "question_id": "c5q3",
+   "persona": "student",
+   "kind": "correct_noisy_stt",
+   "transcript": "when a server is added only a fraction of the keys move the ones between the new server and the previous server going anti clock wise. when a server is removed only its keys get remap to the next server clock wise",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q3-X03",
+   "question_id": "c5q3",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, if you remove a server, just its keys go over to the next server clockwise. Others stay where they are.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q3-X04",
+   "question_id": "c5q3",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "adding a server only some keys move the ones between the new server and the previous one anticlockwise and removing a server spreads its keys out evenly over all the remaining servers",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q3-X05",
+   "question_id": "c5q3",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "So, like, when you add a server, the keys between the new server and the next server clockwise are the ones that move over to it.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing"
+   },
+   "mistake_types": {
+    "k1": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q3-X06",
+   "question_id": "c5q3",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "Honestly the ring still has to re-split, so adding a server shifts about half of all the keys, and when you remove one its keys get shared out across every server that's left, since you want to keep things balanced.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "overgeneralization",
+    "k2": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q3-X07",
+   "question_id": "c5q3",
+   "persona": "confident senior engineer",
+   "kind": "self_correction",
+   "transcript": "Add a server: keys between it and the next server clockwise move, no, between it and the previous one, anticlockwise. Remove a server: only its keys move, to the next server clockwise.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c5q4-X01",
+   "question_id": "c5q4",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "Two things bite you. Whenever nodes come and go you can't hold the slices of the ring at equal sizes, so one node can end up owning a stretch twice the others. And separately the keys themselves may bunch up on the circle, which can leave one machine with most of the data and others with nothing.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q4-X02",
+   "question_id": "c5q4",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "one is is impossible to keep the partition the same size when servers are add or remove one partition can get twice as large. second the key distribution on the ring can be non uniform so one server holds most of the keys and others hold none",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q4-X03",
+   "question_id": "c5q4",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, the keys might not be spread evenly around the ring, so some servers get loaded and some get nothing.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q4-X04",
+   "question_id": "c5q4",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "partition sizes stay equal on their own because the hash function spreads servers uniformly the real issue is the key distribution can be non uniform so some servers get most keys and others none",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered"
+   },
+   "mistake_types": {
+    "k1": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q4-X05",
+   "question_id": "c5q4",
+   "persona": "student",
+   "kind": "mixed",
+   "transcript": "One problem is that the ring can only hold a fixed number of servers, you run out of positions on it. I forget the other.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing"
+   },
+   "mistake_types": {
+    "k1": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q4-X06",
+   "question_id": "c5q4",
+   "persona": "student",
+   "kind": "confident_wrong",
+   "transcript": "First, adding servers takes forever because all the data has to be copied around before the ring is usable. Second, two keys can hash to the exact same point on the ring, so you get collisions and lose data.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "wrong_cause",
+    "k2": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q4-X07",
+   "question_id": "c5q4",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "Partitions can't stay the same size when servers join or leave, one gets way bigger. And key distribution can be non-uniform, so one server holds most keys, no, most keys land on one server and others get none.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c5q5-X01",
+   "question_id": "c5q5",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "Instead of one spot per machine, each machine gets scattered across the ring in many places. So it owns lots of little slices, and a key walks clockwise to the first of these markers, which points back to the real machine. More markers makes the load more even, the spread across servers shrinks, but you pay by storing more of them.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q5-X02",
+   "question_id": "c5q5",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "each server is represent by multiple virtual nodes on the ring so it own multiple partitions and a key goes clock wise to the first virtual node. more virtual nodes more balanced because the standard dev ee ation get smaller but need more space to store so is a trade off",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q5-X03",
+   "question_id": "c5q5",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "So a server has lots of virtual nodes around the ring, and a key goes clockwise to the first virtual node. And, um, more of them makes things more even because the standard deviation drops.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q5-X04",
+   "question_id": "c5q5",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "each real server gets many virtual nodes on the ring and keys go clockwise to the first one more virtual nodes is better balanced standard deviation shrinks and the cost is that more virtual nodes need less space because each one holds less data",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q5-X05",
+   "question_id": "c5q5",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "Per server you add multiple virtual nodes on the ring, key goes clockwise to the first. The catch is the more you add the less balanced it gets, there are more partitions to keep even. But the price is memory to store all of them.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "wrong_tradeoff"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q5-X06",
+   "question_id": "c5q5",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "Virtual nodes are spare servers you keep warm. If a real server dies, one of the virtual ones takes over, kind of like a hot standby. The price is you have to hold more of them in storage.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q5-X07",
+   "question_id": "c5q5",
+   "persona": "student",
+   "kind": "hedged_wrong",
+   "transcript": "Every server owns multiple virtual nodes, key goes clockwise to the first virtual node. I'm not sure but maybe fewer virtual nodes spread the load better? And the tradeoff is more virtual nodes take more space.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q6-X01",
+   "question_id": "c5q6",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "When the server set changes, hardly any keys have to be moved. Because data spreads out evenly you can scale out horizontally without drama. It also takes the sting out of hot keys, like a celebrity's data all piling onto one shard, by spreading popular stuff around. You see it in Dynamo, Cassandra, Discord, Akamai's CDN and Google's Maglev style balancers.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q6-X02",
+   "question_id": "c5q6",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "it minimize the keys that need to be redistribute when you add or remove servers makes horizontal scaling easy because data is more even ly distribute and mitigate the hot spot key problem. use in dynamo cassandra discord a ka my and mag lev",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q6-X03",
+   "question_id": "c5q6",
+   "persona": "rushed",
+   "kind": "partial",
+   "transcript": "it minimizes how many keys get redistributed and it's used in Dynamo and Cassandra",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c5q6-X04",
+   "question_id": "c5q6",
+   "persona": "bootcamp grad",
+   "kind": "one_subtle_mistake",
+   "transcript": "So fewer keys get moved when servers change, scaling out is easy because data is evenly spread, and it helps with hotspot keys. As for who uses it, Dynamo and Cassandra do range based partitioning, it's Kafka and Hadoop that use the ring.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   },
+   "mistake_types": {
+    "k4": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q6-X05",
+   "question_id": "c5q6",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "It does make horizontal scaling easy. It doesn't help with the celebrity problem though, popular keys still pile up on a single shard because they hash to one point.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "contradicted",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k3": "negation_error"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q6-X06",
+   "question_id": "c5q6",
+   "persona": "bootcamp grad",
+   "kind": "confident_wrong",
+   "transcript": "Main selling point is that every time servers change, all the keys get redistributed evenly across the whole pool so everything is rebalanced. That's why scaling out is simple.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k1": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c5q6-X07",
+   "question_id": "c5q6",
+   "persona": "student",
+   "kind": "self_correction",
+   "transcript": "Minimizes keys moved on resize, scaling horizontally is easy, helps hotspot keys, used in Cassandra, Redis, no, Dynamo and Discord and so on.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c6q1-X01",
+   "question_id": "c6q1",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "On one box you'd keep the pairs in a big in-memory hash map. That runs out of RAM fast. You can squeeze the data with compression, and keep only the hot entries in memory with the cold ones pushed to disk. But a single machine still tops out quickly, so you go to a distributed key-value store, a distributed hash table.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q1-X02",
+   "question_id": "c6q1",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "single server you keep the key value pairs in a in memory hash table two optimizations compress the data and keep only the frequently used data in memory and the rest on disk but one server still reach capacity fast so you need a distributed key value store a distributed hash table",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q1-X03",
+   "question_id": "c6q1",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, you'd store everything in an in-memory hash table. But then it fills up quickly, so you need a distributed key-value store.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q1-X04",
+   "question_id": "c6q1",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "single server in memory hash table you can compress and you keep the rarely used data in memory and the hot data on disk and its still not enough so you go distributed",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q1-X05",
+   "question_id": "c6q1",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "On one server the pairs go in a B-tree on disk. You can compress the data and keep the frequently used bits in memory with the rest on disk.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q1-X06",
+   "question_id": "c6q1",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "The real reason to go distributed isn't capacity, it's availability. One machine is a single point of failure. Compression and caching handle the size problem fine, though, hot data in memory and the rest on disk.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "wrong_cause"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q1-X07",
+   "question_id": "c6q1",
+   "persona": "rambling",
+   "kind": "self_correction",
+   "transcript": "So single server, hash table in memory, and you can compress, and keep hot data in memory, cold on disk, and a single server hits its limit pretty soon, so hmm distributed hash table, distributed, no wait, I said that, yes, distributed key-value store.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c6q2-X01",
+   "question_id": "c6q2",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "You can't have all three. Pick any two out of: every client sees identical data at the same moment, every request gets an answer even when some machines are down, and the system carries on when the network between nodes breaks. Since networks do break in real life, partition tolerance isn't optional, so a system that's only consistent and available doesn't exist in practice.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q2-X02",
+   "question_id": "c6q2",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "cap theorem a distributed system cant guarantee more than two of consistency availability and partition tolerance. consistency all clients see the same data at once availability every request gets a response even if nodes are down partition tolerance it keeps working despite network brakes. network failures are unavoidable so a c a system cant exist",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q2-X03",
+   "question_id": "c6q2",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "It says you can't have more than two out of consistency, availability and partition tolerance. That's all I remember.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q2-X04",
+   "question_id": "c6q2",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "cap you can only guarantee two of consistency availability partition tolerance consistency same data for everyone availability a response even if nodes are down partition tolerance works through network breaks and ca systems exist like a classic sql cluster in one data center",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q2-X05",
+   "question_id": "c6q2",
+   "persona": "student",
+   "kind": "mixed",
+   "transcript": "CAP: at most two of the three. Consistency means every request gets a response, and availability is that all the clients see the same data at the same time. Partition tolerance, it keeps working through network issues.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k2": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q2-X06",
+   "question_id": "c6q2",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "Partition tolerance is data being split across nodes, like sharding, and consistency is the data matching the schema. And you can avoid network breaks if you build the data center network right, so partition tolerance is basically optional.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "confuses_with_related_concept",
+    "k3": "negation_error"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q2-X07",
+   "question_id": "c6q2",
+   "persona": "bootcamp grad",
+   "kind": "hedged_wrong",
+   "transcript": "You get at most two of consistency, availability and partition tolerance. Consistency is clients seeing the same data, availability is answering every request even with nodes down, partition tolerance is working despite network breaks. And I think CA can exist if you keep everything in one rack, maybe?",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q3-X01",
+   "question_id": "c6q3",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "When the network splits you have to choose. A CP system protects correctness: it refuses writes or throws errors on the affected side, giving up availability; think of a bank where the balance has to be right. An AP system keeps serving reads and writes, even if what it returns is old, and reconciles later once the split heals.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q3-X02",
+   "question_id": "c6q3",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "cp system keeps consistency by blocking writes or returning errors during a partition so it sacrifice availability like banks. a p system stay available and keep accepting reads and writes maybe return stale data and it sinks when the partition is resolve",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q3-X03",
+   "question_id": "c6q3",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, AP stays up and keeps taking reads and writes, even though it might give back old data, and it catches up afterwards.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q3-X04",
+   "question_id": "c6q3",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "cp blocks writes during the partition to keep things consistent so banks use it and ap stays available accepting reads and writes but it hands back fresh data from the nearest replica every time and syncs later",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "negation_error"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q3-X05",
+   "question_id": "c6q3",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "CP is what you'd pick for a social feed, where it matters most that the system stays up, that's why it keeps serving requests through a split.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing"
+   },
+   "mistake_types": {
+    "k1": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q3-X06",
+   "question_id": "c6q3",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "Look, the CP one is the one that stays up and may hand you stale values, that's what the P is for, and AP is the one that blocks writes to stay consistent, which is why banks go with AP.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "swapped_terms",
+    "k2": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q3-X07",
+   "question_id": "c6q3",
+   "persona": "student",
+   "kind": "hedged_wrong",
+   "transcript": "AP stays available and keeps taking reads and writes, maybe with stale data, syncing after. CP, I think, keeps accepting writes but maybe returns old data? Not sure.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered"
+   },
+   "mistake_types": {
+    "k1": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q4-X01",
+   "question_id": "c6q4",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "You partition with consistent hashing, so scaling out is automatic, and beefier machines can be given more virtual nodes. To replicate, walk clockwise from the key and take the first N distinct physical servers. Spread those replicas over separate data centers so one outage doesn't take everything.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q4-X02",
+   "question_id": "c6q4",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "partition with consistent hashing which scale automatic and give more virtual nodes to servers with higher capacity. replicate to n servers by walking clock wise from the key and choose the first n unique servers. place replicas in different data centers for reliability",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q4-X03",
+   "question_id": "c6q4",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "So you use consistent hashing for partitioning, and bigger servers get more virtual nodes. Um, and that's what I remember.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q4-X04",
+   "question_id": "c6q4",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "consistent hashing for partitioning bigger servers more virtual nodes replicate to n servers clockwise first n unique ones and put the replicas in the same data center so the latency is low",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "wrong_tradeoff"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q4-X05",
+   "question_id": "c6q4",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "For partitioning I'd shard by key range, like A to F on one server. Then replicas, you go clockwise on the ring and take the next N nodes, and it doesn't matter if some are the same physical machine.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "invented_detail",
+    "k2": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q4-X06",
+   "question_id": "c6q4",
+   "persona": "student",
+   "kind": "confident_wrong",
+   "transcript": "Consistent hashing, sure, but the larger machines get fewer virtual nodes since they're more reliable. And you copy every item to all the servers in the ring so any node can answer.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "opposite_direction",
+    "k2": "overgeneralization"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q4-X07",
+   "question_id": "c6q4",
+   "persona": "rambling",
+   "kind": "self_correction",
+   "transcript": "Consistent hashing partitions it, more virtual nodes for the beefy servers, replicate by going clockwise first N servers, anticlockwise? no, clockwise, unique ones, and different data centers for reliability.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c6q5-X01",
+   "question_id": "c6q5",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "Say you keep N copies. A write counts once W of them confirm; a read waits to hear back from R. If W plus R beats N, the read set and write set must overlap in at least one node holding the freshest value, so you're strongly consistent. Dial W or R down and it gets quicker but you may read stale data; dial them up and it's safer but slower.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q5-X02",
+   "question_id": "c6q5",
+   "persona": "student",
+   "kind": "correct_noisy_stt",
+   "transcript": "n is the number of replicas w is the write quorum and r is the read quorum. a write succeeds when w replicas acknowledge and the read waits for r responses. if w plus r is greater than n you get strong consistency cause an overlapping node has the latest data. small w or r is fast but less consistent",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q5-X03",
+   "question_id": "c6q5",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "So N is the number of replicas, W is how many have to acknowledge a write, and R is how many responses a read waits for. Um, that's about it.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q5-X04",
+   "question_id": "c6q5",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "n replicas w acks for a write r responses for a read and if w plus r equals n you get strong consistency since a node overlaps and a small w or r is faster but less consistent",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q5-X05",
+   "question_id": "c6q5",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "N is the number of clients, W is the write timeout and R is the read timeout. And smaller values make it faster but less consistent, and bigger values make it more consistent but slower.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q5-X06",
+   "question_id": "c6q5",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "It's N replicas, W acks for writes, R responses for reads. And a bigger W or R is faster, because more nodes work on it in parallel, while smaller values wait on fewer nodes and so you lose consistency.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "wrong_tradeoff"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q5-X07",
+   "question_id": "c6q5",
+   "persona": "student",
+   "kind": "self_correction",
+   "transcript": "N is replicas, W write acks, R read responses. W plus R greater than N gives strong consistency, no, wait, less than, no, greater, yeah greater. Small W or R is faster but less consistent.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c6q6-X01",
+   "question_id": "c6q6",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "Strong means a read always gets the latest write, nobody sees old data, but the price is holding up reads and writes until every replica agrees, which hurts availability. Weak means later reads might not show the newest value. Eventual is the weak flavour where, if you wait long enough, all replicas converge; Dynamo and Cassandra work that way and it's the recommended model.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q6-X02",
+   "question_id": "c6q6",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "strong consistency any read returns the most recent write by block ing operations until all replicas agree which hurts availability. weak consistency subsequent reads may not see the latest value. eventual consistency given enough time all replicas converge dynamo and cassandra use it and its recommend",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q6-X03",
+   "question_id": "c6q6",
+   "persona": "rushed",
+   "kind": "partial",
+   "transcript": "weak means later reads might not see the newest value, and eventual is when given enough time everything converges",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q6-X04",
+   "question_id": "c6q6",
+   "persona": "nervous beginner",
+   "kind": "one_subtle_mistake",
+   "transcript": "Um, strong consistency reads always return the latest write and it's done with asynchronous replication so it stays fast and available. Weak is reads might be stale, and eventual means replicas converge over time, like in Dynamo.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "wrong_cause"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q6-X05",
+   "question_id": "c6q6",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "Strong consistency is blocking until replicas agree, so availability suffers. Eventual consistency though, Dynamo and Cassandra actually go for strong consistency, which is why they're the choice for finance.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "overgeneralization"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q6-X06",
+   "question_id": "c6q6",
+   "persona": "bootcamp grad",
+   "kind": "confident_wrong",
+   "transcript": "Strong consistency means reads may be a tiny bit stale but they're super quick, and the systems like Dynamo and Cassandra are strongly consistent, that's why they're so popular for banking style stuff.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "opposite_direction",
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q6-X07",
+   "question_id": "c6q6",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "Strong: read gets latest write, block until replicas agree, hurts availability. Weak: later reads might not see the latest. Eventual: converge given time, Cassandra uses strong, no, eventual, and it's recommended.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c6q7-X01",
+   "question_id": "c6q7",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "It's a list of server and counter pairs stuck onto a record, so you can tell whether one copy came before another, after it, or is a clash. A copy X is an ancestor of Y when every counter in Y is at least as big as X's; if any counter is smaller you've got a conflict. Costs: the client has to deal with resolving conflicts, and the pairs keep growing so you cut the oldest ones past a limit.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q7-X02",
+   "question_id": "c6q7",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "vector clock is a set of server and version pairs attach to a data item used to check if one version precede succeed or conflict. x is ancestor of y if all counters in y are greater than or equal to x if any is lower is a conflict. downsides complexity for the client to resolve conflicts and the pairs can grow fast so oldest are remove",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q7-X03",
+   "question_id": "c6q7",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, it's pairs of server and version numbers on a data item. And the downsides are that the client has to resolve conflicts, and it can get big so they delete the oldest pairs.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q7-X04",
+   "question_id": "c6q7",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "set of server version pairs on the item to see precede succeed or conflict x is an ancestor of y if all the counters in y are less than or equal to x else conflict and downsides client complexity and growth so oldest pairs get pruned",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q7-X05",
+   "question_id": "c6q7",
+   "persona": "student",
+   "kind": "mixed",
+   "transcript": "It's server and version pairs on the data. The downside is size, they grow so the oldest are dropped. But complexity isn't really a downside since the server resolves conflicts automatically, so the client stays simple.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q7-X06",
+   "question_id": "c6q7",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "A vector clock is a single global counter that gives you a total order of events across all servers. So the version with the bigger number just wins and there are no conflicts to worry about.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "confuses_with_related_concept",
+    "k2": "overgeneralization"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q7-X07",
+   "question_id": "c6q7",
+   "persona": "rambling",
+   "kind": "self_correction",
+   "transcript": "Pairs of server and version on an item. X is an ancestor of Y if all counters in Y are less than or equal... no, greater than or equal to X's. Otherwise conflict. Client has to resolve, and pairs grow so prune the oldest.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c6q8-X01",
+   "question_id": "c6q8",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "You don't declare a node dead on one peer's word, you want at least two independent reports. Broadcasting to everybody doesn't work at scale, so you gossip: every node keeps a table of members with heartbeat counters, bumps its own, and periodically shares with some random peers. If a member's counter hasn't moved for a set time, it's treated as down.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q8-X02",
+   "question_id": "c6q8",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "you need at least two independent sources to mark a server down all to all multi casting is inefficient. gossip protocol each node has a membership list with heart beat counters increments its own and sends heart beats to random nodes. if the heart beat has not increased for a predefined period the member is offline",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q8-X03",
+   "question_id": "c6q8",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, there's a gossip protocol, where each node keeps a membership list with heartbeat counters and it sends them to random nodes.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q8-X04",
+   "question_id": "c6q8",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "all to all multicast is too slow so gossip protocol with heartbeat counters sent to random nodes and a node that doesnt increase its heartbeat for a set period is offline and one other server reporting a node down is enough to mark it down",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q8-X05",
+   "question_id": "c6q8",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "Gossip with heartbeat counters, yeah. A node counts as offline as soon as a single ping to it fails, so you find out right away.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "wrong_cause"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q8-X06",
+   "question_id": "c6q8",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "That's handled by a central health-check service that pings every node and owns the membership list, like the load balancer does for backends.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k2": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q8-X07",
+   "question_id": "c6q8",
+   "persona": "student",
+   "kind": "self_correction",
+   "transcript": "Two independent sources needed to mark a node down, multicast to all is inefficient. Gossip, nodes keep heartbeats and send to random nodes. If a heartbeat is not increasing in, hmm, a predefined time, offline. Right, two sources, not one.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c6q9-X01",
+   "question_id": "c6q9",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "For short outages you relax the quorum: take the first W or R healthy nodes you meet on the ring and skip the dead ones. Someone else covers for the absent node for a while and gives the data back when it returns, that's hinted handoff. For lasting failures, replicas get repaired with anti-entropy using Merkle trees: compare root hashes, descend, and only sync the buckets that differ.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q9-X02",
+   "question_id": "c6q9",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "for temporary failures sloppy quorum uses the first w or r healthy servers on the ring and ignores the offline ones. hinted hand off another server handles requests and hands the data back when the original recovers. for permanent failures anti entropy with merkle trees compares hashes top down so only the different buckets are sink",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q9-X03",
+   "question_id": "c6q9",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, there's hinted handoff, where another server temporarily takes the requests and gives the data back when the first one comes back.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q9-X04",
+   "question_id": "c6q9",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "sloppy quorum takes the first healthy w or r servers on the ring skips offline ones and with hinted handoff the substitute server keeps the data permanently once the original is declared failed and merkle trees compare hashes so only differing buckets sync",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q9-X05",
+   "question_id": "c6q9",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "Hinted handoff, a stand-in server serves requests and returns the data when the original recovers. And for permanent failures the Merkle tree approach compares every key one by one and streams the full data set across, which is why it's slow.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q9-X06",
+   "question_id": "c6q9",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "So merkle trees are what you use for temporary failures, to patch over the gap quickly. And hinted handoff is the permanent fix, the replacement just takes over the data for good.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "swapped_terms",
+    "k3": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q9-X07",
+   "question_id": "c6q9",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "Sloppy quorum, first W or R healthy nodes. Hinted handoff, another node takes over and hands back on recovery. For permanent stuff, Merkle trees, compare the leaves first, no, the root hashes first, and walk down to the buckets that differ.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c6q10-X01",
+   "question_id": "c6q10",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "A write first gets logged durably in the commit log, then lands in the in-memory cache, and once that fills up it gets flushed out to an SSTable on disk. A read looks in memory first; if it isn't there, a bloom filter says which SSTables might have the key, and you fetch from those.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q10-X02",
+   "question_id": "c6q10",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "write goes first to a commit log then saved in the memory cache and when the cache is full its flush to a s s table on disk. read check the memory cache first if not found use the bloom filter to see which s s tables might have the key then return the data",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q10-X03",
+   "question_id": "c6q10",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, for a write it goes in the commit log, then the memory cache, then gets flushed to disk in an SSTable when it's full.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c6q10-X04",
+   "question_id": "c6q10",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "write path data goes to the memory cache then gets flushed to an sstable and the commit log is updated after that read path is cache first then bloom filter to find the sstables",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered"
+   },
+   "mistake_types": {
+    "k1": "wrong_order_or_step"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q10-X05",
+   "question_id": "c6q10",
+   "persona": "student",
+   "kind": "mixed",
+   "transcript": "For reads, the bloom filter gets checked first, and then if it says maybe you look in the memory cache, and finally the SSTables.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "wrong_order_or_step"
+   },
+   "tags": []
+  },
+  {
+   "id": "c6q10-X06",
+   "question_id": "c6q10",
+   "persona": "student",
+   "kind": "confident_wrong",
+   "transcript": "A write lands in the memory cache first and is then flushed into the commit log in batches. On a read you go straight to the SSTables, and the bloom filter is what tells you whether the memory cache has the key.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "wrong_order_or_step",
+    "k2": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q1-X01",
+   "question_id": "c7q1",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "Auto_increment lives in one database, and one machine can't carry the load, while coordinating unique numbers across several databases without adding lag is tough. What we need from the IDs: no duplicates, digits only, small enough for 64 bits, sortable by creation date, and a rate north of ten thousand a second.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q1-X02",
+   "question_id": "c7q1",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "auto increment fail because one database server is not large enough and generating unique ids across multiple data bases with minimal delay is hard. requirements unique numerical only fit in sixty four bits ordered by date and over ten thousand ids per second",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q1-X03",
+   "question_id": "c7q1",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, the IDs need to be unique, numbers only, and fit in 64 bits. And, uh, sorted by date I guess, and over ten thousand per second.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q1-X04",
+   "question_id": "c7q1",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "auto increment breaks since one db server is not big enough and syncing unique ids across several databases without delay is hard ids must be unique can be alphanumeric fit in 64 bits sortable by date and over ten thousand a second",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "negation_error"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q1-X05",
+   "question_id": "c7q1",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "Auto_increment doesn't work because it can't guarantee the IDs are unique, two rows could end up with the same value.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing"
+   },
+   "mistake_types": {
+    "k1": "wrong_cause"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q1-X06",
+   "question_id": "c7q1",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "Auto_increment is a bit dated for this. What you really want are random IDs, so nobody can guess the next one, and 128 bits is plenty of room for that, no need to sort them by time either.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q1-X07",
+   "question_id": "c7q1",
+   "persona": "rambling",
+   "kind": "self_correction",
+   "transcript": "One database server is too small, and unique IDs across databases with low delay is hard. Requirements: unique, numerical, 64 bits, ordered by date, and a thousand IDs per second, no, ten thousand, over ten thousand per second.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction",
+    "numeric"
+   ]
+  },
+  {
+   "id": "c7q2-X01",
+   "question_id": "c7q2",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "Every database keeps using its own auto_increment but, rather than adding one each time, it jumps ahead by the number of servers. So with three databases each steps by three. Trouble is it's awkward over several data centers, the numbers don't follow time between servers, and adding or removing servers is messy.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q2-X02",
+   "question_id": "c7q2",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "multi master replication use the auto increment but increase the next id by k the number of database servers instead of one. drawbacks is hard to scale across data centers the ids do not go up with time across servers and not scale well when servers added or removed",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q2-X03",
+   "question_id": "c7q2",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "It uses auto_increment on each database, but the step is the number of servers instead of 1, um.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q2-X04",
+   "question_id": "c7q2",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "each db uses auto increment but steps by the number of data centers rather than the number of servers and the drawbacks are hard across data centers ids dont follow time and bad when servers come and go",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered"
+   },
+   "mistake_types": {
+    "k1": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q2-X05",
+   "question_id": "c7q2",
+   "persona": "student",
+   "kind": "mixed",
+   "transcript": "The nice part is the IDs do go up with time across the servers, and it scales across data centers without much trouble.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q2-X06",
+   "question_id": "c7q2",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "Each database gets a different starting offset and still increments by one. It scales great across data centers, since they're independent of each other, and the IDs go up with time globally.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "invented_detail",
+    "k2": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q2-X07",
+   "question_id": "c7q2",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "Auto_increment but the next ID goes up by k, the number of servers, not by one. Drawbacks: hard across data centers, IDs don't rise with time across servers, hmm, and bad when you add servers, or remove them, yeah.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c7q3-X01",
+   "question_id": "c7q3",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "Each machine can mint its own 128-bit values without talking to anyone, which makes scaling out trivial. You'd practically never see a clash, you'd need to make a billion a second for a century to have even odds of one repeat. On the flip side it's twice the width we wanted, the values don't grow with time, and they might contain letters.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q3-X02",
+   "question_id": "c7q3",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "uuid is a one hundred twenty eight bit number each server generate it independently so no coordination and easy to scale. the odds of two of them colliding are really tiny. downsides is one twenty eight bits instead of sixty four ids dont go up with time and could be non numeric",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q3-X03",
+   "question_id": "c7q3",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "So a UUID is 128 bits and any server can make one without syncing with the others. Um, so it scales easy.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q3-X04",
+   "question_id": "c7q3",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "uuid 128 bit every server generates its own no coordination collisions are common enough that you need a uniqueness check before using one downsides 128 bits not 64 not time ordered could be non numeric",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "overgeneralization"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q3-X05",
+   "question_id": "c7q3",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "A UUID comes from a central service that every server asks, and the clash chance is tiny. It doesn't go up with time, could have letters in it, and it's too long, 128 bits where we want 64.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q3-X06",
+   "question_id": "c7q3",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "UUIDs have a big flaw: they're sequential, so they go up with time and leak how many IDs you've issued. They're also only 32 bits, which is too short.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q3-X07",
+   "question_id": "c7q3",
+   "persona": "rambling",
+   "kind": "hedged_wrong",
+   "transcript": "Each server generates the 128-bit UUID alone so it scales, collisions are really unlikely, and the downsides are it's too long, not numeric maybe, and I think the IDs do go up with time? Maybe not, um, I believe they do.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q4-X01",
+   "question_id": "c7q4",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "One central database that does auto_increment and everybody asks it for the next number, which is what Flickr did. You get numeric IDs, it's simple, and fine for small and mid-sized apps. But it's a single point of failure, and if you add more ticket servers to fix that you have to keep them in sync.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q4-X02",
+   "question_id": "c7q4",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "ticket server is one centralize auto increment database like flickr did ids are numeric and easy to implement for small to medium apps. drawback is single point of fail your and multiple ticket servers bring data sink ronization challenges",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q4-X03",
+   "question_id": "c7q4",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, it's a single database doing auto_increment, like Flickr, IDs are numeric and it's easy to set up for small apps.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q4-X04",
+   "question_id": "c7q4",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "central auto increment database like flickr numeric easy for small apps the drawback is the single point of failure but adding more ticket servers solves it cleanly with no sync issues",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q4-X05",
+   "question_id": "c7q4",
+   "persona": "student",
+   "kind": "mixed",
+   "transcript": "A ticket server is where several servers each hand out random UUIDs, which is what Twitter used to do. Its weak spot is the single point of failure.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered"
+   },
+   "mistake_types": {
+    "k1": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q4-X06",
+   "question_id": "c7q4",
+   "persona": "student",
+   "kind": "confident_wrong",
+   "transcript": "Flickr's approach was a ticket server that issued UUIDs, so they were non-numeric and hard to read. The big drawback is that it's a single point of failure, and extra ticket servers have to be synced.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered"
+   },
+   "mistake_types": {
+    "k1": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q4-X07",
+   "question_id": "c7q4",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "One central auto_increment database, Flickr did it, numeric IDs, easy. Drawback: single point of failure, more ticket servers then bring... sync challenges, yeah.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c7q5-X01",
+   "question_id": "c7q5",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "Sixty-four bits total. The top bit is just a sign and stays zero. After that come forty-one bits of milliseconds counted from some chosen start date. Then ten bits for where it was made, five for the datacenter so thirty-two of those, five for the machine so thirty-two in each. The last twelve bits are a sequence counter that goes up for each ID on that machine and resets every millisecond.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q5-X02",
+   "question_id": "c7q5",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "snow flake id one sign bit always zero then forty one bit time stamp in milliseconds since an epoch. five bit data center id thirty two data centers and five bit machine id thirty two machines per data center. twelve bit sequence number incremented for each id on a machine and reset to zero every millisecond",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q5-X03",
+   "question_id": "c7q5",
+   "persona": "rushed",
+   "kind": "partial",
+   "transcript": "the last twelve bits are a sequence number it goes up per id and resets each millisecond",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q5-X04",
+   "question_id": "c7q5",
+   "persona": "nervous beginner",
+   "kind": "one_subtle_mistake",
+   "transcript": "It's 64 bits, sign bit zero, 41 bits of timestamp, 5 and 5 for datacenter and machine, and then a 12-bit sequence number that goes up for every ID and gets reset to 0 every second.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q5-X05",
+   "question_id": "c7q5",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "Sign bit is zero, then a thirty-one bit timestamp in milliseconds. Sequence number is twelve bits, goes up for each ID on a machine and resets to zero every millisecond.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "wrong_number"
+   },
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "c7q5-X06",
+   "question_id": "c7q5",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "Well, it has a hash of the user's ID so IDs from the same user cluster together, and then 12 bits of random noise at the end for uniqueness.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "invented_detail",
+    "k3": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q5-X07",
+   "question_id": "c7q5",
+   "persona": "student",
+   "kind": "self_correction",
+   "transcript": "One sign bit that's always 0, 41-bit timestamp since an epoch, 5 bits datacenter, 5 bits machine, thirty-two each, then the sequence, 10 bits, no, 12 bits, reset every millisecond.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction",
+    "numeric"
+   ]
+  },
+  {
+   "id": "c7q6-X01",
+   "question_id": "c7q6",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "Forty-one bits of milliseconds gets you roughly sixty-nine years, so you set your epoch near the present to push the cliff out. Twelve bits of sequence means 4096 IDs per millisecond per machine. Datacenter and machine IDs are decided at boot and left alone, because changing one by mistake gives you clashes. And clocks have to agree, usually through NTP.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q6-X02",
+   "question_id": "c7q6",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "the forty one bit time stamp lasts about sixty nine years so a custom epoch close to today delay the over flow. the twelve bit sequence allows four thousand ninety six ids per millisecond on one machine. data center and machine ids are fix at start up an accidental change can cause id conflicts. clock synchronization is a concern and n t p is the common solution",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q6-X03",
+   "question_id": "c7q6",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, the timestamp lasts about 69 years so you pick an epoch near today. And the sequence part lets you make 4096 IDs in a millisecond per machine.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c7q6-X04",
+   "question_id": "c7q6",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "timestamp lasts about 69 years custom epoch near today sequence is 4096 per ms per machine ids for datacenter and machine are fixed at startup and for clocks you dont use ntp you use logical clocks to keep them in sync",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "contradicted"
+   },
+   "mistake_types": {
+    "k4": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q6-X05",
+   "question_id": "c7q6",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "The 41-bit timestamp gives about 69 years. The datacenter and machine IDs can be changed at runtime safely, it's just config, nothing breaks. I don't remember the rest.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k3": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c7q6-X06",
+   "question_id": "c7q6",
+   "persona": "bootcamp grad",
+   "kind": "confident_wrong",
+   "transcript": "Because the timestamp is in milliseconds, 41 bits lasts about 139 years, so the epoch hardly matters. And the 12-bit sequence number allows 1024 IDs per millisecond on a machine.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted",
+    "k3": "missing",
+    "k4": "missing"
+   },
+   "mistake_types": {
+    "k1": "wrong_number",
+    "k2": "wrong_number"
+   },
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "c7q6-X07",
+   "question_id": "c7q6",
+   "persona": "rambling",
+   "kind": "self_correction",
+   "transcript": "So 69 years from the epoch, which is why you pick a custom epoch near today. 4096 per millisecond per machine. Machine IDs are chosen at startup and fixed, and clock sync, you use Paxos, no, NTP, NTP is the common one.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered",
+    "k4": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c8q1-X01",
+   "question_id": "c8q1",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "A hundred million new links a day spread over 86,400 seconds is around 1,160 writes a second. If reads are ten times writes that's about 11,600 reads a second. Over ten years you accumulate 365 billion records, and at about 100 bytes per URL that's near 365 terabytes.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q1-X02",
+   "question_id": "c8q1",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "one hundred million urls per day so writes about eleven sixty per second. read to write ratio ten to one so reads are about eleven thousand six hundred per second. ten years is three sixty five billion records and at one hundred bytes each about three sixty five terabytes",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q1-X03",
+   "question_id": "c8q1",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, so a hundred million a day works out to roughly 1160 writes per second.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q1-X04",
+   "question_id": "c8q1",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "writes are about 1160 a second from 100 million a day the ratio is 1 to 10 write to read wait no read to write is 1 to 10 so reads are about 116 a second and over ten years it is 365 billion records or about 365 terabytes",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "swapped_terms"
+   },
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "c8q1-X05",
+   "question_id": "c8q1",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "100 million a day is about 1160 writes a minute. Then I guess 10 years of data is 365 billion records, at 100 bytes each, so 365 terabytes.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "partial_truth_with_wrong_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q1-X06",
+   "question_id": "c8q1",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "The writes come to about 1160 per second, reads ten times that. For storage, ten years at 100 million a day is 365 million records, so at 100 bytes each it's around 36 gigabytes, it all fits on one machine.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "wrong_number"
+   },
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "c8q1-X07",
+   "question_id": "c8q1",
+   "persona": "student",
+   "kind": "self_correction",
+   "transcript": "100 million URLs a day, about 1160 writes per second. Ten to one read to write, so reads about 11,600 per second. Ten years is 365 billion records, times 100 bytes, that's 365 gigabytes, no, terabytes.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c8q2-X01",
+   "question_id": "c8q2",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "You need two REST calls: a POST that receives the long address and answers with the short one, and a GET on the short address that hands back the long one so the client can be redirected. With a 301, which is permanent, browsers cache it and later visits skip your service, easing the load. A 302 is temporary, so each click reaches you first, and that's what you want if you're tracking analytics.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q2-X02",
+   "question_id": "c8q2",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "two endpoints a post that takes the long u r l and returns the short u r l and a get that returns the long u r l for the redirect. three oh one is permanent so the browser caches it and later requests skip the shortener reducing load. three oh two is temporary so every request hits the shortener which is better for analytics",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q2-X03",
+   "question_id": "c8q2",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, 301 is a permanent redirect, so browsers cache it and skip the shortener the next time, which takes load off.",
+   "labels": {
+    "k1": "missing",
+    "k2": "covered",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q2-X04",
+   "question_id": "c8q2",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "post to shorten gets the short url and get on the short url returns the long one for redirect 301 permanent cached by the browser lower load and 302 temporary every request hits the shortener which is better for server load",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "wrong_tradeoff"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q2-X05",
+   "question_id": "c8q2",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "The create call is a GET with the long URL in the query string, and the redirect is a POST. A 301 is the permanent one, the browser caches it so later requests skip the shortener.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q2-X06",
+   "question_id": "c8q2",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "Use a 301 if you care about analytics, because it's permanent so the browser keeps coming back through you to double-check, and 302 is the one browsers cache, which saves you traffic.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k2": "swapped_terms",
+    "k3": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q2-X07",
+   "question_id": "c8q2",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "POST to shorten with the long URL, GET on the short URL to redirect. 301 is temporary, no, permanent, browser caches it, less load. 302 temporary, every request through the shortener, good for analytics.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c8q3-X01",
+   "question_id": "c8q3",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "The alphabet is digits, lowercase and uppercase letters, which gives sixty-two symbols. You want the shortest length where sixty-two raised to that length covers the 365 billion URLs. Seven characters gives about three and a half trillion combinations, well past what we need, so seven it is.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q3-X02",
+   "question_id": "c8q3",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "the hash value use zero to nine a to z and capital a to z so that is sixty two possible characters. we need the smallest n where sixty two to the n is at least three sixty five billion. n equal seven sixty two to the seven is about three point five trillion so length is seven",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q3-X03",
+   "question_id": "c8q3",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, it's 0 to 9 and lowercase and uppercase letters, so sixty-two characters.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q3-X04",
+   "question_id": "c8q3",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "digits lowercase and uppercase plus the plus and slash signs so sixty four characters and then you find the smallest n where that to the n covers 365 billion and for n seven you get about 3.5 trillion so seven",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "partial_truth_with_wrong_detail"
+   },
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "c8q3-X05",
+   "question_id": "c8q3",
+   "persona": "student",
+   "kind": "mixed",
+   "transcript": "We have 62 characters. With n equal 6, 62 to the 6 is about 56 billion, which is plenty, so the length is 6.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "wrong_number"
+   },
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "c8q3-X06",
+   "question_id": "c8q3",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "With 62 characters you find the largest n for which 62 to the n stays under 365 billion, so you don't overshoot the number of records. Seven gives 3.5 trillion, so that's the length we go with.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q3-X07",
+   "question_id": "c8q3",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "Sixty-two characters, digits and both cases of letters. Smallest n where 62 to the n reaches 365 billion. n equal 6, no, 7, because 62 to the 7 is about 3.5 trillion.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction",
+    "numeric"
+   ]
+  },
+  {
+   "id": "c8q4-X01",
+   "question_id": "c8q4",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "One approach: run the long URL through something like CRC32, MD5 or SHA-1 and chop it to seven characters; when two URLs clash you tack on a fixed string and try again. Looking in the database every time is costly, and bloom filters can speed that up. The other approach takes a unique numeric ID and rewrites it in base 62, so no clashes can happen.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q4-X02",
+   "question_id": "c8q4",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "hash plus collision resolution use crc thirty two md five or sha one and keep the first seven characters and append a predefined string on collision. checking the data base is expensive and bloom filters can improve performance. base sixty two conversion turns a unique id in to a base sixty two string with no collision handling needed",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q4-X03",
+   "question_id": "c8q4",
+   "persona": "rushed",
+   "kind": "partial",
+   "transcript": "base 62 conversion turns a unique ID into a base 62 string and you dont need to handle collisions",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q4-X04",
+   "question_id": "c8q4",
+   "persona": "nervous beginner",
+   "kind": "one_subtle_mistake",
+   "transcript": "So with hashing you use CRC32 or MD5, keep the first 7 characters, append a string on collision, and checking the database is expensive so bloom filters help. And base 62 turns the ID into a string but you still need to check for collisions afterwards.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "negation_error"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q4-X05",
+   "question_id": "c8q4",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "Hash it with MD5, keep the first seven characters, and on a collision append a predefined string. Bloom filters are used to compress the stored URLs to save space in the database.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k2": "wrong_cause"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q4-X06",
+   "question_id": "c8q4",
+   "persona": "student",
+   "kind": "confident_wrong",
+   "transcript": "Hashing is nicer because you take the full MD5 and use the last 7 characters, and with 128 bits collisions simply can't occur. Base 62 takes the long URL itself and encodes it directly, but then you do need to check the database for clashes.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "overgeneralization",
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q4-X07",
+   "question_id": "c8q4",
+   "persona": "student",
+   "kind": "self_correction",
+   "transcript": "Hash with CRC32 or MD5 or SHA-1, first 7 characters, append a string if collision. DB check is expensive, so bloom filter, no wait, it helps with performance, yes. And base 62 converts the unique ID, no collision handling.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c8q5-X01",
+   "question_id": "c8q5",
+   "persona": "confident senior engineer",
+   "kind": "correct_own_words",
+   "transcript": "It starts with the long address. First look it up in the database; if it's there, give back the short one you already have. Otherwise ask the ID generator for a fresh number, turn that into a short string using base 62, and write a record with the ID, the short string and the long address.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q5-X02",
+   "question_id": "c8q5",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "the input is the long u r l. check if the long u r l is already in the data base and if so return the stored short u r l. if its new the unique i d generator creates a new i d. convert the i d to the short u r l with base sixty two and save a row with the i d short u r l and long u r l",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q5-X03",
+   "question_id": "c8q5",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, the input is the long URL and you check whether it's in the database already, and if it is you return the short URL it's got.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q5-X04",
+   "question_id": "c8q5",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "long url comes in check the database if it exists you create a new short url anyway and replace the old one if not the id generator makes an id which goes through base 62 and you save the row",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k1": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q5-X05",
+   "question_id": "c8q5",
+   "persona": "bootcamp grad",
+   "kind": "mixed",
+   "transcript": "The check is done first against the database. Then for a new one the ID gets turned into the short URL by taking the MD5 hash and saved as a row.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "confuses_with_related_concept"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q5-X06",
+   "question_id": "c8q5",
+   "persona": "confident senior engineer",
+   "kind": "confident_wrong",
+   "transcript": "For a new URL we hash the long URL to get a number, so no ID generator is needed. Then it goes through base 62 and we save a row with the ID, short URL and long URL.",
+   "labels": {
+    "k1": "missing",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q5-X07",
+   "question_id": "c8q5",
+   "persona": "rambling",
+   "kind": "self_correction",
+   "transcript": "Long URL in, check database, return the stored short URL if found. If not, the unique ID generator makes a new ID, base 62 gives the short URL, hmm, or was it base 64, no, 62, and save the row with ID, short and long.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c8q6-X01",
+   "question_id": "c8q6",
+   "persona": "student",
+   "kind": "correct_own_words",
+   "transcript": "Someone clicks a short link, it hits the load balancer and gets handed to a web server. The server checks the cache; a hit returns the long address immediately. A miss goes to the database, and if nothing's there the short link was probably bogus. Caching the mappings pays off because reads far outnumber writes.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q6-X02",
+   "question_id": "c8q6",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "a user clicks a short u r l and the load balancer forwards the request to the web servers. if its in the cache return the long u r l directly if not fetch it from the data base. if its not in the data base its likely an invalid short u r l and we cache because reads outnumber writes",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q6-X03",
+   "question_id": "c8q6",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, the load balancer is the first thing, it passes the click on to the web servers.",
+   "labels": {
+    "k1": "covered",
+    "k2": "missing",
+    "k3": "missing"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q6-X04",
+   "question_id": "c8q6",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "load balancer to web servers then they look in the database first and only if its not there the cache gets checked and if its in neither its an invalid short url and caching helps because reads outnumber writes",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "wrong_order_or_step"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q6-X05",
+   "question_id": "c8q6",
+   "persona": "student",
+   "kind": "mixed",
+   "transcript": "The request goes load balancer, web servers, check the cache, and fetch from the database on a miss. If the database doesn't have it either, the system just creates a fresh record for it.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k3": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q6-X06",
+   "question_id": "c8q6",
+   "persona": "bootcamp grad",
+   "kind": "confident_wrong",
+   "transcript": "The click goes through DNS straight to the database, no load balancer involved. And the cache matters because writes outnumber reads on a shortener, so you'd rather keep recent writes handy.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "missing",
+    "k3": "contradicted"
+   },
+   "mistake_types": {
+    "k1": "invented_detail",
+    "k3": "opposite_direction"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q6-X07",
+   "question_id": "c8q6",
+   "persona": "bootcamp grad",
+   "kind": "self_correction",
+   "transcript": "Load balancer to web servers, check the cache first, database if it's a miss. Not in the database, then it's an invalid URL. Cache because writes, no, reads outnumber writes.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": [
+    "self_correction"
+   ]
+  },
+  {
+   "id": "c8q7-X01",
+   "question_id": "c8q7",
+   "persona": "bootcamp grad",
+   "kind": "correct_own_words",
+   "transcript": "Bring up throttling to keep abusers from spamming the create endpoint, say by IP. Then scaling: the web layer is stateless, so just add machines, and for storage you replicate and shard. Last, analytics, like counting how many people click a link and when.",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q7-X02",
+   "question_id": "c8q7",
+   "persona": "non-native English speaker",
+   "kind": "correct_noisy_stt",
+   "transcript": "you can add a rate limiter to stop malicious users from sending too many shortening requests filtering by i p address. scale the stateless web tier by adding servers and the data base with replication and shard ing. and add analytics like how many people click a link and when",
+   "labels": {
+    "k1": "covered",
+    "k2": "covered",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q7-X03",
+   "question_id": "c8q7",
+   "persona": "nervous beginner",
+   "kind": "partial",
+   "transcript": "Um, you could mention analytics, like, how many people clicked a link and what time.",
+   "labels": {
+    "k1": "missing",
+    "k2": "missing",
+    "k3": "covered"
+   },
+   "mistake_types": {},
+   "tags": []
+  },
+  {
+   "id": "c8q7-X04",
+   "question_id": "c8q7",
+   "persona": "rushed",
+   "kind": "one_subtle_mistake",
+   "transcript": "rate limiter by ip address to stop malicious users then for scaling the stateless web tier you use replication and sharding and the database you scale by just adding more servers and analytics for clicks and when they happen",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "covered"
+   },
+   "mistake_types": {
+    "k2": "swapped_terms"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q7-X05",
+   "question_id": "c8q7",
+   "persona": "confident senior engineer",
+   "kind": "mixed",
+   "transcript": "A rate limiter would help against people hammering the creation endpoint, filter by IP. For scaling, the web tier is stateful so you need sticky sessions, and the database gets replication and sharding.",
+   "labels": {
+    "k1": "covered",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k2": "invented_detail"
+   },
+   "tags": []
+  },
+  {
+   "id": "c8q7-X06",
+   "question_id": "c8q7",
+   "persona": "rambling",
+   "kind": "confident_wrong",
+   "transcript": "You scale it by sharding the web servers and adding more replicas of the stateless database layer, since that's where the load is. And a rate limiter is there so legit users don't create too many links, no real attackers involved.",
+   "labels": {
+    "k1": "contradicted",
+    "k2": "contradicted",
+    "k3": "missing"
+   },
+   "mistake_types": {
+    "k1": "partial_truth_with_wrong_detail",
+    "k2": "swapped_terms"
+   },
+   "tags": []
+  }
+ ]
+}
