@@ -1,0 +1,3 @@
+[workspace]
+resolver = "2"
+members = ["ducky-core", "ducky-tick", "ducky-ui", "ducky-voice"]

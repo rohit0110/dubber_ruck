@@ -1,0 +1,10 @@
+[package]
+name = "ducky-tick"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ducky-core = { path = "../ducky-core" }
+anyhow = "1"
+chrono = "0.4"
+rand = "0.9"
