@@ -1,0 +1,3914 @@
+[
+ {
+  "name": "llm qwen2.5-0.5b-q4.gguf",
+  "points": 580,
+  "exact_3class": 0.469,
+  "flag_precision": 0.459,
+  "flag_recall": 0.607,
+  "flag_f1": 0.523,
+  "contradicted_flagged": 0.513,
+  "contradicted_named": 0.282,
+  "load_s": 7.2,
+  "rss_mb": 569,
+  "parse_failures": 0,
+  "s_per_case": 16.0,
+  "prompt_tokens_per_case": 231.9,
+  "prompt_processed_per_case": 72.1,
+  "gen_tokens_per_case": 15.3
+ },
+ {
+  "name": "raw",
+  "cases": [
+   {
+    "case": "c4q1-A",
+    "s": 44.2,
+    "prompt_tokens": 260,
+    "prompt_processed": 260,
+    "cached": 0,
+    "gen_tokens": 14,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q1-B",
+    "s": 11.8,
+    "prompt_tokens": 208,
+    "prompt_processed": 46,
+    "cached": 162,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q1-C",
+    "s": 12.6,
+    "prompt_tokens": 217,
+    "prompt_processed": 55,
+    "cached": 162,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q1-D",
+    "s": 10.0,
+    "prompt_tokens": 197,
+    "prompt_processed": 35,
+    "cached": 162,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q1-E",
+    "s": 14.0,
+    "prompt_tokens": 225,
+    "prompt_processed": 63,
+    "cached": 162,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q2-A",
+    "s": 30.7,
+    "prompt_tokens": 256,
+    "prompt_processed": 165,
+    "cached": 91,
+    "gen_tokens": 16,
+    "gen_tps": 4.0,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q2-B",
+    "s": 11.4,
+    "prompt_tokens": 217,
+    "prompt_processed": 41,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 3.4,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q2-C",
+    "s": 12.2,
+    "prompt_tokens": 227,
+    "prompt_processed": 51,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q2-D",
+    "s": 9.0,
+    "prompt_tokens": 205,
+    "prompt_processed": 29,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q2-F",
+    "s": 14.1,
+    "prompt_tokens": 236,
+    "prompt_processed": 60,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q3-A",
+    "s": 33.8,
+    "prompt_tokens": 270,
+    "prompt_processed": 179,
+    "cached": 91,
+    "gen_tokens": 17,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q3-B",
+    "s": 13.1,
+    "prompt_tokens": 231,
+    "prompt_processed": 53,
+    "cached": 178,
+    "gen_tokens": 17,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "covered",
+     "missing",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q3-C",
+    "s": 15.4,
+    "prompt_tokens": 239,
+    "prompt_processed": 61,
+    "cached": 178,
+    "gen_tokens": 19,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q3-D",
+    "s": 11.9,
+    "prompt_tokens": 214,
+    "prompt_processed": 36,
+    "cached": 178,
+    "gen_tokens": 19,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q3-G",
+    "s": 24.0,
+    "prompt_tokens": 290,
+    "prompt_processed": 112,
+    "cached": 178,
+    "gen_tokens": 19,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q4-A",
+    "s": 36.4,
+    "prompt_tokens": 286,
+    "prompt_processed": 195,
+    "cached": 91,
+    "gen_tokens": 17,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q4-B",
+    "s": 10.8,
+    "prompt_tokens": 229,
+    "prompt_processed": 39,
+    "cached": 190,
+    "gen_tokens": 17,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q4-C",
+    "s": 17.7,
+    "prompt_tokens": 261,
+    "prompt_processed": 71,
+    "cached": 190,
+    "gen_tokens": 19,
+    "gen_tps": 3.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q4-D",
+    "s": 10.2,
+    "prompt_tokens": 218,
+    "prompt_processed": 28,
+    "cached": 190,
+    "gen_tokens": 19,
+    "gen_tps": 3.3,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q4-H",
+    "s": 20.7,
+    "prompt_tokens": 275,
+    "prompt_processed": 85,
+    "cached": 190,
+    "gen_tokens": 19,
+    "gen_tps": 2.9,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q5-A",
+    "s": 33.5,
+    "prompt_tokens": 274,
+    "prompt_processed": 183,
+    "cached": 91,
+    "gen_tokens": 16,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q5-B",
+    "s": 13.7,
+    "prompt_tokens": 231,
+    "prompt_processed": 58,
+    "cached": 173,
+    "gen_tokens": 16,
+    "gen_tps": 3.9,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q5-C",
+    "s": 16.7,
+    "prompt_tokens": 247,
+    "prompt_processed": 74,
+    "cached": 173,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q5-D",
+    "s": 10.2,
+    "prompt_tokens": 205,
+    "prompt_processed": 32,
+    "cached": 173,
+    "gen_tokens": 16,
+    "gen_tps": 3.2,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q5-F",
+    "s": 14.9,
+    "prompt_tokens": 237,
+    "prompt_processed": 64,
+    "cached": 173,
+    "gen_tokens": 16,
+    "gen_tps": 3.6,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q6-A",
+    "s": 36.2,
+    "prompt_tokens": 281,
+    "prompt_processed": 190,
+    "cached": 91,
+    "gen_tokens": 19,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q6-B",
+    "s": 9.8,
+    "prompt_tokens": 218,
+    "prompt_processed": 30,
+    "cached": 188,
+    "gen_tokens": 17,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q6-C",
+    "s": 13.0,
+    "prompt_tokens": 240,
+    "prompt_processed": 52,
+    "cached": 188,
+    "gen_tokens": 17,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q6-D",
+    "s": 11.0,
+    "prompt_tokens": 220,
+    "prompt_processed": 32,
+    "cached": 188,
+    "gen_tokens": 19,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q6-E",
+    "s": 19.2,
+    "prompt_tokens": 268,
+    "prompt_processed": 80,
+    "cached": 188,
+    "gen_tokens": 19,
+    "gen_tps": 3.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q7-A",
+    "s": 36.6,
+    "prompt_tokens": 287,
+    "prompt_processed": 196,
+    "cached": 91,
+    "gen_tokens": 17,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q7-B",
+    "s": 9.7,
+    "prompt_tokens": 218,
+    "prompt_processed": 30,
+    "cached": 188,
+    "gen_tokens": 17,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q7-C",
+    "s": 14.9,
+    "prompt_tokens": 248,
+    "prompt_processed": 60,
+    "cached": 188,
+    "gen_tokens": 17,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q7-D",
+    "s": 11.8,
+    "prompt_tokens": 225,
+    "prompt_processed": 37,
+    "cached": 188,
+    "gen_tokens": 19,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q7-H",
+    "s": 16.8,
+    "prompt_tokens": 259,
+    "prompt_processed": 71,
+    "cached": 188,
+    "gen_tokens": 17,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q8-A",
+    "s": 28.2,
+    "prompt_tokens": 241,
+    "prompt_processed": 149,
+    "cached": 92,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q8-B",
+    "s": 11.7,
+    "prompt_tokens": 216,
+    "prompt_processed": 45,
+    "cached": 171,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q8-C",
+    "s": 13.3,
+    "prompt_tokens": 226,
+    "prompt_processed": 55,
+    "cached": 171,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q8-D",
+    "s": 9.3,
+    "prompt_tokens": 202,
+    "prompt_processed": 31,
+    "cached": 171,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q8-F",
+    "s": 14.6,
+    "prompt_tokens": 234,
+    "prompt_processed": 63,
+    "cached": 171,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q9-A",
+    "s": 33.1,
+    "prompt_tokens": 269,
+    "prompt_processed": 178,
+    "cached": 91,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q9-B",
+    "s": 9.5,
+    "prompt_tokens": 222,
+    "prompt_processed": 32,
+    "cached": 190,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q9-C",
+    "s": 13.9,
+    "prompt_tokens": 247,
+    "prompt_processed": 57,
+    "cached": 190,
+    "gen_tokens": 16,
+    "gen_tps": 3.6,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q9-D",
+    "s": 8.9,
+    "prompt_tokens": 216,
+    "prompt_processed": 26,
+    "cached": 190,
+    "gen_tokens": 16,
+    "gen_tps": 3.4,
+    "preds": [
+     "missing",
+     "contradicted",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q9-H",
+    "s": 13.0,
+    "prompt_tokens": 245,
+    "prompt_processed": 55,
+    "cached": 190,
+    "gen_tokens": 16,
+    "gen_tps": 3.6,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q10-A",
+    "s": 37.4,
+    "prompt_tokens": 288,
+    "prompt_processed": 196,
+    "cached": 92,
+    "gen_tokens": 19,
+    "gen_tps": 3.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q10-B",
+    "s": 13.6,
+    "prompt_tokens": 245,
+    "prompt_processed": 49,
+    "cached": 196,
+    "gen_tokens": 19,
+    "gen_tps": 3.5,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q10-C",
+    "s": 19.6,
+    "prompt_tokens": 277,
+    "prompt_processed": 81,
+    "cached": 196,
+    "gen_tokens": 19,
+    "gen_tps": 3.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q10-D",
+    "s": 10.4,
+    "prompt_tokens": 223,
+    "prompt_processed": 27,
+    "cached": 196,
+    "gen_tokens": 19,
+    "gen_tps": 3.1,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c4q10-G",
+    "s": 23.2,
+    "prompt_tokens": 299,
+    "prompt_processed": 103,
+    "cached": 196,
+    "gen_tokens": 19,
+    "gen_tps": 3.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q1-A",
+    "s": 31.7,
+    "prompt_tokens": 262,
+    "prompt_processed": 168,
+    "cached": 94,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q1-B",
+    "s": 11.2,
+    "prompt_tokens": 217,
+    "prompt_processed": 38,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.2,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q1-C",
+    "s": 14.2,
+    "prompt_tokens": 240,
+    "prompt_processed": 61,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.4,
+    "preds": [
+     "missing",
+     "contradicted",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q1-D",
+    "s": 9.2,
+    "prompt_tokens": 205,
+    "prompt_processed": 26,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.2,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q1-F",
+    "s": 13.7,
+    "prompt_tokens": 237,
+    "prompt_processed": 58,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.4,
+    "preds": [
+     "missing",
+     "contradicted",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q2-A",
+    "s": 27.2,
+    "prompt_tokens": 240,
+    "prompt_processed": 149,
+    "cached": 91,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q2-B",
+    "s": 7.1,
+    "prompt_tokens": 188,
+    "prompt_processed": 26,
+    "cached": 162,
+    "gen_tokens": 11,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q2-C",
+    "s": 12.2,
+    "prompt_tokens": 217,
+    "prompt_processed": 55,
+    "cached": 162,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q2-D",
+    "s": 7.1,
+    "prompt_tokens": 189,
+    "prompt_processed": 27,
+    "cached": 162,
+    "gen_tokens": 11,
+    "gen_tps": 3.9,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q2-E",
+    "s": 14.8,
+    "prompt_tokens": 231,
+    "prompt_processed": 69,
+    "cached": 162,
+    "gen_tokens": 11,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q3-A",
+    "s": 24.5,
+    "prompt_tokens": 227,
+    "prompt_processed": 136,
+    "cached": 91,
+    "gen_tokens": 11,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q3-B",
+    "s": 7.8,
+    "prompt_tokens": 187,
+    "prompt_processed": 30,
+    "cached": 157,
+    "gen_tokens": 11,
+    "gen_tps": 3.7,
+    "preds": [
+     "missing",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q3-C",
+    "s": 9.8,
+    "prompt_tokens": 200,
+    "prompt_processed": 43,
+    "cached": 157,
+    "gen_tokens": 11,
+    "gen_tps": 3.9,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q3-D",
+    "s": 7.6,
+    "prompt_tokens": 183,
+    "prompt_processed": 26,
+    "cached": 157,
+    "gen_tokens": 13,
+    "gen_tps": 3.8,
+    "preds": [
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q3-H",
+    "s": 11.6,
+    "prompt_tokens": 213,
+    "prompt_processed": 56,
+    "cached": 157,
+    "gen_tokens": 11,
+    "gen_tps": 3.8,
+    "preds": [
+     "missing",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q4-A",
+    "s": 23.8,
+    "prompt_tokens": 222,
+    "prompt_processed": 130,
+    "cached": 92,
+    "gen_tokens": 11,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q4-B",
+    "s": 7.6,
+    "prompt_tokens": 182,
+    "prompt_processed": 29,
+    "cached": 153,
+    "gen_tokens": 11,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q4-C",
+    "s": 10.0,
+    "prompt_tokens": 199,
+    "prompt_processed": 46,
+    "cached": 153,
+    "gen_tokens": 11,
+    "gen_tps": 4.5,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q4-D",
+    "s": 7.7,
+    "prompt_tokens": 181,
+    "prompt_processed": 28,
+    "cached": 153,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q4-F",
+    "s": 11.5,
+    "prompt_tokens": 208,
+    "prompt_processed": 55,
+    "cached": 153,
+    "gen_tokens": 11,
+    "gen_tps": 4.5,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q5-A",
+    "s": 30.8,
+    "prompt_tokens": 257,
+    "prompt_processed": 165,
+    "cached": 92,
+    "gen_tokens": 16,
+    "gen_tps": 4.0,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q5-B",
+    "s": 11.0,
+    "prompt_tokens": 211,
+    "prompt_processed": 41,
+    "cached": 170,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q5-C",
+    "s": 11.3,
+    "prompt_tokens": 214,
+    "prompt_processed": 44,
+    "cached": 170,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q5-D",
+    "s": 9.3,
+    "prompt_tokens": 199,
+    "prompt_processed": 29,
+    "cached": 170,
+    "gen_tokens": 16,
+    "gen_tps": 3.4,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q5-G",
+    "s": 20.5,
+    "prompt_tokens": 267,
+    "prompt_processed": 97,
+    "cached": 170,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q6-A",
+    "s": 30.9,
+    "prompt_tokens": 256,
+    "prompt_processed": 163,
+    "cached": 93,
+    "gen_tokens": 17,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q6-B",
+    "s": 10.0,
+    "prompt_tokens": 209,
+    "prompt_processed": 31,
+    "cached": 178,
+    "gen_tokens": 17,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q6-C",
+    "s": 12.7,
+    "prompt_tokens": 226,
+    "prompt_processed": 48,
+    "cached": 178,
+    "gen_tokens": 17,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q6-D",
+    "s": 10.1,
+    "prompt_tokens": 210,
+    "prompt_processed": 32,
+    "cached": 178,
+    "gen_tokens": 17,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c5q6-H",
+    "s": 15.7,
+    "prompt_tokens": 244,
+    "prompt_processed": 66,
+    "cached": 178,
+    "gen_tokens": 17,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q1-A",
+    "s": 30.2,
+    "prompt_tokens": 254,
+    "prompt_processed": 163,
+    "cached": 91,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q1-B",
+    "s": 7.7,
+    "prompt_tokens": 200,
+    "prompt_processed": 21,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q1-C",
+    "s": 13.8,
+    "prompt_tokens": 236,
+    "prompt_processed": 57,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q1-D",
+    "s": 9.2,
+    "prompt_tokens": 209,
+    "prompt_processed": 30,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q1-E",
+    "s": 14.7,
+    "prompt_tokens": 243,
+    "prompt_processed": 64,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 4.0,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q2-A",
+    "s": 33.0,
+    "prompt_tokens": 269,
+    "prompt_processed": 178,
+    "cached": 91,
+    "gen_tokens": 16,
+    "gen_tps": 3.6,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q2-B",
+    "s": 8.2,
+    "prompt_tokens": 204,
+    "prompt_processed": 24,
+    "cached": 180,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q2-C",
+    "s": 14.4,
+    "prompt_tokens": 241,
+    "prompt_processed": 61,
+    "cached": 180,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q2-D",
+    "s": 10.2,
+    "prompt_tokens": 212,
+    "prompt_processed": 32,
+    "cached": 180,
+    "gen_tokens": 16,
+    "gen_tps": 3.2,
+    "preds": [
+     "contradicted",
+     "missing",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q2-H",
+    "s": 16.8,
+    "prompt_tokens": 256,
+    "prompt_processed": 76,
+    "cached": 180,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q3-A",
+    "s": 27.1,
+    "prompt_tokens": 242,
+    "prompt_processed": 148,
+    "cached": 94,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q3-B",
+    "s": 7.8,
+    "prompt_tokens": 197,
+    "prompt_processed": 31,
+    "cached": 166,
+    "gen_tokens": 11,
+    "gen_tps": 3.9,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q3-C",
+    "s": 9.5,
+    "prompt_tokens": 204,
+    "prompt_processed": 38,
+    "cached": 166,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q3-D",
+    "s": 7.5,
+    "prompt_tokens": 193,
+    "prompt_processed": 26,
+    "cached": 167,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q3-E",
+    "s": 15.0,
+    "prompt_tokens": 239,
+    "prompt_processed": 73,
+    "cached": 166,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q4-A",
+    "s": 28.6,
+    "prompt_tokens": 248,
+    "prompt_processed": 156,
+    "cached": 92,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q4-B",
+    "s": 9.6,
+    "prompt_tokens": 196,
+    "prompt_processed": 34,
+    "cached": 162,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q4-C",
+    "s": 11.3,
+    "prompt_tokens": 209,
+    "prompt_processed": 47,
+    "cached": 162,
+    "gen_tokens": 14,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q4-D",
+    "s": 10.2,
+    "prompt_tokens": 191,
+    "prompt_processed": 29,
+    "cached": 162,
+    "gen_tokens": 18,
+    "gen_tps": 3.3,
+    "preds": [
+     "missing",
+     "contradicted",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q4-G",
+    "s": 17.8,
+    "prompt_tokens": 246,
+    "prompt_processed": 84,
+    "cached": 162,
+    "gen_tokens": 14,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q5-A",
+    "s": 34.7,
+    "prompt_tokens": 281,
+    "prompt_processed": 190,
+    "cached": 91,
+    "gen_tokens": 14,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q5-B",
+    "s": 10.2,
+    "prompt_tokens": 223,
+    "prompt_processed": 36,
+    "cached": 187,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q5-C",
+    "s": 12.9,
+    "prompt_tokens": 243,
+    "prompt_processed": 56,
+    "cached": 187,
+    "gen_tokens": 14,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q5-D",
+    "s": 9.4,
+    "prompt_tokens": 218,
+    "prompt_processed": 31,
+    "cached": 187,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q5-F",
+    "s": 16.3,
+    "prompt_tokens": 256,
+    "prompt_processed": 69,
+    "cached": 187,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q6-A",
+    "s": 28.7,
+    "prompt_tokens": 244,
+    "prompt_processed": 153,
+    "cached": 91,
+    "gen_tokens": 14,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q6-B",
+    "s": 7.9,
+    "prompt_tokens": 188,
+    "prompt_processed": 24,
+    "cached": 164,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q6-C",
+    "s": 9.9,
+    "prompt_tokens": 203,
+    "prompt_processed": 39,
+    "cached": 164,
+    "gen_tokens": 14,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q6-D",
+    "s": 8.4,
+    "prompt_tokens": 191,
+    "prompt_processed": 27,
+    "cached": 164,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q6-E",
+    "s": 16.5,
+    "prompt_tokens": 240,
+    "prompt_processed": 76,
+    "cached": 164,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q7-A",
+    "s": 38.3,
+    "prompt_tokens": 303,
+    "prompt_processed": 210,
+    "cached": 93,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q7-B",
+    "s": 9.1,
+    "prompt_tokens": 226,
+    "prompt_processed": 29,
+    "cached": 197,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q7-C",
+    "s": 14.4,
+    "prompt_tokens": 259,
+    "prompt_processed": 62,
+    "cached": 197,
+    "gen_tokens": 16,
+    "gen_tps": 3.6,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q7-D",
+    "s": 9.1,
+    "prompt_tokens": 224,
+    "prompt_processed": 27,
+    "cached": 197,
+    "gen_tokens": 16,
+    "gen_tps": 3.4,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q7-H",
+    "s": 19.5,
+    "prompt_tokens": 287,
+    "prompt_processed": 90,
+    "cached": 197,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q8-A",
+    "s": 32.2,
+    "prompt_tokens": 266,
+    "prompt_processed": 174,
+    "cached": 92,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q8-B",
+    "s": 8.7,
+    "prompt_tokens": 203,
+    "prompt_processed": 27,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q8-C",
+    "s": 13.5,
+    "prompt_tokens": 235,
+    "prompt_processed": 59,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 4.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q8-D",
+    "s": 9.2,
+    "prompt_tokens": 204,
+    "prompt_processed": 28,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 3.4,
+    "preds": [
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q8-F",
+    "s": 15.6,
+    "prompt_tokens": 243,
+    "prompt_processed": 67,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q9-A",
+    "s": 34.1,
+    "prompt_tokens": 277,
+    "prompt_processed": 185,
+    "cached": 92,
+    "gen_tokens": 16,
+    "gen_tps": 3.9,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q9-B",
+    "s": 9.5,
+    "prompt_tokens": 211,
+    "prompt_processed": 32,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q9-C",
+    "s": 14.2,
+    "prompt_tokens": 239,
+    "prompt_processed": 60,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q9-D",
+    "s": 10.1,
+    "prompt_tokens": 209,
+    "prompt_processed": 30,
+    "cached": 179,
+    "gen_tokens": 18,
+    "gen_tps": 3.5,
+    "preds": [
+     "missing",
+     "contradicted",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q9-G",
+    "s": 20.8,
+    "prompt_tokens": 277,
+    "prompt_processed": 98,
+    "cached": 179,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q10-A",
+    "s": 30.7,
+    "prompt_tokens": 263,
+    "prompt_processed": 171,
+    "cached": 92,
+    "gen_tokens": 11,
+    "gen_tps": 3.1,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q10-B",
+    "s": 9.0,
+    "prompt_tokens": 214,
+    "prompt_processed": 38,
+    "cached": 176,
+    "gen_tokens": 11,
+    "gen_tps": 3.9,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q10-C",
+    "s": 12.1,
+    "prompt_tokens": 229,
+    "prompt_processed": 53,
+    "cached": 176,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q10-D",
+    "s": 7.5,
+    "prompt_tokens": 202,
+    "prompt_processed": 26,
+    "cached": 176,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c6q10-F",
+    "s": 14.4,
+    "prompt_tokens": 241,
+    "prompt_processed": 65,
+    "cached": 176,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q1-A",
+    "s": 30.3,
+    "prompt_tokens": 254,
+    "prompt_processed": 163,
+    "cached": 91,
+    "gen_tokens": 13,
+    "gen_tps": 3.2,
+    "preds": [
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q1-B",
+    "s": 8.4,
+    "prompt_tokens": 208,
+    "prompt_processed": 31,
+    "cached": 177,
+    "gen_tokens": 13,
+    "gen_tps": 3.9,
+    "preds": [
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q1-C",
+    "s": 11.7,
+    "prompt_tokens": 230,
+    "prompt_processed": 53,
+    "cached": 177,
+    "gen_tokens": 13,
+    "gen_tps": 4.3,
+    "preds": [
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q1-D",
+    "s": 8.5,
+    "prompt_tokens": 208,
+    "prompt_processed": 31,
+    "cached": 177,
+    "gen_tokens": 13,
+    "gen_tps": 3.7,
+    "preds": [
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q1-F",
+    "s": 13.0,
+    "prompt_tokens": 232,
+    "prompt_processed": 55,
+    "cached": 177,
+    "gen_tokens": 13,
+    "gen_tps": 3.4,
+    "preds": [
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q2-A",
+    "s": 28.3,
+    "prompt_tokens": 242,
+    "prompt_processed": 151,
+    "cached": 91,
+    "gen_tokens": 13,
+    "gen_tps": 3.3,
+    "preds": [
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q2-B",
+    "s": 7.3,
+    "prompt_tokens": 195,
+    "prompt_processed": 28,
+    "cached": 167,
+    "gen_tokens": 11,
+    "gen_tps": 3.9,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q2-C",
+    "s": 10.1,
+    "prompt_tokens": 209,
+    "prompt_processed": 42,
+    "cached": 167,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q2-D",
+    "s": 7.8,
+    "prompt_tokens": 194,
+    "prompt_processed": 27,
+    "cached": 167,
+    "gen_tokens": 13,
+    "gen_tps": 3.7,
+    "preds": [
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q2-H",
+    "s": 12.3,
+    "prompt_tokens": 225,
+    "prompt_processed": 58,
+    "cached": 167,
+    "gen_tokens": 11,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q3-A",
+    "s": 34.4,
+    "prompt_tokens": 279,
+    "prompt_processed": 188,
+    "cached": 91,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q3-B",
+    "s": 8.1,
+    "prompt_tokens": 201,
+    "prompt_processed": 25,
+    "cached": 176,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q3-C",
+    "s": 12.3,
+    "prompt_tokens": 228,
+    "prompt_processed": 52,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 4.1,
+    "preds": [
+     "covered",
+     "contradicted",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q3-D",
+    "s": 9.2,
+    "prompt_tokens": 207,
+    "prompt_processed": 30,
+    "cached": 177,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q3-E",
+    "s": 16.7,
+    "prompt_tokens": 249,
+    "prompt_processed": 73,
+    "cached": 176,
+    "gen_tokens": 16,
+    "gen_tps": 3.6,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q4-A",
+    "s": 24.8,
+    "prompt_tokens": 227,
+    "prompt_processed": 134,
+    "cached": 93,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q4-B",
+    "s": 8.5,
+    "prompt_tokens": 191,
+    "prompt_processed": 33,
+    "cached": 158,
+    "gen_tokens": 11,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q4-C",
+    "s": 10.4,
+    "prompt_tokens": 204,
+    "prompt_processed": 46,
+    "cached": 158,
+    "gen_tokens": 13,
+    "gen_tps": 4.2,
+    "preds": [
+     "covered",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q4-D",
+    "s": 7.3,
+    "prompt_tokens": 182,
+    "prompt_processed": 24,
+    "cached": 158,
+    "gen_tokens": 13,
+    "gen_tps": 3.8,
+    "preds": [
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q4-F",
+    "s": 12.7,
+    "prompt_tokens": 215,
+    "prompt_processed": 57,
+    "cached": 158,
+    "gen_tokens": 11,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing"
+    ],
+    "labels": [
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q5-A",
+    "s": 32.5,
+    "prompt_tokens": 269,
+    "prompt_processed": 178,
+    "cached": 91,
+    "gen_tokens": 16,
+    "gen_tps": 3.9,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q5-B",
+    "s": 8.9,
+    "prompt_tokens": 215,
+    "prompt_processed": 28,
+    "cached": 187,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q5-C",
+    "s": 11.5,
+    "prompt_tokens": 234,
+    "prompt_processed": 47,
+    "cached": 187,
+    "gen_tokens": 16,
+    "gen_tps": 4.3,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q5-D",
+    "s": 9.7,
+    "prompt_tokens": 215,
+    "prompt_processed": 28,
+    "cached": 187,
+    "gen_tokens": 18,
+    "gen_tps": 3.5,
+    "preds": [
+     "missing",
+     "contradicted",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q5-F",
+    "s": 13.0,
+    "prompt_tokens": 242,
+    "prompt_processed": 55,
+    "cached": 187,
+    "gen_tokens": 16,
+    "gen_tps": 4.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q6-A",
+    "s": 37.3,
+    "prompt_tokens": 290,
+    "prompt_processed": 198,
+    "cached": 92,
+    "gen_tokens": 19,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q6-B",
+    "s": 12.6,
+    "prompt_tokens": 243,
+    "prompt_processed": 41,
+    "cached": 202,
+    "gen_tokens": 19,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q6-C",
+    "s": 16.2,
+    "prompt_tokens": 265,
+    "prompt_processed": 63,
+    "cached": 202,
+    "gen_tokens": 19,
+    "gen_tps": 3.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q6-D",
+    "s": 11.1,
+    "prompt_tokens": 236,
+    "prompt_processed": 34,
+    "cached": 202,
+    "gen_tokens": 21,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c7q6-G",
+    "s": 22.8,
+    "prompt_tokens": 302,
+    "prompt_processed": 100,
+    "cached": 202,
+    "gen_tokens": 19,
+    "gen_tps": 3.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q1-A",
+    "s": 33.0,
+    "prompt_tokens": 271,
+    "prompt_processed": 180,
+    "cached": 91,
+    "gen_tokens": 14,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q1-B",
+    "s": 8.3,
+    "prompt_tokens": 218,
+    "prompt_processed": 29,
+    "cached": 189,
+    "gen_tokens": 14,
+    "gen_tps": 3.9,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q1-C",
+    "s": 12.4,
+    "prompt_tokens": 239,
+    "prompt_processed": 50,
+    "cached": 189,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q1-D",
+    "s": 8.7,
+    "prompt_tokens": 219,
+    "prompt_processed": 30,
+    "cached": 189,
+    "gen_tokens": 16,
+    "gen_tps": 4.3,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q1-F",
+    "s": 12.8,
+    "prompt_tokens": 240,
+    "prompt_processed": 51,
+    "cached": 189,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q2-A",
+    "s": 37.2,
+    "prompt_tokens": 287,
+    "prompt_processed": 195,
+    "cached": 92,
+    "gen_tokens": 19,
+    "gen_tps": 3.0,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q2-B",
+    "s": 7.4,
+    "prompt_tokens": 214,
+    "prompt_processed": 15,
+    "cached": 199,
+    "gen_tokens": 16,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q2-C",
+    "s": 14.4,
+    "prompt_tokens": 250,
+    "prompt_processed": 51,
+    "cached": 199,
+    "gen_tokens": 19,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q2-D",
+    "s": 10.0,
+    "prompt_tokens": 234,
+    "prompt_processed": 35,
+    "cached": 199,
+    "gen_tokens": 14,
+    "gen_tps": 3.1,
+    "preds": [
+     "missing",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q2-H",
+    "s": 15.8,
+    "prompt_tokens": 265,
+    "prompt_processed": 66,
+    "cached": 199,
+    "gen_tokens": 16,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q3-A",
+    "s": 31.3,
+    "prompt_tokens": 261,
+    "prompt_processed": 169,
+    "cached": 92,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q3-B",
+    "s": 9.9,
+    "prompt_tokens": 222,
+    "prompt_processed": 34,
+    "cached": 188,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q3-C",
+    "s": 11.4,
+    "prompt_tokens": 234,
+    "prompt_processed": 46,
+    "cached": 188,
+    "gen_tokens": 16,
+    "gen_tps": 4.3,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "contradicted"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q3-D",
+    "s": 10.2,
+    "prompt_tokens": 224,
+    "prompt_processed": 36,
+    "cached": 188,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q3-E",
+    "s": 16.5,
+    "prompt_tokens": 261,
+    "prompt_processed": 73,
+    "cached": 188,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q4-A",
+    "s": 36.4,
+    "prompt_tokens": 286,
+    "prompt_processed": 195,
+    "cached": 91,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q4-B",
+    "s": 8.4,
+    "prompt_tokens": 215,
+    "prompt_processed": 26,
+    "cached": 189,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q4-C",
+    "s": 13.9,
+    "prompt_tokens": 250,
+    "prompt_processed": 61,
+    "cached": 189,
+    "gen_tokens": 14,
+    "gen_tps": 3.4,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q4-D",
+    "s": 10.7,
+    "prompt_tokens": 228,
+    "prompt_processed": 39,
+    "cached": 189,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q4-F",
+    "s": 16.2,
+    "prompt_tokens": 260,
+    "prompt_processed": 71,
+    "cached": 189,
+    "gen_tokens": 16,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q5-A",
+    "s": 29.0,
+    "prompt_tokens": 249,
+    "prompt_processed": 156,
+    "cached": 93,
+    "gen_tokens": 16,
+    "gen_tps": 3.6,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q5-B",
+    "s": 9.7,
+    "prompt_tokens": 198,
+    "prompt_processed": 29,
+    "cached": 169,
+    "gen_tokens": 16,
+    "gen_tps": 3.2,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q5-C",
+    "s": 11.5,
+    "prompt_tokens": 216,
+    "prompt_processed": 47,
+    "cached": 169,
+    "gen_tokens": 16,
+    "gen_tps": 4.1,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q5-D",
+    "s": 9.8,
+    "prompt_tokens": 203,
+    "prompt_processed": 34,
+    "cached": 169,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q5-H",
+    "s": 13.9,
+    "prompt_tokens": 230,
+    "prompt_processed": 61,
+    "cached": 169,
+    "gen_tokens": 16,
+    "gen_tps": 4.2,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q6-A",
+    "s": 29.2,
+    "prompt_tokens": 248,
+    "prompt_processed": 154,
+    "cached": 94,
+    "gen_tokens": 16,
+    "gen_tps": 3.6,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q6-B",
+    "s": 8.1,
+    "prompt_tokens": 188,
+    "prompt_processed": 24,
+    "cached": 164,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "covered",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q6-C",
+    "s": 12.9,
+    "prompt_tokens": 216,
+    "prompt_processed": 52,
+    "cached": 164,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "contradicted",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q6-D",
+    "s": 10.0,
+    "prompt_tokens": 194,
+    "prompt_processed": 30,
+    "cached": 164,
+    "gen_tokens": 16,
+    "gen_tps": 3.1,
+    "preds": [
+     "missing",
+     "contradicted",
+     "missing"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q6-F",
+    "s": 14.8,
+    "prompt_tokens": 227,
+    "prompt_processed": 63,
+    "cached": 164,
+    "gen_tokens": 16,
+    "gen_tps": 3.6,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q7-A",
+    "s": 29.2,
+    "prompt_tokens": 244,
+    "prompt_processed": 153,
+    "cached": 91,
+    "gen_tokens": 14,
+    "gen_tps": 3.3,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q7-B",
+    "s": 8.1,
+    "prompt_tokens": 198,
+    "prompt_processed": 24,
+    "cached": 174,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "covered",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q7-C",
+    "s": 12.1,
+    "prompt_tokens": 222,
+    "prompt_processed": 48,
+    "cached": 174,
+    "gen_tokens": 16,
+    "gen_tps": 3.8,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "contradicted",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q7-D",
+    "s": 9.0,
+    "prompt_tokens": 203,
+    "prompt_processed": 29,
+    "cached": 174,
+    "gen_tokens": 16,
+    "gen_tps": 3.7,
+    "preds": [
+     "covered",
+     "missing",
+     "contradicted"
+    ],
+    "labels": [
+     "missing",
+     "missing",
+     "missing"
+    ],
+    "fail": 0
+   },
+   {
+    "case": "c8q7-E",
+    "s": 13.9,
+    "prompt_tokens": 234,
+    "prompt_processed": 60,
+    "cached": 174,
+    "gen_tokens": 14,
+    "gen_tps": 3.5,
+    "preds": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "labels": [
+     "covered",
+     "covered",
+     "covered"
+    ],
+    "fail": 0
+   }
+  ]
+ }
+]

@@ -1,0 +1,2319 @@
+[
+ {
+  "name": "pipeline",
+  "meta": {
+   "model": "qwen2.5-0.5b-q4.gguf",
+   "band": 0.08,
+   "routed": 256,
+   "points": 580,
+   "load_s": 6.2,
+   "rss_mb": 558
+  },
+  "calls": [
+   {
+    "cid": "c4q1-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 20.41,
+    "prompt_tokens": 145,
+    "prompt_processed": 121,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q1-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 15.47,
+    "prompt_tokens": 138,
+    "prompt_processed": 87,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q1-C",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 13.52,
+    "prompt_tokens": 162,
+    "prompt_processed": 71,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q1-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 17.15,
+    "prompt_tokens": 147,
+    "prompt_processed": 96,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q1-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 10.05,
+    "prompt_tokens": 147,
+    "prompt_processed": 56,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q1-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 10.13,
+    "prompt_tokens": 132,
+    "prompt_processed": 48,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q1-E",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 17.11,
+    "prompt_tokens": 187,
+    "prompt_processed": 96,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q1-E",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 16.0,
+    "prompt_tokens": 170,
+    "prompt_processed": 86,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q2-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 20.87,
+    "prompt_tokens": 156,
+    "prompt_processed": 120,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q2-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 18.25,
+    "prompt_tokens": 159,
+    "prompt_processed": 101,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q2-C",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 19.8,
+    "prompt_tokens": 172,
+    "prompt_processed": 114,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q2-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 8.47,
+    "prompt_tokens": 153,
+    "prompt_processed": 41,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q2-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 10.61,
+    "prompt_tokens": 149,
+    "prompt_processed": 52,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q2-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 9.52,
+    "prompt_tokens": 146,
+    "prompt_processed": 46,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q2-F",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 16.73,
+    "prompt_tokens": 191,
+    "prompt_processed": 94,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q2-F",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 17.04,
+    "prompt_tokens": 194,
+    "prompt_processed": 94,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q3-B",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 22.32,
+    "prompt_tokens": 153,
+    "prompt_processed": 117,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q3-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 17.09,
+    "prompt_tokens": 139,
+    "prompt_processed": 94,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q3-C",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 10.95,
+    "prompt_tokens": 138,
+    "prompt_processed": 58,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q3-D",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 16.75,
+    "prompt_tokens": 125,
+    "prompt_processed": 80,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q3-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 11.21,
+    "prompt_tokens": 139,
+    "prompt_processed": 59,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q3-D",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 14.74,
+    "prompt_tokens": 124,
+    "prompt_processed": 78,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q4-B",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 20.83,
+    "prompt_tokens": 160,
+    "prompt_processed": 124,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q4-B",
+    "kid": "k4",
+    "verdict": "missing",
+    "s": 18.74,
+    "prompt_tokens": 162,
+    "prompt_processed": 111,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q4-C",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 20.25,
+    "prompt_tokens": 166,
+    "prompt_processed": 115,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q4-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 14.27,
+    "prompt_tokens": 132,
+    "prompt_processed": 81,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q4-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 9.4,
+    "prompt_tokens": 144,
+    "prompt_processed": 48,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q4-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 11.33,
+    "prompt_tokens": 149,
+    "prompt_processed": 56,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q4-D",
+    "kid": "k4",
+    "verdict": "missing",
+    "s": 7.7,
+    "prompt_tokens": 134,
+    "prompt_processed": 40,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q5-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 24.36,
+    "prompt_tokens": 176,
+    "prompt_processed": 140,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q5-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 18.71,
+    "prompt_tokens": 153,
+    "prompt_processed": 102,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q5-D",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 10.85,
+    "prompt_tokens": 138,
+    "prompt_processed": 41,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q5-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 14.79,
+    "prompt_tokens": 132,
+    "prompt_processed": 81,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q6-B",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 21.9,
+    "prompt_tokens": 148,
+    "prompt_processed": 109,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q6-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 14.22,
+    "prompt_tokens": 133,
+    "prompt_processed": 77,
+    "gen_tokens": 7
+   },
+   {
+    "cid": "c4q6-B",
+    "kid": "k4",
+    "verdict": "covered",
+    "s": 19.23,
+    "prompt_tokens": 149,
+    "prompt_processed": 92,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q6-C",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 13.57,
+    "prompt_tokens": 156,
+    "prompt_processed": 59,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q6-D",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 20.38,
+    "prompt_tokens": 159,
+    "prompt_processed": 102,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q6-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 9.49,
+    "prompt_tokens": 148,
+    "prompt_processed": 51,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q6-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 14.71,
+    "prompt_tokens": 132,
+    "prompt_processed": 76,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q6-D",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 10.52,
+    "prompt_tokens": 149,
+    "prompt_processed": 51,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q6-E",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 18.46,
+    "prompt_tokens": 188,
+    "prompt_processed": 87,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q6-E",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 14.32,
+    "prompt_tokens": 161,
+    "prompt_processed": 64,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q6-E",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 15.36,
+    "prompt_tokens": 159,
+    "prompt_processed": 70,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q6-E",
+    "kid": "k4",
+    "verdict": "covered",
+    "s": 14.49,
+    "prompt_tokens": 162,
+    "prompt_processed": 64,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q7-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 18.39,
+    "prompt_tokens": 140,
+    "prompt_processed": 104,
+    "gen_tokens": 7
+   },
+   {
+    "cid": "c4q7-B",
+    "kid": "k4",
+    "verdict": "covered",
+    "s": 21.36,
+    "prompt_tokens": 149,
+    "prompt_processed": 103,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q7-C",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 10.5,
+    "prompt_tokens": 152,
+    "prompt_processed": 51,
+    "gen_tokens": 7
+   },
+   {
+    "cid": "c4q7-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 17.99,
+    "prompt_tokens": 145,
+    "prompt_processed": 97,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q7-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 10.24,
+    "prompt_tokens": 148,
+    "prompt_processed": 56,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q7-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 17.25,
+    "prompt_tokens": 139,
+    "prompt_processed": 92,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q7-D",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 10.34,
+    "prompt_tokens": 157,
+    "prompt_processed": 56,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q7-H",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 11.08,
+    "prompt_tokens": 155,
+    "prompt_processed": 54,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q8-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 22.09,
+    "prompt_tokens": 164,
+    "prompt_processed": 128,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q8-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 16.41,
+    "prompt_tokens": 147,
+    "prompt_processed": 92,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q8-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 16.74,
+    "prompt_tokens": 129,
+    "prompt_processed": 74,
+    "gen_tokens": 9
+   },
+   {
+    "cid": "c4q8-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 7.11,
+    "prompt_tokens": 142,
+    "prompt_processed": 44,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q8-F",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 13.77,
+    "prompt_tokens": 154,
+    "prompt_processed": 69,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q9-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 23.82,
+    "prompt_tokens": 170,
+    "prompt_processed": 133,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q9-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 18.66,
+    "prompt_tokens": 166,
+    "prompt_processed": 103,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q9-C",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 21.49,
+    "prompt_tokens": 168,
+    "prompt_processed": 109,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c4q9-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 8.23,
+    "prompt_tokens": 152,
+    "prompt_processed": 46,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q9-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 11.22,
+    "prompt_tokens": 164,
+    "prompt_processed": 55,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q9-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 11.15,
+    "prompt_tokens": 160,
+    "prompt_processed": 55,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q10-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 21.11,
+    "prompt_tokens": 158,
+    "prompt_processed": 121,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q10-B",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 16.77,
+    "prompt_tokens": 152,
+    "prompt_processed": 93,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q10-C",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 11.97,
+    "prompt_tokens": 156,
+    "prompt_processed": 58,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q10-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 15.97,
+    "prompt_tokens": 150,
+    "prompt_processed": 91,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c4q10-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 8.6,
+    "prompt_tokens": 147,
+    "prompt_processed": 42,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q10-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 15.76,
+    "prompt_tokens": 142,
+    "prompt_processed": 83,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c4q10-D",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 8.42,
+    "prompt_tokens": 139,
+    "prompt_processed": 42,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q1-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 23.58,
+    "prompt_tokens": 169,
+    "prompt_processed": 132,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q1-B",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 18.07,
+    "prompt_tokens": 159,
+    "prompt_processed": 106,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q1-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 18.41,
+    "prompt_tokens": 152,
+    "prompt_processed": 99,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q1-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 8.44,
+    "prompt_tokens": 148,
+    "prompt_processed": 46,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q1-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 9.64,
+    "prompt_tokens": 138,
+    "prompt_processed": 46,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q2-B",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 18.36,
+    "prompt_tokens": 145,
+    "prompt_processed": 109,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q2-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 17.1,
+    "prompt_tokens": 151,
+    "prompt_processed": 97,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q2-D",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 7.26,
+    "prompt_tokens": 138,
+    "prompt_processed": 41,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q2-E",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 13.94,
+    "prompt_tokens": 183,
+    "prompt_processed": 73,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q2-E",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 16.03,
+    "prompt_tokens": 187,
+    "prompt_processed": 90,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q3-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 21.63,
+    "prompt_tokens": 154,
+    "prompt_processed": 117,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q3-C",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 11.5,
+    "prompt_tokens": 152,
+    "prompt_processed": 57,
+    "gen_tokens": 7
+   },
+   {
+    "cid": "c5q3-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 18.18,
+    "prompt_tokens": 153,
+    "prompt_processed": 97,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q3-D",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 12.01,
+    "prompt_tokens": 144,
+    "prompt_processed": 49,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c5q4-B",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 18.89,
+    "prompt_tokens": 148,
+    "prompt_processed": 110,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q4-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 16.5,
+    "prompt_tokens": 140,
+    "prompt_processed": 90,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q4-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 10.08,
+    "prompt_tokens": 146,
+    "prompt_processed": 51,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q5-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 20.67,
+    "prompt_tokens": 151,
+    "prompt_processed": 114,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q5-C",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 19.86,
+    "prompt_tokens": 165,
+    "prompt_processed": 114,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q5-C",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 14.79,
+    "prompt_tokens": 166,
+    "prompt_processed": 77,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q5-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 15.44,
+    "prompt_tokens": 140,
+    "prompt_processed": 89,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q5-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 8.39,
+    "prompt_tokens": 129,
+    "prompt_processed": 41,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q5-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 8.95,
+    "prompt_tokens": 130,
+    "prompt_processed": 41,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q6-B",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 21.78,
+    "prompt_tokens": 147,
+    "prompt_processed": 109,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c5q6-B",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 19.0,
+    "prompt_tokens": 148,
+    "prompt_processed": 94,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c5q6-C",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 17.55,
+    "prompt_tokens": 157,
+    "prompt_processed": 103,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q6-C",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 22.8,
+    "prompt_tokens": 180,
+    "prompt_processed": 126,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c5q6-D",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 8.39,
+    "prompt_tokens": 139,
+    "prompt_processed": 47,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q6-D",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 9.4,
+    "prompt_tokens": 134,
+    "prompt_processed": 47,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c5q6-D",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 11.86,
+    "prompt_tokens": 135,
+    "prompt_processed": 47,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c5q6-D",
+    "kid": "k4",
+    "verdict": "covered",
+    "s": 10.72,
+    "prompt_tokens": 144,
+    "prompt_processed": 45,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c5q6-H",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 14.3,
+    "prompt_tokens": 152,
+    "prompt_processed": 60,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c5q6-H",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 13.49,
+    "prompt_tokens": 147,
+    "prompt_processed": 60,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q1-B",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 19.22,
+    "prompt_tokens": 144,
+    "prompt_processed": 108,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q1-B",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 15.88,
+    "prompt_tokens": 152,
+    "prompt_processed": 93,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q1-C",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 11.44,
+    "prompt_tokens": 167,
+    "prompt_processed": 59,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q1-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 14.98,
+    "prompt_tokens": 142,
+    "prompt_processed": 81,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q1-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 10.59,
+    "prompt_tokens": 155,
+    "prompt_processed": 55,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q1-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 10.81,
+    "prompt_tokens": 163,
+    "prompt_processed": 55,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q1-E",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 15.16,
+    "prompt_tokens": 184,
+    "prompt_processed": 85,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q2-B",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 24.13,
+    "prompt_tokens": 159,
+    "prompt_processed": 123,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q2-B",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 20.77,
+    "prompt_tokens": 146,
+    "prompt_processed": 102,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q2-C",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 9.04,
+    "prompt_tokens": 146,
+    "prompt_processed": 55,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q2-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 15.83,
+    "prompt_tokens": 128,
+    "prompt_processed": 84,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q2-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 9.89,
+    "prompt_tokens": 157,
+    "prompt_processed": 53,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q2-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 8.18,
+    "prompt_tokens": 134,
+    "prompt_processed": 43,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q3-B",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 20.33,
+    "prompt_tokens": 149,
+    "prompt_processed": 112,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q3-B",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 16.69,
+    "prompt_tokens": 150,
+    "prompt_processed": 94,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q3-C",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 10.37,
+    "prompt_tokens": 161,
+    "prompt_processed": 57,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q3-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 10.29,
+    "prompt_tokens": 156,
+    "prompt_processed": 52,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q3-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 9.71,
+    "prompt_tokens": 157,
+    "prompt_processed": 52,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q3-E",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 19.87,
+    "prompt_tokens": 209,
+    "prompt_processed": 106,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q3-E",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 19.12,
+    "prompt_tokens": 210,
+    "prompt_processed": 106,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q4-A",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 19.16,
+    "prompt_tokens": 141,
+    "prompt_processed": 105,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q4-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 19.52,
+    "prompt_tokens": 158,
+    "prompt_processed": 106,
+    "gen_tokens": 7
+   },
+   {
+    "cid": "c6q4-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 12.47,
+    "prompt_tokens": 149,
+    "prompt_processed": 63,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q4-C",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 10.68,
+    "prompt_tokens": 141,
+    "prompt_processed": 55,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q4-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 16.25,
+    "prompt_tokens": 140,
+    "prompt_processed": 88,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q4-D",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 10.92,
+    "prompt_tokens": 136,
+    "prompt_processed": 41,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q4-D",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 11.52,
+    "prompt_tokens": 136,
+    "prompt_processed": 50,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q5-B",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 21.85,
+    "prompt_tokens": 160,
+    "prompt_processed": 123,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q5-B",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 20.55,
+    "prompt_tokens": 166,
+    "prompt_processed": 116,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q5-C",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 10.15,
+    "prompt_tokens": 157,
+    "prompt_processed": 56,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q5-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 20.61,
+    "prompt_tokens": 166,
+    "prompt_processed": 116,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q5-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 10.8,
+    "prompt_tokens": 157,
+    "prompt_processed": 56,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q5-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 10.5,
+    "prompt_tokens": 160,
+    "prompt_processed": 61,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q6-B",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 19.53,
+    "prompt_tokens": 129,
+    "prompt_processed": 93,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q6-B",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 18.5,
+    "prompt_tokens": 138,
+    "prompt_processed": 91,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q6-C",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 10.66,
+    "prompt_tokens": 145,
+    "prompt_processed": 55,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q6-D",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 18.91,
+    "prompt_tokens": 136,
+    "prompt_processed": 89,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q6-D",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 10.64,
+    "prompt_tokens": 123,
+    "prompt_processed": 42,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q6-D",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 11.08,
+    "prompt_tokens": 132,
+    "prompt_processed": 42,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q6-E",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 15.09,
+    "prompt_tokens": 164,
+    "prompt_processed": 70,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q6-E",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 18.4,
+    "prompt_tokens": 163,
+    "prompt_processed": 82,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q6-E",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 11.49,
+    "prompt_tokens": 155,
+    "prompt_processed": 65,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q7-B",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 23.44,
+    "prompt_tokens": 169,
+    "prompt_processed": 133,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q7-B",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 21.99,
+    "prompt_tokens": 161,
+    "prompt_processed": 110,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q7-C",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 10.45,
+    "prompt_tokens": 159,
+    "prompt_processed": 58,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q7-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 17.8,
+    "prompt_tokens": 146,
+    "prompt_processed": 95,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q7-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 7.64,
+    "prompt_tokens": 155,
+    "prompt_processed": 41,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q7-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 8.8,
+    "prompt_tokens": 144,
+    "prompt_processed": 43,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q8-B",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 21.13,
+    "prompt_tokens": 156,
+    "prompt_processed": 119,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q8-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 17.41,
+    "prompt_tokens": 145,
+    "prompt_processed": 96,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q8-C",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 23.03,
+    "prompt_tokens": 177,
+    "prompt_processed": 128,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q8-D",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 12.47,
+    "prompt_tokens": 150,
+    "prompt_processed": 52,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c6q8-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 7.65,
+    "prompt_tokens": 145,
+    "prompt_processed": 41,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q8-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 10.62,
+    "prompt_tokens": 142,
+    "prompt_processed": 49,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q9-B",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 21.98,
+    "prompt_tokens": 161,
+    "prompt_processed": 124,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q9-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 17.7,
+    "prompt_tokens": 147,
+    "prompt_processed": 97,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q9-C",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 11.24,
+    "prompt_tokens": 158,
+    "prompt_processed": 58,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q9-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 9.61,
+    "prompt_tokens": 148,
+    "prompt_processed": 48,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q9-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 18.27,
+    "prompt_tokens": 147,
+    "prompt_processed": 98,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q9-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 9.34,
+    "prompt_tokens": 138,
+    "prompt_processed": 41,
+    "gen_tokens": 7
+   },
+   {
+    "cid": "c6q10-A",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 27.03,
+    "prompt_tokens": 194,
+    "prompt_processed": 158,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c6q10-B",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 22.51,
+    "prompt_tokens": 179,
+    "prompt_processed": 126,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q10-C",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 10.57,
+    "prompt_tokens": 169,
+    "prompt_processed": 57,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q10-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 9.13,
+    "prompt_tokens": 158,
+    "prompt_processed": 46,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q10-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 8.75,
+    "prompt_tokens": 158,
+    "prompt_processed": 46,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c6q10-F",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 12.9,
+    "prompt_tokens": 182,
+    "prompt_processed": 70,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q1-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 24.93,
+    "prompt_tokens": 180,
+    "prompt_processed": 144,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q1-C",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 13.02,
+    "prompt_tokens": 187,
+    "prompt_processed": 67,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q1-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 18.27,
+    "prompt_tokens": 162,
+    "prompt_processed": 102,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q1-F",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 12.96,
+    "prompt_tokens": 186,
+    "prompt_processed": 71,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q2-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 23.1,
+    "prompt_tokens": 168,
+    "prompt_processed": 130,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q2-C",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 11.69,
+    "prompt_tokens": 170,
+    "prompt_processed": 61,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q2-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 17.66,
+    "prompt_tokens": 148,
+    "prompt_processed": 95,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q2-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 9.2,
+    "prompt_tokens": 156,
+    "prompt_processed": 47,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q3-B",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 21.73,
+    "prompt_tokens": 144,
+    "prompt_processed": 107,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c7q3-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 20.59,
+    "prompt_tokens": 168,
+    "prompt_processed": 118,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q3-D",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 19.21,
+    "prompt_tokens": 141,
+    "prompt_processed": 91,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c7q3-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 8.35,
+    "prompt_tokens": 135,
+    "prompt_processed": 47,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q3-D",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 11.72,
+    "prompt_tokens": 156,
+    "prompt_processed": 43,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c7q3-E",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 16.19,
+    "prompt_tokens": 171,
+    "prompt_processed": 74,
+    "gen_tokens": 9
+   },
+   {
+    "cid": "c7q3-E",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 13.57,
+    "prompt_tokens": 162,
+    "prompt_processed": 74,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q3-E",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 20.03,
+    "prompt_tokens": 218,
+    "prompt_processed": 106,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q4-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 20.6,
+    "prompt_tokens": 153,
+    "prompt_processed": 116,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q4-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 17.92,
+    "prompt_tokens": 154,
+    "prompt_processed": 100,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q4-D",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 11.05,
+    "prompt_tokens": 140,
+    "prompt_processed": 41,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c7q5-B",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 20.47,
+    "prompt_tokens": 162,
+    "prompt_processed": 126,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q5-B",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 19.93,
+    "prompt_tokens": 150,
+    "prompt_processed": 97,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c7q5-D",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 19.89,
+    "prompt_tokens": 151,
+    "prompt_processed": 100,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c7q5-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 7.01,
+    "prompt_tokens": 152,
+    "prompt_processed": 43,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q5-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 8.76,
+    "prompt_tokens": 140,
+    "prompt_processed": 43,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q5-F",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 16.21,
+    "prompt_tokens": 198,
+    "prompt_processed": 89,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q6-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 21.39,
+    "prompt_tokens": 155,
+    "prompt_processed": 118,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q6-B",
+    "kid": "k4",
+    "verdict": "contradicted",
+    "s": 16.22,
+    "prompt_tokens": 153,
+    "prompt_processed": 92,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c7q6-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 16.46,
+    "prompt_tokens": 154,
+    "prompt_processed": 93,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q6-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 15.93,
+    "prompt_tokens": 152,
+    "prompt_processed": 89,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q6-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 8.77,
+    "prompt_tokens": 145,
+    "prompt_processed": 44,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c7q6-D",
+    "kid": "k4",
+    "verdict": "missing",
+    "s": 8.01,
+    "prompt_tokens": 145,
+    "prompt_processed": 46,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q1-B",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 17.44,
+    "prompt_tokens": 147,
+    "prompt_processed": 123,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c8q1-B",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 15.36,
+    "prompt_tokens": 156,
+    "prompt_processed": 103,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c8q1-B",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 13.05,
+    "prompt_tokens": 157,
+    "prompt_processed": 104,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q1-C",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 10.96,
+    "prompt_tokens": 179,
+    "prompt_processed": 81,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q1-C",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 10.97,
+    "prompt_tokens": 188,
+    "prompt_processed": 81,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q1-C",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 10.59,
+    "prompt_tokens": 189,
+    "prompt_processed": 81,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q1-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 6.91,
+    "prompt_tokens": 148,
+    "prompt_processed": 50,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q1-D",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 7.42,
+    "prompt_tokens": 158,
+    "prompt_processed": 51,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q1-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 6.93,
+    "prompt_tokens": 158,
+    "prompt_processed": 50,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q1-F",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 11.44,
+    "prompt_tokens": 183,
+    "prompt_processed": 85,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q1-F",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 11.45,
+    "prompt_tokens": 192,
+    "prompt_processed": 85,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q1-F",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 11.16,
+    "prompt_tokens": 193,
+    "prompt_processed": 85,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q2-B",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 18.26,
+    "prompt_tokens": 166,
+    "prompt_processed": 130,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c8q2-B",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 14.5,
+    "prompt_tokens": 163,
+    "prompt_processed": 95,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c8q2-C",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 7.62,
+    "prompt_tokens": 176,
+    "prompt_processed": 56,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q2-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 11.01,
+    "prompt_tokens": 148,
+    "prompt_processed": 83,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q2-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 6.71,
+    "prompt_tokens": 168,
+    "prompt_processed": 48,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q2-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 6.7,
+    "prompt_tokens": 165,
+    "prompt_processed": 48,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q3-B",
+    "kid": "k1",
+    "verdict": "covered",
+    "s": 16.71,
+    "prompt_tokens": 152,
+    "prompt_processed": 116,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c8q3-B",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 14.06,
+    "prompt_tokens": 164,
+    "prompt_processed": 110,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q3-B",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 12.93,
+    "prompt_tokens": 157,
+    "prompt_processed": 103,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q3-C",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 10.46,
+    "prompt_tokens": 178,
+    "prompt_processed": 77,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q3-C",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 8.7,
+    "prompt_tokens": 173,
+    "prompt_processed": 62,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q3-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 7.7,
+    "prompt_tokens": 154,
+    "prompt_processed": 53,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q3-D",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 8.37,
+    "prompt_tokens": 146,
+    "prompt_processed": 41,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c8q3-D",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 7.65,
+    "prompt_tokens": 164,
+    "prompt_processed": 53,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q3-E",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 8.63,
+    "prompt_tokens": 162,
+    "prompt_processed": 61,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q3-E",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 11.36,
+    "prompt_tokens": 188,
+    "prompt_processed": 83,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q3-E",
+    "kid": "k3",
+    "verdict": "covered",
+    "s": 9.52,
+    "prompt_tokens": 161,
+    "prompt_processed": 50,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c8q4-B",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 17.35,
+    "prompt_tokens": 174,
+    "prompt_processed": 138,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q4-B",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 14.86,
+    "prompt_tokens": 152,
+    "prompt_processed": 96,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c8q4-D",
+    "kid": "k1",
+    "verdict": "contradicted",
+    "s": 7.89,
+    "prompt_tokens": 171,
+    "prompt_processed": 54,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q4-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 7.96,
+    "prompt_tokens": 153,
+    "prompt_processed": 58,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q4-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 13.43,
+    "prompt_tokens": 161,
+    "prompt_processed": 105,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q5-B",
+    "kid": "k2",
+    "verdict": "covered",
+    "s": 16.18,
+    "prompt_tokens": 144,
+    "prompt_processed": 108,
+    "gen_tokens": 8
+   },
+   {
+    "cid": "c8q5-B",
+    "kid": "k3",
+    "verdict": "contradicted",
+    "s": 14.77,
+    "prompt_tokens": 157,
+    "prompt_processed": 111,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q5-C",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 14.18,
+    "prompt_tokens": 152,
+    "prompt_processed": 106,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q5-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 9.05,
+    "prompt_tokens": 157,
+    "prompt_processed": 64,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q5-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 8.77,
+    "prompt_tokens": 148,
+    "prompt_processed": 64,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q5-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 9.48,
+    "prompt_tokens": 161,
+    "prompt_processed": 64,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q6-B",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 13.09,
+    "prompt_tokens": 138,
+    "prompt_processed": 99,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q6-B",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 13.89,
+    "prompt_tokens": 152,
+    "prompt_processed": 106,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q6-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 6.84,
+    "prompt_tokens": 131,
+    "prompt_processed": 48,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q6-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 13.66,
+    "prompt_tokens": 149,
+    "prompt_processed": 103,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q6-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 8.61,
+    "prompt_tokens": 155,
+    "prompt_processed": 58,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q6-F",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 12.58,
+    "prompt_tokens": 180,
+    "prompt_processed": 89,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q7-B",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 15.87,
+    "prompt_tokens": 154,
+    "prompt_processed": 118,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q7-B",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 12.53,
+    "prompt_tokens": 145,
+    "prompt_processed": 89,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q7-C",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 14.23,
+    "prompt_tokens": 160,
+    "prompt_processed": 104,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q7-D",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 6.29,
+    "prompt_tokens": 147,
+    "prompt_processed": 43,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q7-D",
+    "kid": "k2",
+    "verdict": "missing",
+    "s": 6.57,
+    "prompt_tokens": 144,
+    "prompt_processed": 43,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q7-D",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 7.63,
+    "prompt_tokens": 140,
+    "prompt_processed": 48,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q7-E",
+    "kid": "k1",
+    "verdict": "missing",
+    "s": 7.84,
+    "prompt_tokens": 160,
+    "prompt_processed": 56,
+    "gen_tokens": 4
+   },
+   {
+    "cid": "c8q7-E",
+    "kid": "k2",
+    "verdict": "contradicted",
+    "s": 9.45,
+    "prompt_tokens": 163,
+    "prompt_processed": 62,
+    "gen_tokens": 6
+   },
+   {
+    "cid": "c8q7-E",
+    "kid": "k3",
+    "verdict": "missing",
+    "s": 7.75,
+    "prompt_tokens": 143,
+    "prompt_processed": 51,
+    "gen_tokens": 4
+   }
+  ]
+ }
+]

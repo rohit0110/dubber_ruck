@@ -1,0 +1,11 @@
+[04:18:43] start LFM2 full verdicts
+[22:24:02] start LFM2 full verdicts
+{"name": "llm LFM2-350M-Q4_0.gguf", "points": 580, "exact_3class": 0.617, "flag_precision": 0.565, "flag_recall": 0.594, "flag_f1": 0.579, "contradicted_flagged": 0.231, "contradicted_named": 0.077, "load_s": 4.2, "rss_mb": 302, "parse_failures": 0, "s_per_case": 22.3, "prompt_tokens_per_case": 218.3, "prompt_processed_per_case": 217.3, "gen_tokens_per_case": 22.5}
+[22:44:24] end rc=0
+[22:44:24] start LFM2 pipeline judge
+{"name": "pipeline", "meta": {"model": "LFM2-350M-Q4_0.gguf", "band": 0.08, "routed": 256, "points": 580, "load_s": 3.1, "rss_mb": 300}, "calls": [{"cid": "c4q1-B", "kid": "k2", "verdict": "covered", "s": 11.28, "prompt_tokens": 129, "prompt_processed": 129, "gen_tokens": 5}, {"cid": "c4q1-B", "kid": "k3", "verdict": "covered", "s": 11.69, "prompt_tokens": 126, "prompt_processed": 125, "gen_tokens": 5}, {"cid": "c4q1-C", "kid": "k2", "verdict": "covered", "s": 13.88, "prompt_tokens": 147, "prompt_processed": 146, "gen_tokens": 5}, {"cid": "c4q1-D", "kid": "k1", "verdict": "covered", "s": 12.28
+[23:45:10] end rc=0
+[23:45:10] start Qwen full verdicts
+{"name": "llm qwen2.5-0.5b-q4.gguf", "points": 580, "exact_3class": 0.469, "flag_precision": 0.459, "flag_recall": 0.607, "flag_f1": 0.523, "contradicted_flagged": 0.513, "contradicted_named": 0.282, "load_s": 7.2, "rss_mb": 569, "parse_failures": 0, "s_per_case": 16.0, "prompt_tokens_per_case": 231.9, "prompt_processed_per_case": 72.1, "gen_tokens_per_case": 15.3}
+[00:37:20] end rc=0
+[00:37:20] start Qwen pipeline judge

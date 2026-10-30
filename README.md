@@ -1,25 +1,68 @@
 # Rubber Duck Quizzer
 
-A physical "duck" that quizzes you out loud on topics you choose, at random times
-inside an active window you configure. You answer by voice. It tells you which key
-points of the model answer you missed or contradicted.
+A pair-programming "duck" that quizzes you on topics you choose, at random times
+inside an active window you configure. You convert your PDFs (books, notes, docs) into
+quiz files, and the duck asks you questions from them regularly. You answer by voice (or
+text in the software version). It tells you which key points of the model answer you
+missed or contradicted.
 
-Offline by design: no wifi or Bluetooth needed (can be added later for uploads).
+**The concept is the same in every version. Only the body and the judge change.**
 
-## Goals
+## Three approaches
 
-- Speaker + mic: the duck speaks questions and listens to answers.
-- Q&A content is prepared ahead of time by AI agents (on a laptop) as structured files.
-- A small on-device LLM (optional) clarifies where an answer deviated from the key points.
-- A USB-C connection (or a USB stick) to drop in new quiz files and config.
+| | **1. Hardware, local** | **2. Hardware, API key** | **3. Software ducky** |
+|---|---|---|---|
+| Runs on | Old phone / small board with speaker and mic | Same hardware as option 1 | A small app on your laptop |
+| Network | None. Wi-fi and Bluetooth stay off | Wi-fi, text only | Network to your agent / API |
+| Judge | Math (keywords + embeddings) plus a small local LLM where it helps | A small hosted model reads the key point and what you said | The smallest hosted model that does the job, through your agent |
+| Quality | Advisory (flag F1 about 0.7 to 0.8) | Much better (F1 about 0.99 on our test set) | Same as option 2 |
+| Cost | Free | Pennies per day, spending cap | Pennies per day, daily usage check so it never goes overboard |
+| Status | Built and benchmarked (most of this README) | Measured with sub-agents, not yet a real API test | Planned |
+
+### Goals (all options)
+
+- Q&A content is prepared ahead of time by AI agents (on a laptop) as structured quiz JSON from your PDFs.
 - Config: active hours (from/to), selected topics, question frequency.
 - When active, it asks a random question from the selected topics at random intervals.
+- The mic is open only during an answer window. No always-on listening.
+
+### Option 1: Hardware, local model (no wifi)
+
+- Speaker + mic: the duck speaks questions and listens to answers.
+- Everything runs on the device. Math (keywords, sentence embeddings, optional NLI) does the judging, and an optional small on-device LLM adds a short clarification of the worst mismatch.
+- A USB-C connection (or a USB stick) to drop in new quiz files and config.
+- Honest about its limits: says "I'm not sure, check the answer" when confidence is low, and always reads out the model answer.
+
+### Option 2: Hardware, API key
+
+- Same device, same scheduler, same quiz files as option 1.
+- Speech to text stays on the device. Only the transcript sentence(s) and the key point go to a hosted small model. Never audio.
+- Way better feedback and real explanations. A hybrid mode (local first, API only when unsure) can cut cost.
+- The key is supplied by the user, stored only on the device, never committed to git, and should carry a spending cap.
+
+### Option 3: Software ducky
+
+A small application on the laptop that talks to your agent instead of needing a hardware duck.
+
+- **Agent connection, not a raw key.** It connects to your agent (something like a terminal session) so it can check the day's usage and stop asking before it goes overboard. A daily budget is part of the config.
+- **Smallest models available.** Quizzing and judging is not an intensive task, so it always picks the cheapest model that works.
+- **Calendar aware.** The UI can connect to your calendar so it does not ask questions during meetings or focus blocks.
+- **Quiet hours.** You set times when ducky never speaks (for example nights, lunch, or deep-work blocks).
+- **Low-intensity background process.** No constantly running loop. A CRON job wakes up on a schedule, checks the active window, the calendar, the quiet hours and the daily budget, and only starts ducky when all say yes. Otherwise it exits immediately and uses no resources.
+- **UI.** Pick topics and PDFs, set active hours, quiet hours, question frequency and daily usage cap, and see today's usage and your recent answers.
+- Shares the quiz JSON format and the judging prompts from option 2.
+
+Open questions for option 3: which agent/terminal interface to hook into, how to read usage reliably, which calendar providers to support first, and whether answers are typed, spoken or both.
+
+## Options 1 and 2: product design, privacy first (decided 2026-10-29)
+
+The hardware duck has two ways to judge answers. The user picks; nothing is forced. (The software ducky in option 3 uses the cloud judge.)
 
 ## Product design: two modes, privacy first (decided 2026-10-29)
 
 One duck, two ways to judge answers. The user picks; nothing is forced.
 
-| | **Local mode** (default) | **Cloud mode** (optional, user brings an API key) |
+| | **Local mode** (option 1, default) | **Cloud mode** (option 2, user brings an API key) |
 |---|---|---|
 | Purpose | Works on a throwaway phone, with no network and nothing leaving the device | Better judging, explanations and real conversation |
 | Speech to text | On the device | On the device (audio never leaves it) |
@@ -37,7 +80,7 @@ One duck, two ways to judge answers. The user picks; nothing is forced.
   and no wake phrase by default.** The API key is supplied by the user, stored only on the device, never committed to git, and should carry a spending cap.
 - The "hey ducky" wake-word idea is therefore demoted to an opt-in extra that is off by default.
 
-## Hardware decision
+## Hardware decision (options 1 and 2)
 
 | Option | Verdict |
 |---|---|
@@ -224,16 +267,43 @@ The judges are sub-agents, not API calls, so there are no real latency or price 
   (3) Each judge saw 34 answers per call; a real call judges one. (4) The judges' own summaries contained small errors (one said 38 cases, one said duplicate ids); their output files were checked and are correct.
   (5) No real latency, cost or rate-limit measurement, and no offline behaviour; that needs a real API test.
 
-**Resumed** on 2026-10-29 at 22:24 after the overnight rest (paused 2026-10-28 05:10 for the hardware, see "Testing limitations" below). In progress, results are
-filled in per run when each finishes. Planned: B5 small LLM verdicts on all of DS2 (LFM2-350M, Qwen2.5-0.5B, Gemma 3 270M), B6 the pipeline (EKM first, then a small model as
-second opinion on routed points only: LFM2 and Qwen), B7 narrator sample (one spoken sentence from the known key point).
-Status at 22:50: **B5 LFM2 finished** on all 195 answers (raw file `bench/results/b5_llm_LFM2.json.partial.jsonl`; first numbers: exact 0.617, flag F1 0.579,
-contradictions named 7.7%, 22.3 s per answer, 302 MB; the DS1 run scored F1 0.74, so the smaller dataset flattered the LLM too). B6 LFM2 is running. The battery peaked at 39.7 °C;
-the charge drifted from 34% to 32% while charging, so a wall charger would help (the watchdog stops the run at 10%).
+**Phone runs finished (resumed 2026-10-29 22:24, paused 2026-10-30 01:30, resumed 2026-10-30 12:23, chain finished 13:29; battery peaked 39.2 °C in the last block, no watchdog kill).** All on the Moto G (5S), 4 threads, DS2 (195 answers, 580 points).
 
-**Resume:** on the phone start Termux and `sshd`; on the Mac `adb forward tcp:8022 tcp:8022`; copy `bench/chain.sh`, `bench/watchdog.py`
-and the `bench/*.py` files to `~/bench` on the phone; then run `python watchdog.py &` and `./chain.sh` there. Every step resumes from its
-`*.partial.jsonl` file, and a truncated last line from a killed run is ignored. The chain needs about 4 hours in total.
+**B5: small LLM verdicts on all of DS2 (whole answer in one prompt)**
+
+| Run | Date | Dataset | Method | Model / config | Time per answer | RAM | Tokens in / out | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | Notes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| B5-01 | 2026-10-29 | DS2 | LLM verdicts | LFM2-350M Q4_0, JSON-schema output, whole answer in one prompt (phone, 4 threads) | 22.3 s | 302 MB | 218 (217 processed) / 22.5 | 0.617 | 0.565 | 0.594 | 0.579 | 9/39 / 3/39 | 53 false 'contradicted'. DS1 run (B1-07) scored F1 0.742, so DS1 flattered it. Battery 33.7 to 40.7 C during the session |
+| B5-02 | 2026-10-29 | DS2 | LLM verdicts | Qwen2.5-0.5B Q4, same prompt (phone, 4 threads) | 16.0 s | 569 MB | 232 (72 processed after prefix cache) / 15.3 | 0.469 | 0.459 | 0.607 | 0.523 | 20/39 / 11/39 | 120 false 'contradicted'; falsely flags 49 of 116 fully correct answers. DS1 run (B1-08) scored F1 0.567 |
+| B5-03 | 2026-10-30 | DS2 | LLM verdicts | Gemma 3 270M-it Q4_0, same prompt (phone, 4 threads) | 14.9 s | not measured | 219 (218 processed) / 27.9 | 0.369 | 0.399 | 0.922 | 0.557 | 35/39 / 7/39 | 50 false 'contradicted'; calls 271 of 361 covered points 'missing'. 0 parse failures. Worst of the three |
+
+**B6: the pipeline (EKM stage 1 first, then a small LLM as second opinion on the 256 routed points only)**
+
+| Run | Date | Dataset | Method | Model / config | Time per answer | RAM | Tokens in / out | Exact | Flag P | Flag R | Flag F1 | Contradicted flagged / named | Notes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| B6-01 | 2026-10-29 | DS2 | Small LLM second opinion | LFM2-350M judges only the 256 routed points (one key point + closest sentence + typical mistake), model alone, phone | 14.2 s per call (1.31 calls, about 19 s per answer) | 300 MB | 141 / 5.9 | 0.398 on the routed points (stage 1 alone: 0.801) | - | - | - | - | Model alone on the routed points; 16 of 39 contradictions right, 79 missing points called 'contradicted' |
+| B6-02 | 2026-10-29 | DS2 | EKM stage 1 only (reference, B3-04) | keyword boost + wrong claims | - | - | - | 0.886 | 0.831 | 0.9 | 0.864 | 24/39 / 20/39 | 7 false 'contradicted' |
+| B6-03 | 2026-10-29 | DS2 | Small LLM second opinion | LFM2 vetoes flags | as above | 300 MB | as above | 0.859 | 0.821 | 0.817 | 0.819 | 22/39 / 19/39 | 7 false. Worse than stage 1 alone |
+| B6-04 | 2026-10-29 | DS2 | Small LLM second opinion | LFM2 vetoes flags and escalates borderline | as above | 300 MB | as above | 0.847 | 0.791 | 0.849 | 0.819 | 24/39 / 20/39 | 15 false |
+| B6-05 | 2026-10-29 | DS2 | Small LLM second opinion | LFM2 names contradictions | as above | 300 MB | as above | 0.752 | 0.817 | 0.918 | 0.865 | 25/39 / 23/39 | 109 false: far too many |
+| B6-06 | 2026-10-29 | DS2 | Small LLM second opinion | LFM2 decides on routed points | as above | 300 MB | as above | 0.709 | 0.791 | 0.849 | 0.819 | 24/39 / 16/39 | 108 false |
+| B6-07 | 2026-10-30 | DS2 | Small LLM second opinion | Qwen2.5-0.5B judges the same 256 routed points, model alone, phone | 14.3 s per call (1.31 calls, about 18.7 s per answer) | not measured | 155 / 5.7 | 0.410 on the routed points (stage 1 alone: 0.801) | - | - | - | - | 18 of 39 contradictions right, 96 non-contradicted points called 'contradicted' |
+| B6-08 | 2026-10-30 | DS2 | Small LLM second opinion | Qwen vetoes flags | as above | - | as above | 0.840 | 0.842 | 0.731 | 0.782 | 24/39 / 20/39 | 4 false. Worse than stage 1 alone |
+| B6-09 | 2026-10-30 | DS2 | Small LLM second opinion | Qwen vetoes flags and escalates borderline | as above | - | as above | 0.834 | 0.815 | 0.763 | 0.788 | 26/39 / 21/39 | 9 false |
+| B6-10 | 2026-10-30 | DS2 | Small LLM second opinion | Qwen names contradictions | as above | - | as above | 0.772 | 0.819 | 0.909 | 0.861 | 25/39 / 25/39 | 99 false |
+| B6-11 | 2026-10-30 | DS2 | Small LLM second opinion | Qwen decides on routed points | as above | - | as above | 0.714 | 0.815 | 0.763 | 0.788 | 26/39 / 18/39 | 96 false |
+
+**What B5 and B6 show.** On the larger dataset the small on-device LLMs are clearly worse than the fast keyword + embedding check: exact 0.37 to 0.62 against 0.886 (Gemma 3 270M is the worst at 0.369, with 271 of 361 covered points called missing), 15 to 22 s per answer, and hundreds of false
+"contradicted" calls. Used as a second opinion on the points the fast check routes to them, they make the result worse under every policy (exact 0.886 falls to 0.709 to 0.859 for LFM2 and 0.714 to 0.840 for Qwen). So on this phone a zero-shot small LLM
+does not belong in the judging path.
+
+**B7: small LLM as narrator (11 sampled points each, 10 to 18 s per sentence, read by hand, not scored).** Neither is safe to speak aloud. LFM2-350M rambles past one sentence and invents facts: a fictional header name ("X-Ratelimit-Retry-After"), "vehicles passing a point" for a sliding window counter, a wrong description of the sliding window log. Qwen2.5-0.5B mostly restates the key point ("The correct fact is: ..."), which is safe but does not say what the speaker got wrong, and on contradictions it sometimes says something unrelated ("The system does not handle temporary and permanent failures"). Sample size is small and the reading is mine. Conclusion: feedback text should be the stored key point (and model answer) plus a fixed template, not generated by a 0.3 to 0.5B model.
+
+**Phone benchmark chain complete.** Nothing from it is still pending. The phone was rested afterwards (Termux stopped, watchdog stopped, adb tunnel removed).
+
+**History of the pauses.** The chain was paused on 2026-10-28 and 2026-10-30 (about 01:30) to rest the phone, then resumed 2026-10-30 12:23 and finished at 13:29. Full results are in `bench/results/` (backups in `phone_backup_*`). Battery stayed between 29.7 and 40.7 C over all sessions.
+
+**To rerun on the phone:** start Termux and `sshd`; on the Mac `adb forward tcp:8022 tcp:8022`; copy `bench/chain.sh`, `bench/watchdog.py` and the `bench/*.py` files to `~/bench`; run `python watchdog.py &` and `./chain.sh`. Steps resume from their `*.partial.jsonl` files (a truncated last line is ignored).
 
 ### Older runs (click to expand)
 
@@ -522,7 +592,7 @@ untrusted touches the Mac. Everything is in `lab/`.
       (labels from a person) so the judge and the label author are not the same model family.
 - [ ] **Decide the hybrid policy** with a realistic mix of answers (mostly correct): how many answers actually need the API when the local check flags a problem.
 - [ ] **Local mode UX for an advisory judge:** speak the verdict at once, say "unsure" below a confidence bar, always read the model answer, offer self-grading.
-- [ ] **Decide what to do with the long phone LLM benchmark chain** (B5 to B7): the small LLMs are already clearly weak; the remaining Qwen and Gemma runs mostly confirm that.
+- [x] **Phone LLM benchmark chain (B5 to B7) finished 2026-10-30:** Gemma and Qwen confirmed the small LLMs are weak as judges and unsafe as narrators.
 - [ ] **New topics, not just new answers.** DS3 reuses the DS2 questions. Build a dataset from different chapters or another book (different agent, same independence rules) and test the combiner on it.
 - [ ] **Train on diverse data.** B14 shows a small amount of independent data helps a lot. Generate many more mistakes per key point and train the combiner, then fine-tune the cross-encoder, leave-one-topic-out.
 - [ ] **Spoken feedback policy from B11:** say "that does not match the answer" when unsure and only "you said the opposite" when the model is confident; use abstention but do not trust its bar blindly.
@@ -640,6 +710,83 @@ Run the benchmark on the new data: `python bench/bench.py fuzzy --dataset <slug>
 with a `--model`), then add rows to the Benchmark log above.
 
 </details>
+
+## Runbook: running the benchmarks on the phone, start to finish
+
+The exact sequence used for the B-runs, in order. Mac side is zsh; `KEY` is the private SSH key whose public half is in the phone's Termux `~/.ssh/authorized_keys`.
+Pitfalls: zsh does not split a plain variable into several arguments (use an array, `O=(...)`); `adb forward` entries get lost now and then (just re-run it);
+after `adb start-server` the phone can take a few minutes to show up on USB.
+
+**1. Connect over USB (Mac)**
+```sh
+adb start-server
+adb devices                                   # phone must show as "device"
+adb shell svc power stayon true               # screen stays on while charging
+adb shell settings put system screen_off_timeout 2147483647
+```
+
+**2. Start Termux and its SSH server (Mac, if Termux is not running)**
+```sh
+adb shell am start -n com.termux/.app.TermuxActivity
+adb shell input text 'sshd' && adb shell input keyevent 66     # types "sshd" + Enter in Termux
+adb forward tcp:8022 tcp:8022
+O=(-i "$KEY" -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=8)
+ssh "${O[@]}" -p 8022 localhost 'echo ok'
+```
+
+**3. Copy the benchmark files to the phone (Mac)**
+```sh
+scp -P 8022 "${O[@]}" bench/*.py bench/chain.sh localhost:~/bench/
+scp -r -P 8022 "${O[@]}" data tests localhost:~/bench/      # quiz and transcript JSON used by bench.py
+ssh "${O[@]}" -p 8022 localhost 'chmod +x ~/bench/chain.sh'
+```
+
+**4. Check the phone is healthy before starting (Mac)**
+```sh
+ssh "${O[@]}" -p 8022 localhost 'termux-battery-status; free -m; nproc'
+adb shell dumpsys battery | grep -E "level|temperature|status|health"     # temperature is in tenths of a degree
+```
+Start only from a full charge and a battery near 30 C.
+
+**5. Start the watchdog, then the chain (phone, via SSH)**
+```sh
+ssh "${O[@]}" -p 8022 localhost
+cd ~/bench
+nohup python watchdog.py --warn 42 --kill 45 --cpu-kill 85 --min-charge 10 --interval 60 > /dev/null 2>&1 &
+nohup ./chain.sh > /dev/null 2>&1 &
+```
+`watchdog.py` appends battery/CPU temperature and charge to `results/temp.log` every minute and kills the chain (writing `results/watchdog.killed`) at the limits. `chain.sh` runs, in order and each resumable from its `*.partial.jsonl`: `bench.py llm` (LFM2, Qwen, Gemma full verdicts), `bench.py pipeline` (LFM2, Qwen), `bench.py narrate` (LFM2, Qwen) and ends by writing `ALL DONE` to `results/chain.log`.
+
+**6. Watch it (Mac, every few minutes; do not run heavy commands on the phone meanwhile, they disturb the timings)**
+```sh
+ssh "${O[@]}" -p 8022 localhost 'tail -1 ~/bench/results/temp.log; tail -3 ~/bench/results/chain.log; ls ~/bench/results/watchdog.killed 2>/dev/null'
+```
+A background loop on the Mac did this every 2 minutes and stopped on a kill marker, battery at or above 42 C, charge at or below 15% while not charging, 10 minutes unreachable, or `ALL DONE`.
+
+**7. Pause or finish: stop the watchdog and rest the phone**
+```sh
+# fetch results first (Mac)
+scp -P 8022 "${O[@]}" 'localhost:~/bench/results/*.json' bench/results/
+scp -P 8022 "${O[@]}" 'localhost:~/bench/results/*.partial.jsonl' bench/results/phone_backup_<date>/   # only when pausing mid-run
+
+# stop the watchdog (phone). The [w] trick stops pkill matching its own SSH command line.
+ssh "${O[@]}" -p 8022 localhost 'pkill -f "^python [w]atchdog"; pgrep -fl "[w]atchdog|[l]lama" || echo none-running'
+
+# pausing mid-run: also stop the chain  ->  ssh ... 'pkill -f "[c]hain.sh"; pkill -f "[b]ench.py"'
+
+# stop Termux and close the link (Mac)
+adb shell am force-stop com.termux
+adb shell am force-stop com.termux.api
+adb shell am force-stop com.termux.boot
+adb forward --remove tcp:8022
+adb kill-server
+```
+
+**8. Score the results in the sandbox (Mac, never on the host Python)**
+```sh
+lab/run.sh /work/bench/analyze_llm.py /work/bench/results/b5_llm_Gemma.json
+lab/run.sh /work/bench/analyze_pipeline.py /work/bench/results/stage1_sdi.json /work/bench/results/b6_pipe_Qwen.json
+```
 
 ## Useful commands
 

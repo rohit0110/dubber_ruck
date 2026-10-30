@@ -1,0 +1,142 @@
+[
+ {
+  "name": "narrate",
+  "meta": {
+   "model": "LFM2-350M-Q4_0.gguf"
+  },
+  "samples": [
+   {
+    "cid": "c4q1-C",
+    "kid": "k2",
+    "label": "contradicted",
+    "stage1": "contradicted",
+    "kp": "It reduces cost, for example fewer servers or fewer paid third-party API calls.",
+    "said": "And it stops bots and bad users from overloading the servers. cost though, no, it doesn't really change your costs, it's purely a security thing.",
+    "narration": "The main benefits of using a rate limiter are cost reduction, as it minimizes unnecessary charges and resource usage.\n\nHere's the response in one sentence: A rate limiter reduces costs by minimizing unnecessary charges and resource usage",
+    "s": 13.6,
+    "prompt_tokens": 88,
+    "gen_tokens": 45
+   },
+   {
+    "cid": "c6q1-C",
+    "kid": "k3",
+    "label": "contradicted",
+    "stage1": "contradicted",
+    "kp": "A single server still hits capacity quickly, so a distributed key-value store (distributed hash table) is needed.",
+    "said": "And with those tricks one server can really scale to any size, so you never need a distributed store.",
+    "narration": "A single-server key-value store is insufficient because it quickly hits capacity, and before distributed key-value stores, a distributed system was necessary.\n\n(Note: The contradiction lies in the assumption that a single server is always sufficient",
+    "s": 15.3,
+    "prompt_tokens": 105,
+    "gen_tokens": 45
+   },
+   {
+    "cid": "c6q9-C",
+    "kid": "k1",
+    "label": "contradicted",
+    "stage1": "contradicted",
+    "kp": "For temporary failures a sloppy quorum uses the first W or R healthy servers on the ring and ignores offline ones.",
+    "said": "For temporary failures you enforce a strict quorum, and requests just block until the server's back.",
+    "narration": "The system ignores offline servers during temporary failures, contradicting the statement that it uses the first W or R healthy servers.\n\nSo, in one short sentence:\n\nThe system ignores offline servers during temporary failures, contradict",
+    "s": 14.7,
+    "prompt_tokens": 96,
+    "gen_tokens": 45
+   },
+   {
+    "cid": "c4q1-B",
+    "kid": "k2",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "It reduces cost, for example fewer servers or fewer paid third-party API calls.",
+    "said": "so, one is, defending against DoS attacks, I'm pretty sure.",
+    "narration": "The main benefits of using a rate limiter are cost reduction, such as fewer servers or fewer paid third-party API calls.",
+    "s": 11.8,
+    "prompt_tokens": 86,
+    "gen_tokens": 26
+   },
+   {
+    "cid": "c4q2-D",
+    "kid": "k1",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "The client side is unreliable because requests can be forged by malicious actors and the client implementation may not be under your control.",
+    "said": "Not sure.",
+    "narration": "A rate limiter should be placed in a secure, trusted environment like a Web Server or a dedicated service, as the client side is unreliable and vulnerable to forging requests.\n\n**Key fact:** The client side is",
+    "s": 15.3,
+    "prompt_tokens": 104,
+    "gen_tokens": 45
+   },
+   {
+    "cid": "c4q3-D",
+    "kid": "k4",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "It allows bursts of traffic for short periods, as long as tokens remain.",
+    "said": "Token bucket...",
+    "narration": "The token bucket algorithm is a method for implementing rate limiting in systems that need to handle bursts of traffic over short periods.\n\nHere's the key fact: It allows bursts of traffic for short periods, as long as tokens remain",
+    "s": 14.1,
+    "prompt_tokens": 80,
+    "gen_tokens": 45
+   },
+   {
+    "cid": "c4q5-B",
+    "kid": "k2",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "A burst at the edges of windows can let through more than the allowed quota, up to twice as many.",
+    "said": "It divides time into windows with a counter each, and each request increments the counter, and once you hit the threshold you drop requests until the next window. and it's memory efficient and easy to understand.",
+    "narration": "The main weakness of the fixed window counter algorithm is its inability to handle bursting patterns at the edges of windows, potentially allowing more than the allowed quota to pass through.",
+    "s": 13.7,
+    "prompt_tokens": 93,
+    "gen_tokens": 35
+   },
+   {
+    "cid": "c4q6-D",
+    "kid": "k2",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "A request is accepted if the log size is within the allowed count, otherwise it is rejected.",
+    "said": "Is that the, error log in the window of a server?",
+    "narration": "The sliding window log algorithm works by maintaining a window of recently seen keys and moving it to the right until it finds a new key that is within the allowed count, then sliding the window to the left. It's a gre",
+    "s": 15.4,
+    "prompt_tokens": 95,
+    "gen_tokens": 45
+   },
+   {
+    "cid": "c4q7-D",
+    "kid": "k3",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "It smooths out spikes in traffic and is memory efficient.",
+    "said": "Sliding window counter, I think it counts how many windows are open on your screen? No, that's not it.",
+    "narration": "The sliding window counter algorithm smooths out traffic spikes and is memory efficient.\n\n**Explanation:** It uses a sliding window to track the number of vehicles passing a point in time, reducing the impact of sudden traffic bursts",
+    "s": 13.8,
+    "prompt_tokens": 78,
+    "gen_tokens": 45
+   },
+   {
+    "cid": "c4q9-B",
+    "kid": "k3",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "X-Ratelimit-Retry-After gives the number of seconds to wait before making a request again.",
+    "said": "a 429 status code, too many requests. That's, that's the main thing I remember.",
+    "narration": "When a request is rate limited, the rate limiter returns a header named 'X-Ratelimit-Retry-After' which indicates the number of seconds to wait before making another request again.",
+    "s": 14.2,
+    "prompt_tokens": 100,
+    "gen_tokens": 40
+   },
+   {
+    "cid": "c4q10-D",
+    "kid": "k2",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "Locks would fix it but slow the system down, so Lua scripts or Redis sorted sets are used.",
+    "said": "Distributed... challenges...",
+    "narration": "When a rate limiter runs on multiple servers, two primary issues arise: \n1. **Latency**: Multiple servers can introduce delays in processing requests, slowing down the system.\n2. **Consistency**: Ens",
+    "s": 16.1,
+    "prompt_tokens": 102,
+    "gen_tokens": 45
+   }
+  ]
+ }
+]

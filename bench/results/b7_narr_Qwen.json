@@ -1,0 +1,142 @@
+[
+ {
+  "name": "narrate",
+  "meta": {
+   "model": "qwen2.5-0.5b-q4.gguf"
+  },
+  "samples": [
+   {
+    "cid": "c4q1-C",
+    "kid": "k2",
+    "label": "contradicted",
+    "stage1": "contradicted",
+    "kp": "It reduces cost, for example fewer servers or fewer paid third-party API calls.",
+    "said": "And it stops bots and bad users from overloading the servers. cost though, no, it doesn't really change your costs, it's purely a security thing.",
+    "narration": "The correct fact is: It reduces cost, for example fewer servers or fewer paid third-party API calls. The speaker's statement contradicts this fact.",
+    "s": 17.8,
+    "prompt_tokens": 108,
+    "gen_tokens": 31
+   },
+   {
+    "cid": "c6q1-C",
+    "kid": "k3",
+    "label": "contradicted",
+    "stage1": "contradicted",
+    "kp": "A single server still hits capacity quickly, so a distributed key-value store (distributed hash table) is needed.",
+    "said": "And with those tricks one server can really scale to any size, so you never need a distributed store.",
+    "narration": "A single-server key-value store is not enough because a distributed key-value store (distributed hash table) can handle more capacity and is more scalable.",
+    "s": 16.0,
+    "prompt_tokens": 123,
+    "gen_tokens": 30
+   },
+   {
+    "cid": "c6q9-C",
+    "kid": "k1",
+    "label": "contradicted",
+    "stage1": "contradicted",
+    "kp": "For temporary failures a sloppy quorum uses the first W or R healthy servers on the ring and ignores offline ones.",
+    "said": "For temporary failures you enforce a strict quorum, and requests just block until the server's back.",
+    "narration": "The system does not handle temporary and permanent failures.",
+    "s": 9.6,
+    "prompt_tokens": 114,
+    "gen_tokens": 11
+   },
+   {
+    "cid": "c4q1-B",
+    "kid": "k2",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "It reduces cost, for example fewer servers or fewer paid third-party API calls.",
+    "said": "so, one is, defending against DoS attacks, I'm pretty sure.",
+    "narration": "The correct fact is: It reduces cost, for example fewer servers or fewer paid third-party API calls.",
+    "s": 11.1,
+    "prompt_tokens": 106,
+    "gen_tokens": 22
+   },
+   {
+    "cid": "c4q2-D",
+    "kid": "k1",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "The client side is unreliable because requests can be forged by malicious actors and the client implementation may not be under your control.",
+    "said": "Not sure.",
+    "narration": "The client side is a poor choice because it can be forged by malicious actors, making it unreliable.",
+    "s": 12.7,
+    "prompt_tokens": 122,
+    "gen_tokens": 21
+   },
+   {
+    "cid": "c4q3-D",
+    "kid": "k4",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "It allows bursts of traffic for short periods, as long as tokens remain.",
+    "said": "Token bucket...",
+    "narration": "The correct fact is: It allows bursts of traffic for short periods, as long as tokens remain.",
+    "s": 10.8,
+    "prompt_tokens": 100,
+    "gen_tokens": 21
+   },
+   {
+    "cid": "c4q5-B",
+    "kid": "k2",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "A burst at the edges of windows can let through more than the allowed quota, up to twice as many.",
+    "said": "It divides time into windows with a counter each, and each request increments the counter, and once you hit the threshold you drop requests until the next window. and it's memory efficient and easy to understand.",
+    "narration": "The main weakness of the fixed window counter algorithm is that it can allow more than the allowed quota to pass through at the edges of windows, up to twice as many.",
+    "s": 15.4,
+    "prompt_tokens": 113,
+    "gen_tokens": 35
+   },
+   {
+    "cid": "c4q6-D",
+    "kid": "k2",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "A request is accepted if the log size is within the allowed count, otherwise it is rejected.",
+    "said": "Is that the, error log in the window of a server?",
+    "narration": "The correct fact is: A request is accepted if the log size is within the allowed count, otherwise it is rejected.",
+    "s": 12.6,
+    "prompt_tokens": 115,
+    "gen_tokens": 25
+   },
+   {
+    "cid": "c4q7-D",
+    "kid": "k3",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "It smooths out spikes in traffic and is memory efficient.",
+    "said": "Sliding window counter, I think it counts how many windows are open on your screen? No, that's not it.",
+    "narration": "The correct fact is: It smooths out spikes in traffic and is memory efficient.",
+    "s": 9.8,
+    "prompt_tokens": 98,
+    "gen_tokens": 18
+   },
+   {
+    "cid": "c4q9-B",
+    "kid": "k3",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "X-Ratelimit-Retry-After gives the number of seconds to wait before making a request again.",
+    "said": "a 429 status code, too many requests. That's, that's the main thing I remember.",
+    "narration": "When a request is rate limited, the rate limiter returns the number of seconds to wait before making a request again.",
+    "s": 13.8,
+    "prompt_tokens": 120,
+    "gen_tokens": 25
+   },
+   {
+    "cid": "c4q10-D",
+    "kid": "k2",
+    "label": "missing",
+    "stage1": "missing",
+    "kp": "Locks would fix it but slow the system down, so Lua scripts or Redis sorted sets are used.",
+    "said": "Distributed... challenges...",
+    "narration": "When a rate limiter runs on multiple servers, it can lead to locks, causing the system to slow down. To handle this, Lua scripts or Redis sorted sets are commonly used.",
+    "s": 16.6,
+    "prompt_tokens": 120,
+    "gen_tokens": 38
+   }
+  ]
+ }
+]
